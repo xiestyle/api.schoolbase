@@ -1,0 +1,1326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBZiyuanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="IAM_Sclass">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SPEID" Type="bigint" Nullable="false" />
+          <Property Name="GRAID" Type="bigint" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" Nullable="false" />
+          <Property Name="PID" Type="bigint" Nullable="false" />
+          <Property Name="Sname" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Sorder" Type="int" Nullable="false" />
+          <Property Name="Depth" Type="int" Nullable="false" />
+          <Property Name="NodePath" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="FullCnPath" Type="varchar" MaxLength="500" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IAM_SclassSection">
+          <Key>
+            <PropertyRef Name="SclassID" />
+            <PropertyRef Name="SectionID" />
+          </Key>
+          <Property Name="SclassID" Type="bigint" Nullable="false" />
+          <Property Name="SectionID" Type="bigint" Nullable="false" />
+          <Property Name="Available" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZYK_HistoryDownLoad">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="UserType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ResID" Type="bigint" Nullable="false" />
+          <Property Name="DTime" Type="datetime" />
+          <Property Name="IP" Type="varchar" MaxLength="20" />
+          <Property Name="ZT" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="ZYK_HistoryFavorite">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="UserType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ResID" Type="bigint" Nullable="false" />
+          <Property Name="DTime" Type="datetime" />
+          <Property Name="IP" Type="varchar" MaxLength="20" />
+          <Property Name="ZT" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="ZYK_HistoryPinJia">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="UserType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ResID" Type="bigint" Nullable="false" />
+          <Property Name="Content" Type="varchar" MaxLength="500" />
+          <Property Name="Step" Type="int" />
+          <Property Name="DTime" Type="datetime" />
+          <Property Name="IP" Type="varchar" MaxLength="20" />
+          <Property Name="ZT" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="ZYK_HistoryUse">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="UserType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ResID" Type="bigint" Nullable="false" />
+          <Property Name="DTime" Type="datetime" />
+          <Property Name="IP" Type="varchar" MaxLength="20" />
+          <Property Name="ZT" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="ZYK_HistoryView">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="UserType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ResID" Type="bigint" Nullable="false" />
+          <Property Name="DTime" Type="datetime" />
+          <Property Name="IP" Type="varchar" MaxLength="20" />
+          <Property Name="ZT" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="ZYK_PingjiaRemark">
+          <Key>
+            <PropertyRef Name="SerID" />
+          </Key>
+          <Property Name="SerID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResourceID" Type="bigint" Nullable="false" />
+          <Property Name="remarkcontent" Type="nvarchar" MaxLength="200" />
+          <Property Name="DateAndTime" Type="datetime" />
+          <Property Name="UID" Type="int" Nullable="false" />
+          <Property Name="Score" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKZiyuan.dbo.ZYK_ResAccessRecord”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="ZYK_ResAccessRecord">
+          <Key>
+            <PropertyRef Name="rid" />
+            <PropertyRef Name="uid" />
+            <PropertyRef Name="dtime" />
+          </Key>
+          <Property Name="rid" Type="bigint" Nullable="false" />
+          <Property Name="uid" Type="bigint" Nullable="false" />
+          <Property Name="dtime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKZiyuan.dbo.ZYK_ResoucePush”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="ZYK_ResoucePush">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="resId" />
+            <PropertyRef Name="resTitle" />
+            <PropertyRef Name="resPoint" />
+            <PropertyRef Name="resType" />
+            <PropertyRef Name="fileSize" />
+            <PropertyRef Name="fileType" />
+            <PropertyRef Name="uId" />
+            <PropertyRef Name="uName" />
+            <PropertyRef Name="pushDT" />
+            <PropertyRef Name="authorId" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="resId" Type="int" Nullable="false" />
+          <Property Name="resTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="resPoint" Type="int" Nullable="false" />
+          <Property Name="resType" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="fileSize" Type="int" Nullable="false" />
+          <Property Name="fileType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="uId" Type="int" Nullable="false" />
+          <Property Name="uName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="pushDT" Type="datetime" Nullable="false" />
+          <Property Name="resNote" Type="ntext" />
+          <Property Name="authorId" Type="int" Nullable="false" />
+          <Property Name="fileId" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ZYK_Resource">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UID" Type="bigint" Nullable="false" />
+          <Property Name="Dtime" Type="datetime" Nullable="false" />
+          <Property Name="FileID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ResType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FileType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FileSize" Type="int" Nullable="false" />
+          <Property Name="ResTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ResDes" Type="varchar" MaxLength="500" />
+          <Property Name="NumView" Type="int" Nullable="false" />
+          <Property Name="NumUse" Type="int" Nullable="false" />
+          <Property Name="NumCollect" Type="int" Nullable="false" />
+          <Property Name="NumDownLoad" Type="int" Nullable="false" />
+          <Property Name="NumShare" Type="int" Nullable="false" />
+          <Property Name="NumScore" Type="int" Nullable="false" />
+          <Property Name="isPassed" Type="int" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+          <Property Name="isPush" Type="int" />
+          <Property Name="TotalScore" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZYK_ResourceCategory">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+            <PropertyRef Name="ResourceID" />
+          </Key>
+          <Property Name="CategoryID" Type="bigint" Nullable="false" />
+          <Property Name="ResourceID" Type="bigint" Nullable="false" />
+          <Property Name="Switch" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZYK_ResourceFavorite">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResID" Type="bigint" Nullable="false" />
+          <Property Name="FClasID" Type="bigint" Nullable="false" />
+          <Property Name="UID" Type="bigint" Nullable="false" />
+          <Property Name="Dtime" Type="datetime" />
+          <Property Name="Attention" Type="varchar" MaxLength="50" />
+          <Property Name="ZT" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZYK_ResourceFavoriteCategory">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FName" Type="varchar" MaxLength="50" />
+          <Property Name="PID" Type="bigint" />
+          <Property Name="UID" Type="varchar" MaxLength="50" />
+          <Property Name="Sorder" Type="int" />
+          <Property Name="Depth" Type="varchar" MaxLength="50" />
+          <Property Name="NodePath" Type="varchar" MaxLength="50" />
+          <Property Name="Subject" Type="varchar" MaxLength="50" />
+          <Property Name="ZT" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="ZYK_ResourceFile">
+          <Key>
+            <PropertyRef Name="FileID" />
+          </Key>
+          <Property Name="FileID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FilePath" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="FileExtension" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="FileSize" Type="int" Nullable="false" />
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UID" Type="bigint" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="DTime" Type="datetime" Nullable="false" />
+          <Property Name="IP" Type="varchar" MaxLength="20" />
+          <Property Name="ZT" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZYK_ResourceSclass">
+          <Key>
+            <PropertyRef Name="ResourceID" />
+            <PropertyRef Name="SclassID" />
+          </Key>
+          <Property Name="ResourceID" Type="bigint" Nullable="false" />
+          <Property Name="SclassID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZYK_ResourceSection">
+          <Key>
+            <PropertyRef Name="ResourceID" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SectionID" />
+          </Key>
+          <Property Name="ResourceID" Type="bigint" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" Nullable="false" />
+          <Property Name="SectionID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZYK_SchoolCategory">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderNumber" Type="int" Nullable="false" />
+          <Property Name="Extensions" Type="varchar" MaxLength="500" />
+          <Property Name="isAvail" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKZiyuan.dbo.View_ResRemark”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="View_ResRemark">
+          <Key>
+            <PropertyRef Name="SerID" />
+            <PropertyRef Name="ResourceID" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="SerID" Type="bigint" Nullable="false" />
+          <Property Name="ResourceID" Type="bigint" Nullable="false" />
+          <Property Name="DateAndTime" Type="datetime" />
+          <Property Name="remarkcontent" Type="nvarchar" MaxLength="200" />
+          <Property Name="Score" Type="int" Nullable="false" />
+          <Property Name="UID" Type="int" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKZiyuan.dbo.View_ZYKResource”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="View_ZYKResource">
+          <Key>
+            <PropertyRef Name="SERID" />
+            <PropertyRef Name="FileID" />
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="CategoryID" />
+            <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="SpecialtyID" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="NodePath" />
+            <PropertyRef Name="SclassID" />
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Dtime" />
+            <PropertyRef Name="ResTitle" />
+            <PropertyRef Name="NumView" />
+            <PropertyRef Name="NumUse" />
+            <PropertyRef Name="NumCollect" />
+            <PropertyRef Name="NumDownLoad" />
+            <PropertyRef Name="NumShare" />
+            <PropertyRef Name="TotalScore" />
+            <PropertyRef Name="NumScore" />
+            <PropertyRef Name="isPassed" />
+            <PropertyRef Name="isDeleted" />
+            <PropertyRef Name="numremark" />
+            <PropertyRef Name="FileType" />
+            <PropertyRef Name="FileSize" />
+          </Key>
+          <Property Name="SERID" Type="bigint" Nullable="false" />
+          <Property Name="FileID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CategoryID" Type="bigint" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SpecialtyID" Type="bigint" Nullable="false" />
+          <Property Name="GRAID" Type="bigint" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" Nullable="false" />
+          <Property Name="NodePath" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="SclassID" Type="bigint" Nullable="false" />
+          <Property Name="UID" Type="bigint" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Dtime" Type="datetime" Nullable="false" />
+          <Property Name="ResTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ResDes" Type="varchar" MaxLength="500" />
+          <Property Name="NumView" Type="int" Nullable="false" />
+          <Property Name="NumUse" Type="int" Nullable="false" />
+          <Property Name="NumCollect" Type="int" Nullable="false" />
+          <Property Name="NumDownLoad" Type="int" Nullable="false" />
+          <Property Name="NumShare" Type="int" Nullable="false" />
+          <Property Name="TotalScore" Type="int" Nullable="false" />
+          <Property Name="NumScore" Type="int" Nullable="false" />
+          <Property Name="isPassed" Type="int" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+          <Property Name="numremark" Type="int" Nullable="false" />
+          <Property Name="FileType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FileSize" Type="int" Nullable="false" />
+          <Property Name="isPush" Type="int" />
+        </EntityType>
+        <Association Name="FK_IAM_SclassSection_IAM_SclassSection">
+          <End Role="IAM_Sclass" Type="Self.IAM_Sclass" Multiplicity="1" />
+          <End Role="IAM_SclassSection" Type="Self.IAM_SclassSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IAM_Sclass">
+              <PropertyRef Name="SERID" />
+            </Principal>
+            <Dependent Role="IAM_SclassSection">
+              <PropertyRef Name="SclassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZYK_Resource_ZYK_ResourceFile">
+          <End Role="ZYK_ResourceFile" Type="Self.ZYK_ResourceFile" Multiplicity="1" />
+          <End Role="ZYK_Resource" Type="Self.ZYK_Resource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZYK_ResourceFile">
+              <PropertyRef Name="FileID" />
+            </Principal>
+            <Dependent Role="ZYK_Resource">
+              <PropertyRef Name="FileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZYK_ResourceCategory_ZYK_Resource">
+          <End Role="ZYK_Resource" Type="Self.ZYK_Resource" Multiplicity="1" />
+          <End Role="ZYK_ResourceCategory" Type="Self.ZYK_ResourceCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZYK_Resource">
+              <PropertyRef Name="SERID" />
+            </Principal>
+            <Dependent Role="ZYK_ResourceCategory">
+              <PropertyRef Name="ResourceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZYK_ResourceCategory_ZYK_SchoolCategory">
+          <End Role="ZYK_SchoolCategory" Type="Self.ZYK_SchoolCategory" Multiplicity="1" />
+          <End Role="ZYK_ResourceCategory" Type="Self.ZYK_ResourceCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZYK_SchoolCategory">
+              <PropertyRef Name="SERID" />
+            </Principal>
+            <Dependent Role="ZYK_ResourceCategory">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZYK_ResourceFile_ZYK_ResourceFile">
+          <End Role="ZYK_ResourceFile" Type="Self.ZYK_ResourceFile" Multiplicity="1" />
+          <End Role="ZYK_ResourceFile1" Type="Self.ZYK_ResourceFile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ZYK_ResourceFile">
+              <PropertyRef Name="FileID" />
+            </Principal>
+            <Dependent Role="ZYK_ResourceFile1">
+              <PropertyRef Name="FileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZYK_ResourceSclass_ZYK_Resource">
+          <End Role="ZYK_Resource" Type="Self.ZYK_Resource" Multiplicity="1" />
+          <End Role="ZYK_ResourceSclass" Type="Self.ZYK_ResourceSclass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZYK_Resource">
+              <PropertyRef Name="SERID" />
+            </Principal>
+            <Dependent Role="ZYK_ResourceSclass">
+              <PropertyRef Name="ResourceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZYK_ResourceSection_ZYK_Resource">
+          <End Role="ZYK_Resource" Type="Self.ZYK_Resource" Multiplicity="1" />
+          <End Role="ZYK_ResourceSection" Type="Self.ZYK_ResourceSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZYK_Resource">
+              <PropertyRef Name="SERID" />
+            </Principal>
+            <Dependent Role="ZYK_ResourceSection">
+              <PropertyRef Name="ResourceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBZiyuanModelStoreContainer">
+          <EntitySet Name="IAM_Sclass" EntityType="Self.IAM_Sclass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IAM_SclassSection" EntityType="Self.IAM_SclassSection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZYK_HistoryDownLoad" EntityType="Self.ZYK_HistoryDownLoad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZYK_HistoryFavorite" EntityType="Self.ZYK_HistoryFavorite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZYK_HistoryPinJia" EntityType="Self.ZYK_HistoryPinJia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZYK_HistoryUse" EntityType="Self.ZYK_HistoryUse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZYK_HistoryView" EntityType="Self.ZYK_HistoryView" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZYK_PingjiaRemark" EntityType="Self.ZYK_PingjiaRemark" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZYK_Resource" EntityType="Self.ZYK_Resource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZYK_ResourceCategory" EntityType="Self.ZYK_ResourceCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZYK_ResourceFavorite" EntityType="Self.ZYK_ResourceFavorite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZYK_ResourceFavoriteCategory" EntityType="Self.ZYK_ResourceFavoriteCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZYK_ResourceFile" EntityType="Self.ZYK_ResourceFile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZYK_ResourceSclass" EntityType="Self.ZYK_ResourceSclass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZYK_ResourceSection" EntityType="Self.ZYK_ResourceSection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZYK_SchoolCategory" EntityType="Self.ZYK_SchoolCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZYK_ResAccessRecord" EntityType="Self.ZYK_ResAccessRecord" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[ZYK_ResAccessRecord].[rid] AS [rid], 
+[ZYK_ResAccessRecord].[uid] AS [uid], 
+[ZYK_ResAccessRecord].[dtime] AS [dtime]
+FROM [dbo].[ZYK_ResAccessRecord] AS [ZYK_ResAccessRecord]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ZYK_ResoucePush" EntityType="Self.ZYK_ResoucePush" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[ZYK_ResoucePush].[id] AS [id], 
+[ZYK_ResoucePush].[resId] AS [resId], 
+[ZYK_ResoucePush].[resTitle] AS [resTitle], 
+[ZYK_ResoucePush].[resPoint] AS [resPoint], 
+[ZYK_ResoucePush].[resType] AS [resType], 
+[ZYK_ResoucePush].[fileSize] AS [fileSize], 
+[ZYK_ResoucePush].[fileType] AS [fileType], 
+[ZYK_ResoucePush].[uId] AS [uId], 
+[ZYK_ResoucePush].[uName] AS [uName], 
+[ZYK_ResoucePush].[pushDT] AS [pushDT], 
+[ZYK_ResoucePush].[resNote] AS [resNote], 
+[ZYK_ResoucePush].[authorId] AS [authorId], 
+[ZYK_ResoucePush].[fileId] AS [fileId]
+FROM [dbo].[ZYK_ResoucePush] AS [ZYK_ResoucePush]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_ResRemark" EntityType="Self.View_ResRemark" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_ResRemark].[SerID] AS [SerID], 
+[View_ResRemark].[ResourceID] AS [ResourceID], 
+[View_ResRemark].[DateAndTime] AS [DateAndTime], 
+[View_ResRemark].[remarkcontent] AS [remarkcontent], 
+[View_ResRemark].[Score] AS [Score], 
+[View_ResRemark].[UID] AS [UID], 
+[View_ResRemark].[username] AS [username]
+FROM [dbo].[View_ResRemark] AS [View_ResRemark]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_ZYKResource" EntityType="Self.View_ZYKResource" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_ZYKResource].[SERID] AS [SERID], 
+[View_ZYKResource].[FileID] AS [FileID], 
+[View_ZYKResource].[SchSerID] AS [SchSerID], 
+[View_ZYKResource].[CategoryID] AS [CategoryID], 
+[View_ZYKResource].[CategoryName] AS [CategoryName], 
+[View_ZYKResource].[SpecialtyID] AS [SpecialtyID], 
+[View_ZYKResource].[GRAID] AS [GRAID], 
+[View_ZYKResource].[SubjectID] AS [SubjectID], 
+[View_ZYKResource].[NodePath] AS [NodePath], 
+[View_ZYKResource].[SclassID] AS [SclassID], 
+[View_ZYKResource].[UID] AS [UID], 
+[View_ZYKResource].[UserName] AS [UserName], 
+[View_ZYKResource].[Dtime] AS [Dtime], 
+[View_ZYKResource].[ResTitle] AS [ResTitle], 
+[View_ZYKResource].[ResDes] AS [ResDes], 
+[View_ZYKResource].[NumView] AS [NumView], 
+[View_ZYKResource].[NumUse] AS [NumUse], 
+[View_ZYKResource].[NumCollect] AS [NumCollect], 
+[View_ZYKResource].[NumDownLoad] AS [NumDownLoad], 
+[View_ZYKResource].[NumShare] AS [NumShare], 
+[View_ZYKResource].[TotalScore] AS [TotalScore], 
+[View_ZYKResource].[NumScore] AS [NumScore], 
+[View_ZYKResource].[isPassed] AS [isPassed], 
+[View_ZYKResource].[isDeleted] AS [isDeleted], 
+[View_ZYKResource].[numremark] AS [numremark], 
+[View_ZYKResource].[FileType] AS [FileType], 
+[View_ZYKResource].[FileSize] AS [FileSize], 
+[View_ZYKResource].[isPush] AS [isPush]
+FROM [dbo].[View_ZYKResource] AS [View_ZYKResource]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_IAM_SclassSection_IAM_SclassSection" Association="Self.FK_IAM_SclassSection_IAM_SclassSection">
+            <End Role="IAM_Sclass" EntitySet="IAM_Sclass" />
+            <End Role="IAM_SclassSection" EntitySet="IAM_SclassSection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZYK_Resource_ZYK_ResourceFile" Association="Self.FK_ZYK_Resource_ZYK_ResourceFile">
+            <End Role="ZYK_ResourceFile" EntitySet="ZYK_ResourceFile" />
+            <End Role="ZYK_Resource" EntitySet="ZYK_Resource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZYK_ResourceCategory_ZYK_Resource" Association="Self.FK_ZYK_ResourceCategory_ZYK_Resource">
+            <End Role="ZYK_Resource" EntitySet="ZYK_Resource" />
+            <End Role="ZYK_ResourceCategory" EntitySet="ZYK_ResourceCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZYK_ResourceCategory_ZYK_SchoolCategory" Association="Self.FK_ZYK_ResourceCategory_ZYK_SchoolCategory">
+            <End Role="ZYK_SchoolCategory" EntitySet="ZYK_SchoolCategory" />
+            <End Role="ZYK_ResourceCategory" EntitySet="ZYK_ResourceCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZYK_ResourceFile_ZYK_ResourceFile" Association="Self.FK_ZYK_ResourceFile_ZYK_ResourceFile">
+            <End Role="ZYK_ResourceFile" EntitySet="ZYK_ResourceFile" />
+            <End Role="ZYK_ResourceFile1" EntitySet="ZYK_ResourceFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZYK_ResourceSclass_ZYK_Resource" Association="Self.FK_ZYK_ResourceSclass_ZYK_Resource">
+            <End Role="ZYK_Resource" EntitySet="ZYK_Resource" />
+            <End Role="ZYK_ResourceSclass" EntitySet="ZYK_ResourceSclass" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZYK_ResourceSection_ZYK_Resource" Association="Self.FK_ZYK_ResourceSection_ZYK_Resource">
+            <End Role="ZYK_Resource" EntitySet="ZYK_Resource" />
+            <End Role="ZYK_ResourceSection" EntitySet="ZYK_ResourceSection" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBZiyuanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DBZiyuanEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="IAM_Sclass" EntityType="DBZiyuanModel.IAM_Sclass" />
+          <EntitySet Name="IAM_SclassSection" EntityType="DBZiyuanModel.IAM_SclassSection" />
+          <EntitySet Name="ZYK_HistoryDownLoad" EntityType="DBZiyuanModel.ZYK_HistoryDownLoad" />
+          <EntitySet Name="ZYK_HistoryFavorite" EntityType="DBZiyuanModel.ZYK_HistoryFavorite" />
+          <EntitySet Name="ZYK_HistoryPinJia" EntityType="DBZiyuanModel.ZYK_HistoryPinJia" />
+          <EntitySet Name="ZYK_HistoryUse" EntityType="DBZiyuanModel.ZYK_HistoryUse" />
+          <EntitySet Name="ZYK_HistoryView" EntityType="DBZiyuanModel.ZYK_HistoryView" />
+          <EntitySet Name="ZYK_PingjiaRemark" EntityType="DBZiyuanModel.ZYK_PingjiaRemark" />
+          <EntitySet Name="ZYK_Resource" EntityType="DBZiyuanModel.ZYK_Resource" />
+          <EntitySet Name="ZYK_ResourceCategory" EntityType="DBZiyuanModel.ZYK_ResourceCategory" />
+          <EntitySet Name="ZYK_ResourceFavorite" EntityType="DBZiyuanModel.ZYK_ResourceFavorite" />
+          <EntitySet Name="ZYK_ResourceFavoriteCategory" EntityType="DBZiyuanModel.ZYK_ResourceFavoriteCategory" />
+          <EntitySet Name="ZYK_ResourceFile" EntityType="DBZiyuanModel.ZYK_ResourceFile" />
+          <EntitySet Name="ZYK_ResourceSclass" EntityType="DBZiyuanModel.ZYK_ResourceSclass" />
+          <EntitySet Name="ZYK_ResourceSection" EntityType="DBZiyuanModel.ZYK_ResourceSection" />
+          <EntitySet Name="ZYK_SchoolCategory" EntityType="DBZiyuanModel.ZYK_SchoolCategory" />
+          <EntitySet Name="ZYK_ResAccessRecord" EntityType="DBZiyuanModel.ZYK_ResAccessRecord" />
+          <EntitySet Name="ZYK_ResoucePush" EntityType="DBZiyuanModel.ZYK_ResoucePush" />
+          <EntitySet Name="View_ResRemark" EntityType="DBZiyuanModel.View_ResRemark" />
+          <EntitySet Name="View_ZYKResource" EntityType="DBZiyuanModel.View_ZYKResource" />
+          <AssociationSet Name="FK_IAM_SclassSection_IAM_SclassSection" Association="DBZiyuanModel.FK_IAM_SclassSection_IAM_SclassSection">
+            <End Role="IAM_Sclass" EntitySet="IAM_Sclass" />
+            <End Role="IAM_SclassSection" EntitySet="IAM_SclassSection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZYK_Resource_ZYK_ResourceFile" Association="DBZiyuanModel.FK_ZYK_Resource_ZYK_ResourceFile">
+            <End Role="ZYK_ResourceFile" EntitySet="ZYK_ResourceFile" />
+            <End Role="ZYK_Resource" EntitySet="ZYK_Resource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZYK_ResourceCategory_ZYK_Resource" Association="DBZiyuanModel.FK_ZYK_ResourceCategory_ZYK_Resource">
+            <End Role="ZYK_Resource" EntitySet="ZYK_Resource" />
+            <End Role="ZYK_ResourceCategory" EntitySet="ZYK_ResourceCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZYK_ResourceSclass_ZYK_Resource" Association="DBZiyuanModel.FK_ZYK_ResourceSclass_ZYK_Resource">
+            <End Role="ZYK_Resource" EntitySet="ZYK_Resource" />
+            <End Role="ZYK_ResourceSclass" EntitySet="ZYK_ResourceSclass" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZYK_ResourceSection_ZYK_Resource" Association="DBZiyuanModel.FK_ZYK_ResourceSection_ZYK_Resource">
+            <End Role="ZYK_Resource" EntitySet="ZYK_Resource" />
+            <End Role="ZYK_ResourceSection" EntitySet="ZYK_ResourceSection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZYK_ResourceCategory_ZYK_SchoolCategory" Association="DBZiyuanModel.FK_ZYK_ResourceCategory_ZYK_SchoolCategory">
+            <End Role="ZYK_SchoolCategory" EntitySet="ZYK_SchoolCategory" />
+            <End Role="ZYK_ResourceCategory" EntitySet="ZYK_ResourceCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZYK_ResourceFile_ZYK_ResourceFile" Association="DBZiyuanModel.FK_ZYK_ResourceFile_ZYK_ResourceFile">
+            <End Role="ZYK_ResourceFile" EntitySet="ZYK_ResourceFile" />
+            <End Role="ZYK_ResourceFile1" EntitySet="ZYK_ResourceFile" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="IAM_Sclass">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SchSerID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SPEID" Type="Int64" Nullable="false" />
+          <Property Name="GRAID" Type="Int64" Nullable="false" />
+          <Property Name="SubjectID" Type="Int64" Nullable="false" />
+          <Property Name="PID" Type="Int64" Nullable="false" />
+          <Property Name="Sname" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Sorder" Type="Int32" Nullable="false" />
+          <Property Name="Depth" Type="Int32" Nullable="false" />
+          <Property Name="NodePath" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FullCnPath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="IAM_SclassSection" Relationship="DBZiyuanModel.FK_IAM_SclassSection_IAM_SclassSection" FromRole="IAM_Sclass" ToRole="IAM_SclassSection" />
+        </EntityType>
+        <EntityType Name="IAM_SclassSection">
+          <Key>
+            <PropertyRef Name="SclassID" />
+            <PropertyRef Name="SectionID" />
+          </Key>
+          <Property Name="SclassID" Type="Int64" Nullable="false" />
+          <Property Name="SectionID" Type="Int64" Nullable="false" />
+          <Property Name="Available" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="IAM_Sclass" Relationship="DBZiyuanModel.FK_IAM_SclassSection_IAM_SclassSection" FromRole="IAM_SclassSection" ToRole="IAM_Sclass" />
+        </EntityType>
+        <EntityType Name="ZYK_HistoryDownLoad">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SchSerID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="UserType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ResID" Type="Int64" Nullable="false" />
+          <Property Name="DTime" Type="DateTime" Precision="3" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ZT" Type="Byte" />
+        </EntityType>
+        <EntityType Name="ZYK_HistoryFavorite">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SchSerID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="UserType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ResID" Type="Int64" Nullable="false" />
+          <Property Name="DTime" Type="DateTime" Precision="3" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ZT" Type="Byte" />
+        </EntityType>
+        <EntityType Name="ZYK_HistoryPinJia">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SchSerID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="UserType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ResID" Type="Int64" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Step" Type="Int32" />
+          <Property Name="DTime" Type="DateTime" Precision="3" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ZT" Type="Byte" />
+        </EntityType>
+        <EntityType Name="ZYK_HistoryUse">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SchSerID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="UserType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ResID" Type="Int64" Nullable="false" />
+          <Property Name="DTime" Type="DateTime" Precision="3" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ZT" Type="Byte" />
+        </EntityType>
+        <EntityType Name="ZYK_HistoryView">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SchSerID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="UserType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ResID" Type="Int64" Nullable="false" />
+          <Property Name="DTime" Type="DateTime" Precision="3" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ZT" Type="Byte" />
+        </EntityType>
+        <EntityType Name="ZYK_PingjiaRemark">
+          <Key>
+            <PropertyRef Name="SerID" />
+          </Key>
+          <Property Name="SerID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResourceID" Type="Int64" Nullable="false" />
+          <Property Name="remarkcontent" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DateAndTime" Type="DateTime" Precision="3" />
+          <Property Name="UID" Type="Int32" Nullable="false" />
+          <Property Name="Score" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZYK_Resource">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SchSerID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UID" Type="Int64" Nullable="false" />
+          <Property Name="Dtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FileID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ResType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FileType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FileSize" Type="Int32" Nullable="false" />
+          <Property Name="ResTitle" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ResDes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NumView" Type="Int32" Nullable="false" />
+          <Property Name="NumUse" Type="Int32" Nullable="false" />
+          <Property Name="NumCollect" Type="Int32" Nullable="false" />
+          <Property Name="NumDownLoad" Type="Int32" Nullable="false" />
+          <Property Name="NumShare" Type="Int32" Nullable="false" />
+          <Property Name="NumScore" Type="Int32" Nullable="false" />
+          <Property Name="isPassed" Type="Int32" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="isPush" Type="Int32" />
+          <Property Name="TotalScore" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ZYK_ResourceFile" Relationship="DBZiyuanModel.FK_ZYK_Resource_ZYK_ResourceFile" FromRole="ZYK_Resource" ToRole="ZYK_ResourceFile" />
+          <NavigationProperty Name="ZYK_ResourceCategory" Relationship="DBZiyuanModel.FK_ZYK_ResourceCategory_ZYK_Resource" FromRole="ZYK_Resource" ToRole="ZYK_ResourceCategory" />
+          <NavigationProperty Name="ZYK_ResourceSclass" Relationship="DBZiyuanModel.FK_ZYK_ResourceSclass_ZYK_Resource" FromRole="ZYK_Resource" ToRole="ZYK_ResourceSclass" />
+          <NavigationProperty Name="ZYK_ResourceSection" Relationship="DBZiyuanModel.FK_ZYK_ResourceSection_ZYK_Resource" FromRole="ZYK_Resource" ToRole="ZYK_ResourceSection" />
+        </EntityType>
+        <EntityType Name="ZYK_ResourceCategory">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+            <PropertyRef Name="ResourceID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int64" Nullable="false" />
+          <Property Name="ResourceID" Type="Int64" Nullable="false" />
+          <Property Name="Switch" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ZYK_Resource" Relationship="DBZiyuanModel.FK_ZYK_ResourceCategory_ZYK_Resource" FromRole="ZYK_ResourceCategory" ToRole="ZYK_Resource" />
+          <NavigationProperty Name="ZYK_SchoolCategory" Relationship="DBZiyuanModel.FK_ZYK_ResourceCategory_ZYK_SchoolCategory" FromRole="ZYK_ResourceCategory" ToRole="ZYK_SchoolCategory" />
+        </EntityType>
+        <EntityType Name="ZYK_ResourceFavorite">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResID" Type="Int64" Nullable="false" />
+          <Property Name="FClasID" Type="Int64" Nullable="false" />
+          <Property Name="UID" Type="Int64" Nullable="false" />
+          <Property Name="Dtime" Type="DateTime" Precision="3" />
+          <Property Name="Attention" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZT" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZYK_ResourceFavoriteCategory">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PID" Type="Int64" />
+          <Property Name="UID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sorder" Type="Int32" />
+          <Property Name="Depth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NodePath" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZT" Type="Byte" />
+        </EntityType>
+        <EntityType Name="ZYK_ResourceFile">
+          <Key>
+            <PropertyRef Name="FileID" />
+          </Key>
+          <Property Name="FileID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FilePath" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FileExtension" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FileSize" Type="Int32" Nullable="false" />
+          <Property Name="SchSerID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UID" Type="Int64" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ZT" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ZYK_Resource" Relationship="DBZiyuanModel.FK_ZYK_Resource_ZYK_ResourceFile" FromRole="ZYK_ResourceFile" ToRole="ZYK_Resource" />
+          <NavigationProperty Name="ZYK_ResourceFile1" Relationship="DBZiyuanModel.FK_ZYK_ResourceFile_ZYK_ResourceFile" FromRole="ZYK_ResourceFile" ToRole="ZYK_ResourceFile1" />
+          <NavigationProperty Name="ZYK_ResourceFile2" Relationship="DBZiyuanModel.FK_ZYK_ResourceFile_ZYK_ResourceFile" FromRole="ZYK_ResourceFile1" ToRole="ZYK_ResourceFile" />
+        </EntityType>
+        <EntityType Name="ZYK_ResourceSclass">
+          <Key>
+            <PropertyRef Name="ResourceID" />
+            <PropertyRef Name="SclassID" />
+          </Key>
+          <Property Name="ResourceID" Type="Int64" Nullable="false" />
+          <Property Name="SclassID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="ZYK_Resource" Relationship="DBZiyuanModel.FK_ZYK_ResourceSclass_ZYK_Resource" FromRole="ZYK_ResourceSclass" ToRole="ZYK_Resource" />
+        </EntityType>
+        <EntityType Name="ZYK_ResourceSection">
+          <Key>
+            <PropertyRef Name="ResourceID" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SectionID" />
+          </Key>
+          <Property Name="ResourceID" Type="Int64" Nullable="false" />
+          <Property Name="SubjectID" Type="Int64" Nullable="false" />
+          <Property Name="SectionID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="ZYK_Resource" Relationship="DBZiyuanModel.FK_ZYK_ResourceSection_ZYK_Resource" FromRole="ZYK_ResourceSection" ToRole="ZYK_Resource" />
+        </EntityType>
+        <EntityType Name="ZYK_SchoolCategory">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SchSerID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderNumber" Type="Int32" Nullable="false" />
+          <Property Name="Extensions" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="isAvail" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ZYK_ResourceCategory" Relationship="DBZiyuanModel.FK_ZYK_ResourceCategory_ZYK_SchoolCategory" FromRole="ZYK_SchoolCategory" ToRole="ZYK_ResourceCategory" />
+        </EntityType>
+        <EntityType Name="ZYK_ResAccessRecord">
+          <Key>
+            <PropertyRef Name="rid" />
+            <PropertyRef Name="uid" />
+            <PropertyRef Name="dtime" />
+          </Key>
+          <Property Name="rid" Type="Int64" Nullable="false" />
+          <Property Name="uid" Type="Int64" Nullable="false" />
+          <Property Name="dtime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ZYK_ResoucePush">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="resId" />
+            <PropertyRef Name="resTitle" />
+            <PropertyRef Name="resPoint" />
+            <PropertyRef Name="resType" />
+            <PropertyRef Name="fileSize" />
+            <PropertyRef Name="fileType" />
+            <PropertyRef Name="uId" />
+            <PropertyRef Name="uName" />
+            <PropertyRef Name="pushDT" />
+            <PropertyRef Name="authorId" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="resId" Type="Int32" Nullable="false" />
+          <Property Name="resTitle" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="resPoint" Type="Int32" Nullable="false" />
+          <Property Name="resType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="fileSize" Type="Int32" Nullable="false" />
+          <Property Name="fileType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="uId" Type="Int32" Nullable="false" />
+          <Property Name="uName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pushDT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="resNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="authorId" Type="Int32" Nullable="false" />
+          <Property Name="fileId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_ResRemark">
+          <Key>
+            <PropertyRef Name="SerID" />
+            <PropertyRef Name="ResourceID" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="SerID" Type="Int64" Nullable="false" />
+          <Property Name="ResourceID" Type="Int64" Nullable="false" />
+          <Property Name="DateAndTime" Type="DateTime" Precision="3" />
+          <Property Name="remarkcontent" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Score" Type="Int32" Nullable="false" />
+          <Property Name="UID" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_ZYKResource">
+          <Key>
+            <PropertyRef Name="SERID" />
+            <PropertyRef Name="FileID" />
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="CategoryID" />
+            <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="SpecialtyID" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="NodePath" />
+            <PropertyRef Name="SclassID" />
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Dtime" />
+            <PropertyRef Name="ResTitle" />
+            <PropertyRef Name="NumView" />
+            <PropertyRef Name="NumUse" />
+            <PropertyRef Name="NumCollect" />
+            <PropertyRef Name="NumDownLoad" />
+            <PropertyRef Name="NumShare" />
+            <PropertyRef Name="TotalScore" />
+            <PropertyRef Name="NumScore" />
+            <PropertyRef Name="isPassed" />
+            <PropertyRef Name="isDeleted" />
+            <PropertyRef Name="numremark" />
+            <PropertyRef Name="FileType" />
+            <PropertyRef Name="FileSize" />
+          </Key>
+          <Property Name="SERID" Type="Int64" Nullable="false" />
+          <Property Name="FileID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SchSerID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryID" Type="Int64" Nullable="false" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpecialtyID" Type="Int64" Nullable="false" />
+          <Property Name="GRAID" Type="Int64" Nullable="false" />
+          <Property Name="SubjectID" Type="Int64" Nullable="false" />
+          <Property Name="NodePath" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SclassID" Type="Int64" Nullable="false" />
+          <Property Name="UID" Type="Int64" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Dtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ResTitle" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ResDes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NumView" Type="Int32" Nullable="false" />
+          <Property Name="NumUse" Type="Int32" Nullable="false" />
+          <Property Name="NumCollect" Type="Int32" Nullable="false" />
+          <Property Name="NumDownLoad" Type="Int32" Nullable="false" />
+          <Property Name="NumShare" Type="Int32" Nullable="false" />
+          <Property Name="TotalScore" Type="Int32" Nullable="false" />
+          <Property Name="NumScore" Type="Int32" Nullable="false" />
+          <Property Name="isPassed" Type="Int32" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="numremark" Type="Int32" Nullable="false" />
+          <Property Name="FileType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FileSize" Type="Int32" Nullable="false" />
+          <Property Name="isPush" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_IAM_SclassSection_IAM_SclassSection">
+          <End Type="DBZiyuanModel.IAM_Sclass" Role="IAM_Sclass" Multiplicity="1" />
+          <End Type="DBZiyuanModel.IAM_SclassSection" Role="IAM_SclassSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IAM_Sclass">
+              <PropertyRef Name="SERID" />
+            </Principal>
+            <Dependent Role="IAM_SclassSection">
+              <PropertyRef Name="SclassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZYK_Resource_ZYK_ResourceFile">
+          <End Type="DBZiyuanModel.ZYK_ResourceFile" Role="ZYK_ResourceFile" Multiplicity="1" />
+          <End Type="DBZiyuanModel.ZYK_Resource" Role="ZYK_Resource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZYK_ResourceFile">
+              <PropertyRef Name="FileID" />
+            </Principal>
+            <Dependent Role="ZYK_Resource">
+              <PropertyRef Name="FileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZYK_ResourceCategory_ZYK_Resource">
+          <End Type="DBZiyuanModel.ZYK_Resource" Role="ZYK_Resource" Multiplicity="1" />
+          <End Type="DBZiyuanModel.ZYK_ResourceCategory" Role="ZYK_ResourceCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZYK_Resource">
+              <PropertyRef Name="SERID" />
+            </Principal>
+            <Dependent Role="ZYK_ResourceCategory">
+              <PropertyRef Name="ResourceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZYK_ResourceSclass_ZYK_Resource">
+          <End Type="DBZiyuanModel.ZYK_Resource" Role="ZYK_Resource" Multiplicity="1" />
+          <End Type="DBZiyuanModel.ZYK_ResourceSclass" Role="ZYK_ResourceSclass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZYK_Resource">
+              <PropertyRef Name="SERID" />
+            </Principal>
+            <Dependent Role="ZYK_ResourceSclass">
+              <PropertyRef Name="ResourceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZYK_ResourceSection_ZYK_Resource">
+          <End Type="DBZiyuanModel.ZYK_Resource" Role="ZYK_Resource" Multiplicity="1" />
+          <End Type="DBZiyuanModel.ZYK_ResourceSection" Role="ZYK_ResourceSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZYK_Resource">
+              <PropertyRef Name="SERID" />
+            </Principal>
+            <Dependent Role="ZYK_ResourceSection">
+              <PropertyRef Name="ResourceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZYK_ResourceCategory_ZYK_SchoolCategory">
+          <End Type="DBZiyuanModel.ZYK_SchoolCategory" Role="ZYK_SchoolCategory" Multiplicity="1" />
+          <End Type="DBZiyuanModel.ZYK_ResourceCategory" Role="ZYK_ResourceCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZYK_SchoolCategory">
+              <PropertyRef Name="SERID" />
+            </Principal>
+            <Dependent Role="ZYK_ResourceCategory">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZYK_ResourceFile_ZYK_ResourceFile">
+          <End Type="DBZiyuanModel.ZYK_ResourceFile" Role="ZYK_ResourceFile" Multiplicity="1" />
+          <End Type="DBZiyuanModel.ZYK_ResourceFile" Role="ZYK_ResourceFile1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ZYK_ResourceFile">
+              <PropertyRef Name="FileID" />
+            </Principal>
+            <Dependent Role="ZYK_ResourceFile1">
+              <PropertyRef Name="FileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBZiyuanModelStoreContainer" CdmEntityContainer="DBZiyuanEntities">
+          <EntitySetMapping Name="IAM_Sclass">
+            <EntityTypeMapping TypeName="DBZiyuanModel.IAM_Sclass">
+              <MappingFragment StoreEntitySet="IAM_Sclass">
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="FullCnPath" ColumnName="FullCnPath" />
+                <ScalarProperty Name="NodePath" ColumnName="NodePath" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="Sorder" ColumnName="Sorder" />
+                <ScalarProperty Name="Sname" ColumnName="Sname" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="GRAID" ColumnName="GRAID" />
+                <ScalarProperty Name="SPEID" ColumnName="SPEID" />
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IAM_SclassSection">
+            <EntityTypeMapping TypeName="DBZiyuanModel.IAM_SclassSection">
+              <MappingFragment StoreEntitySet="IAM_SclassSection">
+                <ScalarProperty Name="Available" ColumnName="Available" />
+                <ScalarProperty Name="SectionID" ColumnName="SectionID" />
+                <ScalarProperty Name="SclassID" ColumnName="SclassID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZYK_HistoryDownLoad">
+            <EntityTypeMapping TypeName="DBZiyuanModel.ZYK_HistoryDownLoad">
+              <MappingFragment StoreEntitySet="ZYK_HistoryDownLoad">
+                <ScalarProperty Name="ZT" ColumnName="ZT" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="DTime" ColumnName="DTime" />
+                <ScalarProperty Name="ResID" ColumnName="ResID" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZYK_HistoryFavorite">
+            <EntityTypeMapping TypeName="DBZiyuanModel.ZYK_HistoryFavorite">
+              <MappingFragment StoreEntitySet="ZYK_HistoryFavorite">
+                <ScalarProperty Name="ZT" ColumnName="ZT" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="DTime" ColumnName="DTime" />
+                <ScalarProperty Name="ResID" ColumnName="ResID" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZYK_HistoryPinJia">
+            <EntityTypeMapping TypeName="DBZiyuanModel.ZYK_HistoryPinJia">
+              <MappingFragment StoreEntitySet="ZYK_HistoryPinJia">
+                <ScalarProperty Name="ZT" ColumnName="ZT" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="DTime" ColumnName="DTime" />
+                <ScalarProperty Name="Step" ColumnName="Step" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="ResID" ColumnName="ResID" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZYK_HistoryUse">
+            <EntityTypeMapping TypeName="DBZiyuanModel.ZYK_HistoryUse">
+              <MappingFragment StoreEntitySet="ZYK_HistoryUse">
+                <ScalarProperty Name="ZT" ColumnName="ZT" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="DTime" ColumnName="DTime" />
+                <ScalarProperty Name="ResID" ColumnName="ResID" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZYK_HistoryView">
+            <EntityTypeMapping TypeName="DBZiyuanModel.ZYK_HistoryView">
+              <MappingFragment StoreEntitySet="ZYK_HistoryView">
+                <ScalarProperty Name="ZT" ColumnName="ZT" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="DTime" ColumnName="DTime" />
+                <ScalarProperty Name="ResID" ColumnName="ResID" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZYK_PingjiaRemark">
+            <EntityTypeMapping TypeName="DBZiyuanModel.ZYK_PingjiaRemark">
+              <MappingFragment StoreEntitySet="ZYK_PingjiaRemark">
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+                <ScalarProperty Name="remarkcontent" ColumnName="remarkcontent" />
+                <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+                <ScalarProperty Name="SerID" ColumnName="SerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZYK_Resource">
+            <EntityTypeMapping TypeName="DBZiyuanModel.ZYK_Resource">
+              <MappingFragment StoreEntitySet="ZYK_Resource">
+                <ScalarProperty Name="TotalScore" ColumnName="TotalScore" />
+                <ScalarProperty Name="isPush" ColumnName="isPush" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="isPassed" ColumnName="isPassed" />
+                <ScalarProperty Name="NumScore" ColumnName="NumScore" />
+                <ScalarProperty Name="NumShare" ColumnName="NumShare" />
+                <ScalarProperty Name="NumDownLoad" ColumnName="NumDownLoad" />
+                <ScalarProperty Name="NumCollect" ColumnName="NumCollect" />
+                <ScalarProperty Name="NumUse" ColumnName="NumUse" />
+                <ScalarProperty Name="NumView" ColumnName="NumView" />
+                <ScalarProperty Name="ResDes" ColumnName="ResDes" />
+                <ScalarProperty Name="ResTitle" ColumnName="ResTitle" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="ResType" ColumnName="ResType" />
+                <ScalarProperty Name="FileID" ColumnName="FileID" />
+                <ScalarProperty Name="Dtime" ColumnName="Dtime" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZYK_ResourceCategory">
+            <EntityTypeMapping TypeName="DBZiyuanModel.ZYK_ResourceCategory">
+              <MappingFragment StoreEntitySet="ZYK_ResourceCategory">
+                <ScalarProperty Name="Switch" ColumnName="Switch" />
+                <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZYK_ResourceFavorite">
+            <EntityTypeMapping TypeName="DBZiyuanModel.ZYK_ResourceFavorite">
+              <MappingFragment StoreEntitySet="ZYK_ResourceFavorite">
+                <ScalarProperty Name="ZT" ColumnName="ZT" />
+                <ScalarProperty Name="Attention" ColumnName="Attention" />
+                <ScalarProperty Name="Dtime" ColumnName="Dtime" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="FClasID" ColumnName="FClasID" />
+                <ScalarProperty Name="ResID" ColumnName="ResID" />
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZYK_ResourceFavoriteCategory">
+            <EntityTypeMapping TypeName="DBZiyuanModel.ZYK_ResourceFavoriteCategory">
+              <MappingFragment StoreEntitySet="ZYK_ResourceFavoriteCategory">
+                <ScalarProperty Name="ZT" ColumnName="ZT" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="NodePath" ColumnName="NodePath" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="Sorder" ColumnName="Sorder" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZYK_ResourceFile">
+            <EntityTypeMapping TypeName="DBZiyuanModel.ZYK_ResourceFile">
+              <MappingFragment StoreEntitySet="ZYK_ResourceFile">
+                <ScalarProperty Name="ZT" ColumnName="ZT" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="DTime" ColumnName="DTime" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="FileExtension" ColumnName="FileExtension" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileID" ColumnName="FileID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZYK_ResourceSclass">
+            <EntityTypeMapping TypeName="DBZiyuanModel.ZYK_ResourceSclass">
+              <MappingFragment StoreEntitySet="ZYK_ResourceSclass">
+                <ScalarProperty Name="SclassID" ColumnName="SclassID" />
+                <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZYK_ResourceSection">
+            <EntityTypeMapping TypeName="DBZiyuanModel.ZYK_ResourceSection">
+              <MappingFragment StoreEntitySet="ZYK_ResourceSection">
+                <ScalarProperty Name="SectionID" ColumnName="SectionID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZYK_SchoolCategory">
+            <EntityTypeMapping TypeName="DBZiyuanModel.ZYK_SchoolCategory">
+              <MappingFragment StoreEntitySet="ZYK_SchoolCategory">
+                <ScalarProperty Name="isAvail" ColumnName="isAvail" />
+                <ScalarProperty Name="Extensions" ColumnName="Extensions" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZYK_ResAccessRecord">
+            <EntityTypeMapping TypeName="DBZiyuanModel.ZYK_ResAccessRecord">
+              <MappingFragment StoreEntitySet="ZYK_ResAccessRecord">
+                <ScalarProperty Name="dtime" ColumnName="dtime" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="rid" ColumnName="rid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZYK_ResoucePush">
+            <EntityTypeMapping TypeName="DBZiyuanModel.ZYK_ResoucePush">
+              <MappingFragment StoreEntitySet="ZYK_ResoucePush">
+                <ScalarProperty Name="fileId" ColumnName="fileId" />
+                <ScalarProperty Name="authorId" ColumnName="authorId" />
+                <ScalarProperty Name="resNote" ColumnName="resNote" />
+                <ScalarProperty Name="pushDT" ColumnName="pushDT" />
+                <ScalarProperty Name="uName" ColumnName="uName" />
+                <ScalarProperty Name="uId" ColumnName="uId" />
+                <ScalarProperty Name="fileType" ColumnName="fileType" />
+                <ScalarProperty Name="fileSize" ColumnName="fileSize" />
+                <ScalarProperty Name="resType" ColumnName="resType" />
+                <ScalarProperty Name="resPoint" ColumnName="resPoint" />
+                <ScalarProperty Name="resTitle" ColumnName="resTitle" />
+                <ScalarProperty Name="resId" ColumnName="resId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_ResRemark">
+            <EntityTypeMapping TypeName="DBZiyuanModel.View_ResRemark">
+              <MappingFragment StoreEntitySet="View_ResRemark">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="remarkcontent" ColumnName="remarkcontent" />
+                <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+                <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+                <ScalarProperty Name="SerID" ColumnName="SerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_ZYKResource">
+            <EntityTypeMapping TypeName="DBZiyuanModel.View_ZYKResource">
+              <MappingFragment StoreEntitySet="View_ZYKResource">
+                <ScalarProperty Name="isPush" ColumnName="isPush" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="numremark" ColumnName="numremark" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="isPassed" ColumnName="isPassed" />
+                <ScalarProperty Name="NumScore" ColumnName="NumScore" />
+                <ScalarProperty Name="TotalScore" ColumnName="TotalScore" />
+                <ScalarProperty Name="NumShare" ColumnName="NumShare" />
+                <ScalarProperty Name="NumDownLoad" ColumnName="NumDownLoad" />
+                <ScalarProperty Name="NumCollect" ColumnName="NumCollect" />
+                <ScalarProperty Name="NumUse" ColumnName="NumUse" />
+                <ScalarProperty Name="NumView" ColumnName="NumView" />
+                <ScalarProperty Name="ResDes" ColumnName="ResDes" />
+                <ScalarProperty Name="ResTitle" ColumnName="ResTitle" />
+                <ScalarProperty Name="Dtime" ColumnName="Dtime" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="SclassID" ColumnName="SclassID" />
+                <ScalarProperty Name="NodePath" ColumnName="NodePath" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="GRAID" ColumnName="GRAID" />
+                <ScalarProperty Name="SpecialtyID" ColumnName="SpecialtyID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="FileID" ColumnName="FileID" />
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

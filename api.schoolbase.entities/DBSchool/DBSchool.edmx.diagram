@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1b995932768f4429a37fb7c7d621f496" Name="Diagram1">
+        <EntityTypeShape EntityType="DBSchoolModel.IAM_ClassHistory" Width="1.5" PointX="7.5" PointY="9.875" />
+        <EntityTypeShape EntityType="DBSchoolModel.IAM_GradeSubject" Width="1.5" PointX="7.5" PointY="7" />
+        <EntityTypeShape EntityType="DBSchoolModel.IAM_Group4Campus" Width="1.5" PointX="12" PointY="1.375" />
+        <EntityTypeShape EntityType="DBSchoolModel.IAM_Group4Grade" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.IAM_Group4Specialty" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.IAM_Group4Subject" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.IAM_SchCampus" Width="1.5" PointX="9.75" PointY="1" />
+        <EntityTypeShape EntityType="DBSchoolModel.IAM_SchClass" Width="1.5" PointX="5.25" PointY="9.5" />
+        <EntityTypeShape EntityType="DBSchoolModel.IAM_SchDept" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.IAM_SchGrade" Width="1.5" PointX="5.25" PointY="7.125" />
+        <EntityTypeShape EntityType="DBSchoolModel.IAM_SchInfo" Width="1.5" PointX="0.75" PointY="6.25" />
+        <EntityTypeShape EntityType="DBSchoolModel.IAM_SchoolServer" Width="1.5" PointX="3" PointY="13.125" />
+        <EntityTypeShape EntityType="DBSchoolModel.IAM_SchSpecialty" Width="1.5" PointX="3" PointY="6.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.IAM_SchSubject" Width="1.5" PointX="5.25" PointY="4" />
+        <EntityTypeShape EntityType="DBSchoolModel.IAM_SchTerm" Width="1.5" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.IAM_StuClass" Width="1.5" PointX="10.5" PointY="9.625" />
+        <EntityTypeShape EntityType="DBSchoolModel.IAM_Student" Width="1.5" PointX="8.25" PointY="12.875" />
+        <EntityTypeShape EntityType="DBSchoolModel.IAM_Teacher" Width="1.5" PointX="5.25" PointY="14.875" />
+        <EntityTypeShape EntityType="DBSchoolModel.IAM_TeaSubject" Width="1.5" PointX="7.5" PointY="4.25" />
+        <EntityTypeShape EntityType="DBSchoolModel.VClass" Width="1.5" PointX="11.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.VClassHistory" Width="1.5" PointX="12.75" PointY="7.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.VClassOfCurrentTerm" Width="1.5" PointX="12.75" PointY="12.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.VClassStudent" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.VGrade" Width="1.5" PointX="14.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.VGradeSubject" Width="1.5" PointX="14.75" PointY="9.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.VGroup4Campus" Width="1.5" PointX="14.75" PointY="13.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.VGroup4CampusUser" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.VGroup4Grade" Width="1.5" PointX="0.75" PointY="16.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.VGroup4GradeUser" Width="1.5" PointX="16.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.VGroup4Specialty" Width="1.5" PointX="16.75" PointY="8.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.VGroup4SpecialtyUser" Width="1.5" PointX="16.75" PointY="12.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.VGroup4Subject" Width="1.5" PointX="16.75" PointY="16.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.VGroup4SubjectUser" Width="1.5" PointX="10.75" PointY="17.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.VSchool" Width="1.5" PointX="12.75" PointY="17.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.VStudent" Width="1.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.VStudentSubject" Width="1.5" PointX="18.75" PointY="13.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.VSubject" Width="1.5" PointX="18.75" PointY="19.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.VTeacher" Width="1.5" PointX="20.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSchoolModel.VTeaSubject" Width="1.5" PointX="20.75" PointY="12.75" />
+        <AssociationConnector Association="DBSchoolModel.FK_IAM_ClassHistory_IAM_SchClass" />
+        <AssociationConnector Association="DBSchoolModel.FK_IAM_GradeSubject_IAM_SchSubject" />
+        <AssociationConnector Association="DBSchoolModel.FK_IAM_Group4Campus_IAM_Group4Campus" />
+        <AssociationConnector Association="DBSchoolModel.FK_IAM_SchClass_IAM_SchClass" />
+        <AssociationConnector Association="DBSchoolModel.FK_IAM_SchClass_IAM_SchSpecialty" />
+        <AssociationConnector Association="DBSchoolModel.FK_IAM_StuClass_IAM_SchClass" />
+        <AssociationConnector Association="DBSchoolModel.FK_IAM_SchGrade_IAM_SchSpecialty" />
+        <AssociationConnector Association="DBSchoolModel.FK_IAM_SchoolConfig_IAM_SchInfo" />
+        <AssociationConnector Association="DBSchoolModel.FK_IAM_SchSpecialty_IAM_SchInfo" />
+        <AssociationConnector Association="DBSchoolModel.FK_IAM_SchSubject_IAM_SchSpecialty" />
+        <AssociationConnector Association="DBSchoolModel.FK_IAM_TeaSubject_IAM_SchSubject" />
+        <AssociationConnector Association="DBSchoolModel.FK_IAM_StuClass_IAM_Student" />
+        <AssociationConnector Association="DBSchoolModel.FK_IAM_TeaSubject_IAM_Teacher" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

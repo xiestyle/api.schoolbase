@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b3dbdda1b5c147bdae6b4841bb059b56" Name="Diagram1" ZoomLevel="43">
+        <EntityTypeShape EntityType="DBSchoolCourseModel.IAM_StuSelectedCourse" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSchoolCourseModel.IAM_TeaCourse" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSchoolCourseModel.IAM_TeaCourseClass" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSchoolCourseModel.IAM_TeaCourseItem" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSchoolCourseModel.VClassTeacher" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSchoolCourseModel.VCourseStudentArrangement" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSchoolCourseModel.VCourseTeacherArrangement" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSchoolCourseModel.VStudentClassCourse" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSchoolCourseModel.VStudentCourse" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSchoolCourseModel.VStudentCourseOfSubject" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSchoolCourseModel.VStudentSelectedCourse" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSchoolCourseModel.VStudentSelectedCourseItem" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSchoolCourseModel.VTeaCourse" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSchoolCourseModel.VTeaCourseItemClass" Width="1.5" PointX="11.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="DBSchoolCourseModel.FK_IAM_StuSelectedCourse_IAM_TeaCourse" ManuallyRouted="false" />
+        <AssociationConnector Association="DBSchoolCourseModel.FK_IAM_TeaCourseClass_IAM_TeaCourse" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

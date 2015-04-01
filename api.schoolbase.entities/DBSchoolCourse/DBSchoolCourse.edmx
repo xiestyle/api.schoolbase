@@ -1,0 +1,1912 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBSchoolCourseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="IAM_StuSelectedCourse">
+          <Key>
+            <PropertyRef Name="CourseSerID" />
+            <PropertyRef Name="StuSerID" />
+          </Key>
+          <Property Name="CourseSerID" Type="bigint" Nullable="false" />
+          <Property Name="StuSerID" Type="bigint" Nullable="false" />
+          <Property Name="isRequired" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IAM_TeaCourse">
+          <Key>
+            <PropertyRef Name="SerID" />
+          </Key>
+          <Property Name="SerID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SchYear" Type="int" Nullable="false" />
+          <Property Name="SchTerm" Type="tinyint" Nullable="false" />
+          <Property Name="TeaSerID" Type="bigint" Nullable="false" />
+          <Property Name="GRAID" Type="bigint" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" Nullable="false" />
+          <Property Name="Max" Type="int" Nullable="false" />
+          <Property Name="LoopType" Type="bigint" Nullable="false" />
+          <Property Name="RequiredTime" Type="int" Nullable="false" />
+          <Property Name="Score" Type="int" Nullable="false" />
+          <Property Name="DTime" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IAM_TeaCourseClass">
+          <Key>
+            <PropertyRef Name="CourseSerID" />
+            <PropertyRef Name="ClassSerID" />
+          </Key>
+          <Property Name="CourseSerID" Type="bigint" Nullable="false" />
+          <Property Name="ClassSerID" Type="bigint" Nullable="false" />
+          <Property Name="Switch" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IAM_TeaCourseItem">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseSerID" Type="bigint" Nullable="false" />
+          <Property Name="NDay" Type="int" Nullable="false" />
+          <Property Name="BeginTime" Type="int" Nullable="false" />
+          <Property Name="EndTime" Type="int" Nullable="false" />
+          <Property Name="CourseTime" Type="int" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKSchoolCourse.dbo.VClassTeacher”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VClassTeacher">
+          <Key>
+            <PropertyRef Name="ClassSerID" />
+            <PropertyRef Name="ClassName" />
+            <PropertyRef Name="SpecialtyNameOfClass" />
+            <PropertyRef Name="SpecialtyIDOfClass" />
+            <PropertyRef Name="SPEIDOfClass" />
+            <PropertyRef Name="TeaSerID" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SpecialtyIDOfSubject" />
+            <PropertyRef Name="SPEIDOfSubject" />
+            <PropertyRef Name="SpecNameOfSubject" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="GradeName" />
+            <PropertyRef Name="LoopType" />
+            <PropertyRef Name="RequiredTime" />
+            <PropertyRef Name="DTime" />
+            <PropertyRef Name="Switch" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="CourseSerID" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="IsMust" />
+          </Key>
+          <Property Name="ClassSerID" Type="bigint" Nullable="false" />
+          <Property Name="ClassName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SpecialtyNameOfClass" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SpecialtyIDOfClass" Type="bigint" Nullable="false" />
+          <Property Name="SPEIDOfClass" Type="bigint" Nullable="false" />
+          <Property Name="TeaSerID" Type="bigint" Nullable="false" />
+          <Property Name="TeaName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TeaPhoto" Type="varchar" MaxLength="200" />
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SpecialtyIDOfSubject" Type="bigint" Nullable="false" />
+          <Property Name="SPEIDOfSubject" Type="bigint" Nullable="false" />
+          <Property Name="SpecNameOfSubject" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GRAID" Type="bigint" Nullable="false" />
+          <Property Name="GradeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LoopType" Type="bigint" Nullable="false" />
+          <Property Name="RequiredTime" Type="int" Nullable="false" />
+          <Property Name="DTime" Type="datetime" Nullable="false" />
+          <Property Name="Switch" Type="bit" Nullable="false" />
+          <Property Name="Score" Type="int" Nullable="false" />
+          <Property Name="CourseSerID" Type="bigint" Nullable="false" />
+          <Property Name="Status" Type="bigint" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" Nullable="false" />
+          <Property Name="SubjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SchYear" Type="int" Nullable="false" />
+          <Property Name="SchTerm" Type="tinyint" Nullable="false" />
+          <Property Name="IsMust" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKSchoolCourse.dbo.VCourseStudentArrangement”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VCourseStudentArrangement">
+          <Key>
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SpecialtyID" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="GradeName" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SUBID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="CourseSerID" />
+            <PropertyRef Name="StuSerID" />
+            <PropertyRef Name="TeaSerID" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="LoopType" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="DTime" />
+            <PropertyRef Name="isRequired" />
+            <PropertyRef Name="RequiredTime" />
+            <PropertyRef Name="Max" />
+            <PropertyRef Name="StuStatus" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="IsMust" />
+          </Key>
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SpecialtyID" Type="bigint" Nullable="false" />
+          <Property Name="SPEID" Type="bigint" Nullable="false" />
+          <Property Name="SpecName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GRAID" Type="bigint" Nullable="false" />
+          <Property Name="GradeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" Nullable="false" />
+          <Property Name="SUBID" Type="bigint" Nullable="false" />
+          <Property Name="SubjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseSerID" Type="bigint" Nullable="false" />
+          <Property Name="StuSerID" Type="bigint" Nullable="false" />
+          <Property Name="StuName" Type="varchar" MaxLength="100" />
+          <Property Name="TeaSerID" Type="bigint" Nullable="false" />
+          <Property Name="SchYear" Type="int" Nullable="false" />
+          <Property Name="SchTerm" Type="tinyint" Nullable="false" />
+          <Property Name="LoopType" Type="bigint" Nullable="false" />
+          <Property Name="Score" Type="int" Nullable="false" />
+          <Property Name="TeaName" Type="varchar" MaxLength="20" />
+          <Property Name="TeaPhoto" Type="varchar" MaxLength="200" />
+          <Property Name="DTime" Type="datetime" Nullable="false" />
+          <Property Name="isRequired" Type="bit" Nullable="false" />
+          <Property Name="RequiredTime" Type="int" Nullable="false" />
+          <Property Name="Max" Type="int" Nullable="false" />
+          <Property Name="StuStatus" Type="bigint" Nullable="false" />
+          <Property Name="StuPhoto" Type="varchar" MaxLength="100" />
+          <Property Name="Status" Type="bigint" Nullable="false" />
+          <Property Name="IsMust" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKSchoolCourse.dbo.VCourseTeacherArrangement”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VCourseTeacherArrangement">
+          <Key>
+            <PropertyRef Name="SerID" />
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="SpecialtyID" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="ClassName" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="GradeName" />
+            <PropertyRef Name="SUBID" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="IsMust" />
+            <PropertyRef Name="Max" />
+            <PropertyRef Name="LoopType" />
+            <PropertyRef Name="RequiredTime" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="Switch" />
+          </Key>
+          <Property Name="SerID" Type="bigint" Nullable="false" />
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SchYear" Type="int" Nullable="false" />
+          <Property Name="SchTerm" Type="tinyint" Nullable="false" />
+          <Property Name="SpecialtyID" Type="bigint" Nullable="false" />
+          <Property Name="SPEID" Type="bigint" Nullable="false" />
+          <Property Name="SpecName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClassName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="GRAID" Type="bigint" Nullable="false" />
+          <Property Name="GradeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SUBID" Type="bigint" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" Nullable="false" />
+          <Property Name="SubjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsMust" Type="bigint" Nullable="false" />
+          <Property Name="Max" Type="int" Nullable="false" />
+          <Property Name="LoopType" Type="bigint" Nullable="false" />
+          <Property Name="RequiredTime" Type="int" Nullable="false" />
+          <Property Name="Score" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bigint" Nullable="false" />
+          <Property Name="TeaName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Switch" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKSchoolCourse.dbo.VStudentClassCourse”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VStudentClassCourse">
+          <Key>
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="CourseSerID" />
+            <PropertyRef Name="StuSerID" />
+            <PropertyRef Name="StuStatus" />
+            <PropertyRef Name="TeaSerID" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="SpecialtyID" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="GradeName" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="IsMust" />
+            <PropertyRef Name="LoopType" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="RequiredTime" />
+            <PropertyRef Name="Max" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="DTime" />
+          </Key>
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SchYear" Type="int" Nullable="false" />
+          <Property Name="SchTerm" Type="tinyint" Nullable="false" />
+          <Property Name="CourseSerID" Type="bigint" Nullable="false" />
+          <Property Name="StuSerID" Type="bigint" Nullable="false" />
+          <Property Name="StuName" Type="varchar" MaxLength="100" />
+          <Property Name="StuPhoto" Type="varchar" MaxLength="100" />
+          <Property Name="StuStatus" Type="bigint" Nullable="false" />
+          <Property Name="TeaSerID" Type="bigint" Nullable="false" />
+          <Property Name="TeaName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TeaPhoto" Type="varchar" MaxLength="200" />
+          <Property Name="SpecialtyID" Type="bigint" Nullable="false" />
+          <Property Name="SPEID" Type="bigint" Nullable="false" />
+          <Property Name="SpecName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GRAID" Type="bigint" Nullable="false" />
+          <Property Name="GradeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" Nullable="false" />
+          <Property Name="SubjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsMust" Type="bigint" Nullable="false" />
+          <Property Name="LoopType" Type="bigint" Nullable="false" />
+          <Property Name="Score" Type="int" Nullable="false" />
+          <Property Name="RequiredTime" Type="int" Nullable="false" />
+          <Property Name="Max" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bigint" Nullable="false" />
+          <Property Name="DTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKSchoolCourse.dbo.VStudentCourse”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VStudentCourse">
+          <Key>
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="CourseSerID" />
+            <PropertyRef Name="StuSerID" />
+            <PropertyRef Name="StuStatus" />
+            <PropertyRef Name="TeaSerID" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="SpecialtyID" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="GradeName" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="IsMust" />
+            <PropertyRef Name="LoopType" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="RequiredTime" />
+            <PropertyRef Name="Max" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="DTime" />
+          </Key>
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SchYear" Type="int" Nullable="false" />
+          <Property Name="SchTerm" Type="tinyint" Nullable="false" />
+          <Property Name="CourseSerID" Type="bigint" Nullable="false" />
+          <Property Name="StuSerID" Type="bigint" Nullable="false" />
+          <Property Name="StuName" Type="varchar" MaxLength="100" />
+          <Property Name="StuPhoto" Type="varchar" MaxLength="100" />
+          <Property Name="StuStatus" Type="bigint" Nullable="false" />
+          <Property Name="TeaSerID" Type="bigint" Nullable="false" />
+          <Property Name="TeaName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TeaPhoto" Type="varchar" MaxLength="200" />
+          <Property Name="SpecialtyID" Type="bigint" Nullable="false" />
+          <Property Name="SPEID" Type="bigint" Nullable="false" />
+          <Property Name="SpecName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GRAID" Type="bigint" Nullable="false" />
+          <Property Name="GradeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" Nullable="false" />
+          <Property Name="SubjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsMust" Type="bigint" Nullable="false" />
+          <Property Name="LoopType" Type="bigint" Nullable="false" />
+          <Property Name="Score" Type="int" Nullable="false" />
+          <Property Name="RequiredTime" Type="int" Nullable="false" />
+          <Property Name="Max" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bigint" Nullable="false" />
+          <Property Name="DTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKSchoolCourse.dbo.VStudentCourseOfSubject”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VStudentCourseOfSubject">
+          <Key>
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="StuSerID" />
+            <PropertyRef Name="ClassSerID" />
+            <PropertyRef Name="ClassName" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="GradeName" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="SUBID" />
+            <PropertyRef Name="StuStatus" />
+            <PropertyRef Name="IsMust" />
+          </Key>
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SchYear" Type="int" Nullable="false" />
+          <Property Name="SchTerm" Type="tinyint" Nullable="false" />
+          <Property Name="StuSerID" Type="bigint" Nullable="false" />
+          <Property Name="StuName" Type="varchar" MaxLength="100" />
+          <Property Name="StuPhoto" Type="varchar" MaxLength="100" />
+          <Property Name="ClassSerID" Type="bigint" Nullable="false" />
+          <Property Name="ClassName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SPEID" Type="bigint" Nullable="false" />
+          <Property Name="SpecName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GRAID" Type="bigint" Nullable="false" />
+          <Property Name="GradeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" Nullable="false" />
+          <Property Name="SubjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SUBID" Type="bigint" Nullable="false" />
+          <Property Name="StuStatus" Type="bigint" Nullable="false" />
+          <Property Name="IsMust" Type="bigint" Nullable="false" />
+          <Property Name="CourseSerID" Type="bigint" />
+          <Property Name="TeaSerID" Type="bigint" />
+          <Property Name="TeaName" Type="varchar" MaxLength="20" />
+          <Property Name="TeaPhoto" Type="varchar" MaxLength="200" />
+          <Property Name="LoopType" Type="bigint" />
+          <Property Name="Score" Type="int" />
+          <Property Name="RequiredTime" Type="int" />
+          <Property Name="Max" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKSchoolCourse.dbo.VStudentSelectedCourse”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VStudentSelectedCourse">
+          <Key>
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="CourseSerID" />
+            <PropertyRef Name="StuSerID" />
+            <PropertyRef Name="StuStatus" />
+            <PropertyRef Name="TeaSerID" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="SpecialtyID" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="GradeName" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="IsMust" />
+            <PropertyRef Name="LoopType" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="RequiredTime" />
+            <PropertyRef Name="Max" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="DTime" />
+          </Key>
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SchYear" Type="int" Nullable="false" />
+          <Property Name="SchTerm" Type="tinyint" Nullable="false" />
+          <Property Name="CourseSerID" Type="bigint" Nullable="false" />
+          <Property Name="StuSerID" Type="bigint" Nullable="false" />
+          <Property Name="StuName" Type="varchar" MaxLength="100" />
+          <Property Name="StuPhoto" Type="varchar" MaxLength="100" />
+          <Property Name="StuStatus" Type="bigint" Nullable="false" />
+          <Property Name="TeaSerID" Type="bigint" Nullable="false" />
+          <Property Name="TeaName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TeaPhoto" Type="varchar" MaxLength="200" />
+          <Property Name="SpecialtyID" Type="bigint" Nullable="false" />
+          <Property Name="SPEID" Type="bigint" Nullable="false" />
+          <Property Name="SpecName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GRAID" Type="bigint" Nullable="false" />
+          <Property Name="GradeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" Nullable="false" />
+          <Property Name="SubjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsMust" Type="bigint" Nullable="false" />
+          <Property Name="LoopType" Type="bigint" Nullable="false" />
+          <Property Name="Score" Type="int" Nullable="false" />
+          <Property Name="RequiredTime" Type="int" Nullable="false" />
+          <Property Name="Max" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bigint" Nullable="false" />
+          <Property Name="DTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKSchoolCourse.dbo.VStudentSelectedCourseItem”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VStudentSelectedCourseItem">
+          <Key>
+            <PropertyRef Name="SERID" />
+            <PropertyRef Name="CourseTime" />
+            <PropertyRef Name="EndTime" />
+            <PropertyRef Name="BeginTime" />
+            <PropertyRef Name="NDay" />
+            <PropertyRef Name="CourseSerID" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="TeaSerID" />
+            <PropertyRef Name="SpecialtyID" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="Max" />
+            <PropertyRef Name="LoopType" />
+            <PropertyRef Name="RequiredTime" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="SubjectName" />
+          </Key>
+          <Property Name="SERID" Type="bigint" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="CourseTime" Type="int" Nullable="false" />
+          <Property Name="EndTime" Type="int" Nullable="false" />
+          <Property Name="BeginTime" Type="int" Nullable="false" />
+          <Property Name="NDay" Type="int" Nullable="false" />
+          <Property Name="CourseSerID" Type="bigint" Nullable="false" />
+          <Property Name="StuName" Type="varchar" MaxLength="100" />
+          <Property Name="StuPhoto" Type="varchar" MaxLength="100" />
+          <Property Name="TeaName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TeaPhoto" Type="varchar" MaxLength="200" />
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SchYear" Type="int" Nullable="false" />
+          <Property Name="SchTerm" Type="tinyint" Nullable="false" />
+          <Property Name="TeaSerID" Type="bigint" Nullable="false" />
+          <Property Name="SpecialtyID" Type="bigint" Nullable="false" />
+          <Property Name="SPEID" Type="bigint" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" Nullable="false" />
+          <Property Name="GRAID" Type="bigint" Nullable="false" />
+          <Property Name="Max" Type="int" Nullable="false" />
+          <Property Name="LoopType" Type="bigint" Nullable="false" />
+          <Property Name="RequiredTime" Type="int" Nullable="false" />
+          <Property Name="Score" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bigint" Nullable="false" />
+          <Property Name="SpecName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SubjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKSchoolCourse.dbo.VTeaCourse”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VTeaCourse">
+          <Key>
+            <PropertyRef Name="SerID" />
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="TeaSerID" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="SpecialtyID" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="GradeName" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="SUBID" />
+            <PropertyRef Name="Max" />
+            <PropertyRef Name="LoopType" />
+            <PropertyRef Name="RequiredTime" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="IsMust" />
+            <PropertyRef Name="DTime" />
+          </Key>
+          <Property Name="SerID" Type="bigint" Nullable="false" />
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SchYear" Type="int" Nullable="false" />
+          <Property Name="SchTerm" Type="tinyint" Nullable="false" />
+          <Property Name="TeaSerID" Type="bigint" Nullable="false" />
+          <Property Name="TeaName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SpecialtyID" Type="bigint" Nullable="false" />
+          <Property Name="SPEID" Type="bigint" Nullable="false" />
+          <Property Name="SpecName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GRAID" Type="bigint" Nullable="false" />
+          <Property Name="GradeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" Nullable="false" />
+          <Property Name="SubjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SUBID" Type="bigint" Nullable="false" />
+          <Property Name="Max" Type="int" Nullable="false" />
+          <Property Name="LoopType" Type="bigint" Nullable="false" />
+          <Property Name="RequiredTime" Type="int" Nullable="false" />
+          <Property Name="Score" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bigint" Nullable="false" />
+          <Property Name="IsMust" Type="bigint" Nullable="false" />
+          <Property Name="DTime" Type="datetime" Nullable="false" />
+          <Property Name="ClassSerID" Type="bigint" />
+          <Property Name="ClassName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ClassNumber" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKSchoolCourse.dbo.VTeaCourseItemClass”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VTeaCourseItemClass">
+          <Key>
+            <PropertyRef Name="SERID" />
+            <PropertyRef Name="CourseTime" />
+            <PropertyRef Name="EndTime" />
+            <PropertyRef Name="BeginTime" />
+            <PropertyRef Name="NDay" />
+            <PropertyRef Name="CourseSerID" />
+            <PropertyRef Name="ClassName" />
+            <PropertyRef Name="ClassNumber" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="TeaSerID" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="Max" />
+            <PropertyRef Name="LoopType" />
+            <PropertyRef Name="RequiredTime" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="SpecialtyID" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="SUBID" />
+          </Key>
+          <Property Name="SERID" Type="bigint" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="CourseTime" Type="int" Nullable="false" />
+          <Property Name="EndTime" Type="int" Nullable="false" />
+          <Property Name="BeginTime" Type="int" Nullable="false" />
+          <Property Name="NDay" Type="int" Nullable="false" />
+          <Property Name="CourseSerID" Type="bigint" Nullable="false" />
+          <Property Name="ClassName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ClassNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TeaName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TeaSerID" Type="bigint" Nullable="false" />
+          <Property Name="TeaPhoto" Type="varchar" MaxLength="200" />
+          <Property Name="SchYear" Type="int" Nullable="false" />
+          <Property Name="SchTerm" Type="tinyint" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" Nullable="false" />
+          <Property Name="Max" Type="int" Nullable="false" />
+          <Property Name="LoopType" Type="bigint" Nullable="false" />
+          <Property Name="RequiredTime" Type="int" Nullable="false" />
+          <Property Name="Score" Type="int" Nullable="false" />
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="bigint" Nullable="false" />
+          <Property Name="SpecialtyID" Type="bigint" Nullable="false" />
+          <Property Name="SpecName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SPEID" Type="bigint" Nullable="false" />
+          <Property Name="SubjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SUBID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_IAM_StuSelectedCourse_IAM_TeaCourse">
+          <End Role="IAM_TeaCourse" Type="Self.IAM_TeaCourse" Multiplicity="1" />
+          <End Role="IAM_StuSelectedCourse" Type="Self.IAM_StuSelectedCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IAM_TeaCourse">
+              <PropertyRef Name="SerID" />
+            </Principal>
+            <Dependent Role="IAM_StuSelectedCourse">
+              <PropertyRef Name="CourseSerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IAM_TeaCourseClass_IAM_TeaCourse">
+          <End Role="IAM_TeaCourse" Type="Self.IAM_TeaCourse" Multiplicity="1" />
+          <End Role="IAM_TeaCourseClass" Type="Self.IAM_TeaCourseClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IAM_TeaCourse">
+              <PropertyRef Name="SerID" />
+            </Principal>
+            <Dependent Role="IAM_TeaCourseClass">
+              <PropertyRef Name="CourseSerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBSchoolCourseModelStoreContainer">
+          <EntitySet Name="IAM_StuSelectedCourse" EntityType="Self.IAM_StuSelectedCourse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IAM_TeaCourse" EntityType="Self.IAM_TeaCourse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IAM_TeaCourseClass" EntityType="Self.IAM_TeaCourseClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IAM_TeaCourseItem" EntityType="Self.IAM_TeaCourseItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VClassTeacher" EntityType="Self.VClassTeacher" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[VClassTeacher].[ClassSerID] AS [ClassSerID], 
+[VClassTeacher].[ClassName] AS [ClassName], 
+[VClassTeacher].[SpecialtyNameOfClass] AS [SpecialtyNameOfClass], 
+[VClassTeacher].[SpecialtyIDOfClass] AS [SpecialtyIDOfClass], 
+[VClassTeacher].[SPEIDOfClass] AS [SPEIDOfClass], 
+[VClassTeacher].[TeaSerID] AS [TeaSerID], 
+[VClassTeacher].[TeaName] AS [TeaName], 
+[VClassTeacher].[TeaPhoto] AS [TeaPhoto], 
+[VClassTeacher].[SchSerID] AS [SchSerID], 
+[VClassTeacher].[SpecialtyIDOfSubject] AS [SpecialtyIDOfSubject], 
+[VClassTeacher].[SPEIDOfSubject] AS [SPEIDOfSubject], 
+[VClassTeacher].[SpecNameOfSubject] AS [SpecNameOfSubject], 
+[VClassTeacher].[GRAID] AS [GRAID], 
+[VClassTeacher].[GradeName] AS [GradeName], 
+[VClassTeacher].[LoopType] AS [LoopType], 
+[VClassTeacher].[RequiredTime] AS [RequiredTime], 
+[VClassTeacher].[DTime] AS [DTime], 
+[VClassTeacher].[Switch] AS [Switch], 
+[VClassTeacher].[Score] AS [Score], 
+[VClassTeacher].[CourseSerID] AS [CourseSerID], 
+[VClassTeacher].[Status] AS [Status], 
+[VClassTeacher].[SubjectID] AS [SubjectID], 
+[VClassTeacher].[SubjectName] AS [SubjectName], 
+[VClassTeacher].[SchYear] AS [SchYear], 
+[VClassTeacher].[SchTerm] AS [SchTerm], 
+[VClassTeacher].[IsMust] AS [IsMust]
+FROM [dbo].[VClassTeacher] AS [VClassTeacher]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VCourseStudentArrangement" EntityType="Self.VCourseStudentArrangement" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[VCourseStudentArrangement].[SchSerID] AS [SchSerID], 
+[VCourseStudentArrangement].[SpecialtyID] AS [SpecialtyID], 
+[VCourseStudentArrangement].[SPEID] AS [SPEID], 
+[VCourseStudentArrangement].[SpecName] AS [SpecName], 
+[VCourseStudentArrangement].[GRAID] AS [GRAID], 
+[VCourseStudentArrangement].[GradeName] AS [GradeName], 
+[VCourseStudentArrangement].[SubjectID] AS [SubjectID], 
+[VCourseStudentArrangement].[SUBID] AS [SUBID], 
+[VCourseStudentArrangement].[SubjectName] AS [SubjectName], 
+[VCourseStudentArrangement].[CourseSerID] AS [CourseSerID], 
+[VCourseStudentArrangement].[StuSerID] AS [StuSerID], 
+[VCourseStudentArrangement].[StuName] AS [StuName], 
+[VCourseStudentArrangement].[TeaSerID] AS [TeaSerID], 
+[VCourseStudentArrangement].[SchYear] AS [SchYear], 
+[VCourseStudentArrangement].[SchTerm] AS [SchTerm], 
+[VCourseStudentArrangement].[LoopType] AS [LoopType], 
+[VCourseStudentArrangement].[Score] AS [Score], 
+[VCourseStudentArrangement].[TeaName] AS [TeaName], 
+[VCourseStudentArrangement].[TeaPhoto] AS [TeaPhoto], 
+[VCourseStudentArrangement].[DTime] AS [DTime], 
+[VCourseStudentArrangement].[isRequired] AS [isRequired], 
+[VCourseStudentArrangement].[RequiredTime] AS [RequiredTime], 
+[VCourseStudentArrangement].[Max] AS [Max], 
+[VCourseStudentArrangement].[StuStatus] AS [StuStatus], 
+[VCourseStudentArrangement].[StuPhoto] AS [StuPhoto], 
+[VCourseStudentArrangement].[Status] AS [Status], 
+[VCourseStudentArrangement].[IsMust] AS [IsMust]
+FROM [dbo].[VCourseStudentArrangement] AS [VCourseStudentArrangement]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VCourseTeacherArrangement" EntityType="Self.VCourseTeacherArrangement" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[VCourseTeacherArrangement].[SerID] AS [SerID], 
+[VCourseTeacherArrangement].[SchSerID] AS [SchSerID], 
+[VCourseTeacherArrangement].[SchYear] AS [SchYear], 
+[VCourseTeacherArrangement].[SchTerm] AS [SchTerm], 
+[VCourseTeacherArrangement].[SpecialtyID] AS [SpecialtyID], 
+[VCourseTeacherArrangement].[SPEID] AS [SPEID], 
+[VCourseTeacherArrangement].[SpecName] AS [SpecName], 
+[VCourseTeacherArrangement].[ClassName] AS [ClassName], 
+[VCourseTeacherArrangement].[GRAID] AS [GRAID], 
+[VCourseTeacherArrangement].[GradeName] AS [GradeName], 
+[VCourseTeacherArrangement].[SUBID] AS [SUBID], 
+[VCourseTeacherArrangement].[SubjectID] AS [SubjectID], 
+[VCourseTeacherArrangement].[SubjectName] AS [SubjectName], 
+[VCourseTeacherArrangement].[IsMust] AS [IsMust], 
+[VCourseTeacherArrangement].[Max] AS [Max], 
+[VCourseTeacherArrangement].[LoopType] AS [LoopType], 
+[VCourseTeacherArrangement].[RequiredTime] AS [RequiredTime], 
+[VCourseTeacherArrangement].[Score] AS [Score], 
+[VCourseTeacherArrangement].[Status] AS [Status], 
+[VCourseTeacherArrangement].[TeaName] AS [TeaName], 
+[VCourseTeacherArrangement].[Switch] AS [Switch]
+FROM [dbo].[VCourseTeacherArrangement] AS [VCourseTeacherArrangement]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VStudentClassCourse" EntityType="Self.VStudentClassCourse" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[VStudentClassCourse].[SchSerID] AS [SchSerID], 
+[VStudentClassCourse].[SchYear] AS [SchYear], 
+[VStudentClassCourse].[SchTerm] AS [SchTerm], 
+[VStudentClassCourse].[CourseSerID] AS [CourseSerID], 
+[VStudentClassCourse].[StuSerID] AS [StuSerID], 
+[VStudentClassCourse].[StuName] AS [StuName], 
+[VStudentClassCourse].[StuPhoto] AS [StuPhoto], 
+[VStudentClassCourse].[StuStatus] AS [StuStatus], 
+[VStudentClassCourse].[TeaSerID] AS [TeaSerID], 
+[VStudentClassCourse].[TeaName] AS [TeaName], 
+[VStudentClassCourse].[TeaPhoto] AS [TeaPhoto], 
+[VStudentClassCourse].[SpecialtyID] AS [SpecialtyID], 
+[VStudentClassCourse].[SPEID] AS [SPEID], 
+[VStudentClassCourse].[SpecName] AS [SpecName], 
+[VStudentClassCourse].[GRAID] AS [GRAID], 
+[VStudentClassCourse].[GradeName] AS [GradeName], 
+[VStudentClassCourse].[SubjectID] AS [SubjectID], 
+[VStudentClassCourse].[SubjectName] AS [SubjectName], 
+[VStudentClassCourse].[IsMust] AS [IsMust], 
+[VStudentClassCourse].[LoopType] AS [LoopType], 
+[VStudentClassCourse].[Score] AS [Score], 
+[VStudentClassCourse].[RequiredTime] AS [RequiredTime], 
+[VStudentClassCourse].[Max] AS [Max], 
+[VStudentClassCourse].[Status] AS [Status], 
+[VStudentClassCourse].[DTime] AS [DTime]
+FROM [dbo].[VStudentClassCourse] AS [VStudentClassCourse]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VStudentCourse" EntityType="Self.VStudentCourse" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[VStudentCourse].[SchSerID] AS [SchSerID], 
+[VStudentCourse].[SchYear] AS [SchYear], 
+[VStudentCourse].[SchTerm] AS [SchTerm], 
+[VStudentCourse].[CourseSerID] AS [CourseSerID], 
+[VStudentCourse].[StuSerID] AS [StuSerID], 
+[VStudentCourse].[StuName] AS [StuName], 
+[VStudentCourse].[StuPhoto] AS [StuPhoto], 
+[VStudentCourse].[StuStatus] AS [StuStatus], 
+[VStudentCourse].[TeaSerID] AS [TeaSerID], 
+[VStudentCourse].[TeaName] AS [TeaName], 
+[VStudentCourse].[TeaPhoto] AS [TeaPhoto], 
+[VStudentCourse].[SpecialtyID] AS [SpecialtyID], 
+[VStudentCourse].[SPEID] AS [SPEID], 
+[VStudentCourse].[SpecName] AS [SpecName], 
+[VStudentCourse].[GRAID] AS [GRAID], 
+[VStudentCourse].[GradeName] AS [GradeName], 
+[VStudentCourse].[SubjectID] AS [SubjectID], 
+[VStudentCourse].[SubjectName] AS [SubjectName], 
+[VStudentCourse].[IsMust] AS [IsMust], 
+[VStudentCourse].[LoopType] AS [LoopType], 
+[VStudentCourse].[Score] AS [Score], 
+[VStudentCourse].[RequiredTime] AS [RequiredTime], 
+[VStudentCourse].[Max] AS [Max], 
+[VStudentCourse].[Status] AS [Status], 
+[VStudentCourse].[DTime] AS [DTime]
+FROM [dbo].[VStudentCourse] AS [VStudentCourse]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VStudentCourseOfSubject" EntityType="Self.VStudentCourseOfSubject" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[VStudentCourseOfSubject].[SchSerID] AS [SchSerID], 
+[VStudentCourseOfSubject].[SchYear] AS [SchYear], 
+[VStudentCourseOfSubject].[SchTerm] AS [SchTerm], 
+[VStudentCourseOfSubject].[StuSerID] AS [StuSerID], 
+[VStudentCourseOfSubject].[StuName] AS [StuName], 
+[VStudentCourseOfSubject].[StuPhoto] AS [StuPhoto], 
+[VStudentCourseOfSubject].[ClassSerID] AS [ClassSerID], 
+[VStudentCourseOfSubject].[ClassName] AS [ClassName], 
+[VStudentCourseOfSubject].[SPEID] AS [SPEID], 
+[VStudentCourseOfSubject].[SpecName] AS [SpecName], 
+[VStudentCourseOfSubject].[GRAID] AS [GRAID], 
+[VStudentCourseOfSubject].[GradeName] AS [GradeName], 
+[VStudentCourseOfSubject].[SubjectID] AS [SubjectID], 
+[VStudentCourseOfSubject].[SubjectName] AS [SubjectName], 
+[VStudentCourseOfSubject].[SUBID] AS [SUBID], 
+[VStudentCourseOfSubject].[StuStatus] AS [StuStatus], 
+[VStudentCourseOfSubject].[IsMust] AS [IsMust], 
+[VStudentCourseOfSubject].[CourseSerID] AS [CourseSerID], 
+[VStudentCourseOfSubject].[TeaSerID] AS [TeaSerID], 
+[VStudentCourseOfSubject].[TeaName] AS [TeaName], 
+[VStudentCourseOfSubject].[TeaPhoto] AS [TeaPhoto], 
+[VStudentCourseOfSubject].[LoopType] AS [LoopType], 
+[VStudentCourseOfSubject].[Score] AS [Score], 
+[VStudentCourseOfSubject].[RequiredTime] AS [RequiredTime], 
+[VStudentCourseOfSubject].[Max] AS [Max]
+FROM [dbo].[VStudentCourseOfSubject] AS [VStudentCourseOfSubject]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VStudentSelectedCourse" EntityType="Self.VStudentSelectedCourse" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[VStudentSelectedCourse].[SchSerID] AS [SchSerID], 
+[VStudentSelectedCourse].[SchYear] AS [SchYear], 
+[VStudentSelectedCourse].[SchTerm] AS [SchTerm], 
+[VStudentSelectedCourse].[CourseSerID] AS [CourseSerID], 
+[VStudentSelectedCourse].[StuSerID] AS [StuSerID], 
+[VStudentSelectedCourse].[StuName] AS [StuName], 
+[VStudentSelectedCourse].[StuPhoto] AS [StuPhoto], 
+[VStudentSelectedCourse].[StuStatus] AS [StuStatus], 
+[VStudentSelectedCourse].[TeaSerID] AS [TeaSerID], 
+[VStudentSelectedCourse].[TeaName] AS [TeaName], 
+[VStudentSelectedCourse].[TeaPhoto] AS [TeaPhoto], 
+[VStudentSelectedCourse].[SpecialtyID] AS [SpecialtyID], 
+[VStudentSelectedCourse].[SPEID] AS [SPEID], 
+[VStudentSelectedCourse].[SpecName] AS [SpecName], 
+[VStudentSelectedCourse].[GRAID] AS [GRAID], 
+[VStudentSelectedCourse].[GradeName] AS [GradeName], 
+[VStudentSelectedCourse].[SubjectID] AS [SubjectID], 
+[VStudentSelectedCourse].[SubjectName] AS [SubjectName], 
+[VStudentSelectedCourse].[IsMust] AS [IsMust], 
+[VStudentSelectedCourse].[LoopType] AS [LoopType], 
+[VStudentSelectedCourse].[Score] AS [Score], 
+[VStudentSelectedCourse].[RequiredTime] AS [RequiredTime], 
+[VStudentSelectedCourse].[Max] AS [Max], 
+[VStudentSelectedCourse].[Status] AS [Status], 
+[VStudentSelectedCourse].[DTime] AS [DTime]
+FROM [dbo].[VStudentSelectedCourse] AS [VStudentSelectedCourse]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VStudentSelectedCourseItem" EntityType="Self.VStudentSelectedCourseItem" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[VStudentSelectedCourseItem].[SERID] AS [SERID], 
+[VStudentSelectedCourseItem].[Address] AS [Address], 
+[VStudentSelectedCourseItem].[CourseTime] AS [CourseTime], 
+[VStudentSelectedCourseItem].[EndTime] AS [EndTime], 
+[VStudentSelectedCourseItem].[BeginTime] AS [BeginTime], 
+[VStudentSelectedCourseItem].[NDay] AS [NDay], 
+[VStudentSelectedCourseItem].[CourseSerID] AS [CourseSerID], 
+[VStudentSelectedCourseItem].[StuName] AS [StuName], 
+[VStudentSelectedCourseItem].[StuPhoto] AS [StuPhoto], 
+[VStudentSelectedCourseItem].[TeaName] AS [TeaName], 
+[VStudentSelectedCourseItem].[TeaPhoto] AS [TeaPhoto], 
+[VStudentSelectedCourseItem].[SchSerID] AS [SchSerID], 
+[VStudentSelectedCourseItem].[SchYear] AS [SchYear], 
+[VStudentSelectedCourseItem].[SchTerm] AS [SchTerm], 
+[VStudentSelectedCourseItem].[TeaSerID] AS [TeaSerID], 
+[VStudentSelectedCourseItem].[SpecialtyID] AS [SpecialtyID], 
+[VStudentSelectedCourseItem].[SPEID] AS [SPEID], 
+[VStudentSelectedCourseItem].[SubjectID] AS [SubjectID], 
+[VStudentSelectedCourseItem].[GRAID] AS [GRAID], 
+[VStudentSelectedCourseItem].[Max] AS [Max], 
+[VStudentSelectedCourseItem].[LoopType] AS [LoopType], 
+[VStudentSelectedCourseItem].[RequiredTime] AS [RequiredTime], 
+[VStudentSelectedCourseItem].[Score] AS [Score], 
+[VStudentSelectedCourseItem].[Status] AS [Status], 
+[VStudentSelectedCourseItem].[SpecName] AS [SpecName], 
+[VStudentSelectedCourseItem].[SubjectName] AS [SubjectName]
+FROM [dbo].[VStudentSelectedCourseItem] AS [VStudentSelectedCourseItem]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VTeaCourse" EntityType="Self.VTeaCourse" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[VTeaCourse].[SerID] AS [SerID], 
+[VTeaCourse].[SchSerID] AS [SchSerID], 
+[VTeaCourse].[SchYear] AS [SchYear], 
+[VTeaCourse].[SchTerm] AS [SchTerm], 
+[VTeaCourse].[TeaSerID] AS [TeaSerID], 
+[VTeaCourse].[TeaName] AS [TeaName], 
+[VTeaCourse].[SpecialtyID] AS [SpecialtyID], 
+[VTeaCourse].[SPEID] AS [SPEID], 
+[VTeaCourse].[SpecName] AS [SpecName], 
+[VTeaCourse].[GRAID] AS [GRAID], 
+[VTeaCourse].[GradeName] AS [GradeName], 
+[VTeaCourse].[SubjectID] AS [SubjectID], 
+[VTeaCourse].[SubjectName] AS [SubjectName], 
+[VTeaCourse].[SUBID] AS [SUBID], 
+[VTeaCourse].[Max] AS [Max], 
+[VTeaCourse].[LoopType] AS [LoopType], 
+[VTeaCourse].[RequiredTime] AS [RequiredTime], 
+[VTeaCourse].[Score] AS [Score], 
+[VTeaCourse].[Status] AS [Status], 
+[VTeaCourse].[IsMust] AS [IsMust], 
+[VTeaCourse].[DTime] AS [DTime], 
+[VTeaCourse].[ClassSerID] AS [ClassSerID], 
+[VTeaCourse].[ClassName] AS [ClassName], 
+[VTeaCourse].[ClassNumber] AS [ClassNumber]
+FROM [dbo].[VTeaCourse] AS [VTeaCourse]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VTeaCourseItemClass" EntityType="Self.VTeaCourseItemClass" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[VTeaCourseItemClass].[SERID] AS [SERID], 
+[VTeaCourseItemClass].[Address] AS [Address], 
+[VTeaCourseItemClass].[CourseTime] AS [CourseTime], 
+[VTeaCourseItemClass].[EndTime] AS [EndTime], 
+[VTeaCourseItemClass].[BeginTime] AS [BeginTime], 
+[VTeaCourseItemClass].[NDay] AS [NDay], 
+[VTeaCourseItemClass].[CourseSerID] AS [CourseSerID], 
+[VTeaCourseItemClass].[ClassName] AS [ClassName], 
+[VTeaCourseItemClass].[ClassNumber] AS [ClassNumber], 
+[VTeaCourseItemClass].[TeaName] AS [TeaName], 
+[VTeaCourseItemClass].[TeaSerID] AS [TeaSerID], 
+[VTeaCourseItemClass].[TeaPhoto] AS [TeaPhoto], 
+[VTeaCourseItemClass].[SchYear] AS [SchYear], 
+[VTeaCourseItemClass].[SchTerm] AS [SchTerm], 
+[VTeaCourseItemClass].[SubjectID] AS [SubjectID], 
+[VTeaCourseItemClass].[Max] AS [Max], 
+[VTeaCourseItemClass].[LoopType] AS [LoopType], 
+[VTeaCourseItemClass].[RequiredTime] AS [RequiredTime], 
+[VTeaCourseItemClass].[Score] AS [Score], 
+[VTeaCourseItemClass].[SchSerID] AS [SchSerID], 
+[VTeaCourseItemClass].[Status] AS [Status], 
+[VTeaCourseItemClass].[SpecialtyID] AS [SpecialtyID], 
+[VTeaCourseItemClass].[SpecName] AS [SpecName], 
+[VTeaCourseItemClass].[SPEID] AS [SPEID], 
+[VTeaCourseItemClass].[SubjectName] AS [SubjectName], 
+[VTeaCourseItemClass].[SUBID] AS [SUBID]
+FROM [dbo].[VTeaCourseItemClass] AS [VTeaCourseItemClass]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_IAM_StuSelectedCourse_IAM_TeaCourse" Association="Self.FK_IAM_StuSelectedCourse_IAM_TeaCourse">
+            <End Role="IAM_TeaCourse" EntitySet="IAM_TeaCourse" />
+            <End Role="IAM_StuSelectedCourse" EntitySet="IAM_StuSelectedCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IAM_TeaCourseClass_IAM_TeaCourse" Association="Self.FK_IAM_TeaCourseClass_IAM_TeaCourse">
+            <End Role="IAM_TeaCourse" EntitySet="IAM_TeaCourse" />
+            <End Role="IAM_TeaCourseClass" EntitySet="IAM_TeaCourseClass" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBSchoolCourseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="IAM_StuSelectedCourse">
+          <Key>
+            <PropertyRef Name="CourseSerID" />
+            <PropertyRef Name="StuSerID" />
+          </Key>
+          <Property Name="CourseSerID" Type="Int64" Nullable="false" />
+          <Property Name="StuSerID" Type="Int64" Nullable="false" />
+          <Property Name="isRequired" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="IAM_TeaCourse" Relationship="Self.FK_IAM_StuSelectedCourse_IAM_TeaCourse" FromRole="IAM_StuSelectedCourse" ToRole="IAM_TeaCourse" />
+        </EntityType>
+        <EntityType Name="IAM_TeaCourse">
+          <Key>
+            <PropertyRef Name="SerID" />
+          </Key>
+          <Property Name="SerID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SchSerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SchYear" Type="Int32" Nullable="false" />
+          <Property Name="SchTerm" Type="Byte" Nullable="false" />
+          <Property Name="TeaSerID" Type="Int64" Nullable="false" />
+          <Property Name="GRAID" Type="Int64" Nullable="false" />
+          <Property Name="SubjectID" Type="Int64" Nullable="false" />
+          <Property Name="Max" Type="Int32" Nullable="false" />
+          <Property Name="LoopType" Type="Int64" Nullable="false" />
+          <Property Name="RequiredTime" Type="Int32" Nullable="false" />
+          <Property Name="Score" Type="Int32" Nullable="false" />
+          <Property Name="DTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="IAM_StuSelectedCourse" Relationship="Self.FK_IAM_StuSelectedCourse_IAM_TeaCourse" FromRole="IAM_TeaCourse" ToRole="IAM_StuSelectedCourse" />
+          <NavigationProperty Name="IAM_TeaCourseClass" Relationship="Self.FK_IAM_TeaCourseClass_IAM_TeaCourse" FromRole="IAM_TeaCourse" ToRole="IAM_TeaCourseClass" />
+        </EntityType>
+        <EntityType Name="IAM_TeaCourseClass">
+          <Key>
+            <PropertyRef Name="CourseSerID" />
+            <PropertyRef Name="ClassSerID" />
+          </Key>
+          <Property Name="CourseSerID" Type="Int64" Nullable="false" />
+          <Property Name="ClassSerID" Type="Int64" Nullable="false" />
+          <Property Name="Switch" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="IAM_TeaCourse" Relationship="Self.FK_IAM_TeaCourseClass_IAM_TeaCourse" FromRole="IAM_TeaCourseClass" ToRole="IAM_TeaCourse" />
+        </EntityType>
+        <EntityType Name="IAM_TeaCourseItem">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseSerID" Type="Int64" Nullable="false" />
+          <Property Name="NDay" Type="Int32" Nullable="false" />
+          <Property Name="BeginTime" Type="Int32" Nullable="false" />
+          <Property Name="EndTime" Type="Int32" Nullable="false" />
+          <Property Name="CourseTime" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VClassTeacher">
+          <Key>
+            <PropertyRef Name="ClassSerID" />
+            <PropertyRef Name="ClassName" />
+            <PropertyRef Name="SpecialtyNameOfClass" />
+            <PropertyRef Name="SpecialtyIDOfClass" />
+            <PropertyRef Name="SPEIDOfClass" />
+            <PropertyRef Name="TeaSerID" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SpecialtyIDOfSubject" />
+            <PropertyRef Name="SPEIDOfSubject" />
+            <PropertyRef Name="SpecNameOfSubject" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="GradeName" />
+            <PropertyRef Name="LoopType" />
+            <PropertyRef Name="RequiredTime" />
+            <PropertyRef Name="DTime" />
+            <PropertyRef Name="Switch" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="CourseSerID" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="IsMust" />
+          </Key>
+          <Property Name="ClassSerID" Type="Int64" Nullable="false" />
+          <Property Name="ClassName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SpecialtyNameOfClass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SpecialtyIDOfClass" Type="Int64" Nullable="false" />
+          <Property Name="SPEIDOfClass" Type="Int64" Nullable="false" />
+          <Property Name="TeaSerID" Type="Int64" Nullable="false" />
+          <Property Name="TeaName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TeaPhoto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SchSerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SpecialtyIDOfSubject" Type="Int64" Nullable="false" />
+          <Property Name="SPEIDOfSubject" Type="Int64" Nullable="false" />
+          <Property Name="SpecNameOfSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GRAID" Type="Int64" Nullable="false" />
+          <Property Name="GradeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoopType" Type="Int64" Nullable="false" />
+          <Property Name="RequiredTime" Type="Int32" Nullable="false" />
+          <Property Name="DTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Switch" Type="Boolean" Nullable="false" />
+          <Property Name="Score" Type="Int32" Nullable="false" />
+          <Property Name="CourseSerID" Type="Int64" Nullable="false" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="SubjectID" Type="Int64" Nullable="false" />
+          <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SchYear" Type="Int32" Nullable="false" />
+          <Property Name="SchTerm" Type="Byte" Nullable="false" />
+          <Property Name="IsMust" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VCourseStudentArrangement">
+          <Key>
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SpecialtyID" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="GradeName" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SUBID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="CourseSerID" />
+            <PropertyRef Name="StuSerID" />
+            <PropertyRef Name="TeaSerID" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="LoopType" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="DTime" />
+            <PropertyRef Name="isRequired" />
+            <PropertyRef Name="RequiredTime" />
+            <PropertyRef Name="Max" />
+            <PropertyRef Name="StuStatus" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="IsMust" />
+          </Key>
+          <Property Name="SchSerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SpecialtyID" Type="Int64" Nullable="false" />
+          <Property Name="SPEID" Type="Int64" Nullable="false" />
+          <Property Name="SpecName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GRAID" Type="Int64" Nullable="false" />
+          <Property Name="GradeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubjectID" Type="Int64" Nullable="false" />
+          <Property Name="SUBID" Type="Int64" Nullable="false" />
+          <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CourseSerID" Type="Int64" Nullable="false" />
+          <Property Name="StuSerID" Type="Int64" Nullable="false" />
+          <Property Name="StuName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TeaSerID" Type="Int64" Nullable="false" />
+          <Property Name="SchYear" Type="Int32" Nullable="false" />
+          <Property Name="SchTerm" Type="Byte" Nullable="false" />
+          <Property Name="LoopType" Type="Int64" Nullable="false" />
+          <Property Name="Score" Type="Int32" Nullable="false" />
+          <Property Name="TeaName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TeaPhoto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="isRequired" Type="Boolean" Nullable="false" />
+          <Property Name="RequiredTime" Type="Int32" Nullable="false" />
+          <Property Name="Max" Type="Int32" Nullable="false" />
+          <Property Name="StuStatus" Type="Int64" Nullable="false" />
+          <Property Name="StuPhoto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="IsMust" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VCourseTeacherArrangement">
+          <Key>
+            <PropertyRef Name="SerID" />
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="SpecialtyID" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="ClassName" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="GradeName" />
+            <PropertyRef Name="SUBID" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="IsMust" />
+            <PropertyRef Name="Max" />
+            <PropertyRef Name="LoopType" />
+            <PropertyRef Name="RequiredTime" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="Switch" />
+          </Key>
+          <Property Name="SerID" Type="Int64" Nullable="false" />
+          <Property Name="SchSerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SchYear" Type="Int32" Nullable="false" />
+          <Property Name="SchTerm" Type="Byte" Nullable="false" />
+          <Property Name="SpecialtyID" Type="Int64" Nullable="false" />
+          <Property Name="SPEID" Type="Int64" Nullable="false" />
+          <Property Name="SpecName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClassName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GRAID" Type="Int64" Nullable="false" />
+          <Property Name="GradeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SUBID" Type="Int64" Nullable="false" />
+          <Property Name="SubjectID" Type="Int64" Nullable="false" />
+          <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsMust" Type="Int64" Nullable="false" />
+          <Property Name="Max" Type="Int32" Nullable="false" />
+          <Property Name="LoopType" Type="Int64" Nullable="false" />
+          <Property Name="RequiredTime" Type="Int32" Nullable="false" />
+          <Property Name="Score" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="TeaName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Switch" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VStudentClassCourse">
+          <Key>
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="CourseSerID" />
+            <PropertyRef Name="StuSerID" />
+            <PropertyRef Name="StuStatus" />
+            <PropertyRef Name="TeaSerID" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="SpecialtyID" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="GradeName" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="IsMust" />
+            <PropertyRef Name="LoopType" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="RequiredTime" />
+            <PropertyRef Name="Max" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="DTime" />
+          </Key>
+          <Property Name="SchSerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SchYear" Type="Int32" Nullable="false" />
+          <Property Name="SchTerm" Type="Byte" Nullable="false" />
+          <Property Name="CourseSerID" Type="Int64" Nullable="false" />
+          <Property Name="StuSerID" Type="Int64" Nullable="false" />
+          <Property Name="StuName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StuPhoto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StuStatus" Type="Int64" Nullable="false" />
+          <Property Name="TeaSerID" Type="Int64" Nullable="false" />
+          <Property Name="TeaName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TeaPhoto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SpecialtyID" Type="Int64" Nullable="false" />
+          <Property Name="SPEID" Type="Int64" Nullable="false" />
+          <Property Name="SpecName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GRAID" Type="Int64" Nullable="false" />
+          <Property Name="GradeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubjectID" Type="Int64" Nullable="false" />
+          <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsMust" Type="Int64" Nullable="false" />
+          <Property Name="LoopType" Type="Int64" Nullable="false" />
+          <Property Name="Score" Type="Int32" Nullable="false" />
+          <Property Name="RequiredTime" Type="Int32" Nullable="false" />
+          <Property Name="Max" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="DTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="VStudentCourse">
+          <Key>
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="CourseSerID" />
+            <PropertyRef Name="StuSerID" />
+            <PropertyRef Name="StuStatus" />
+            <PropertyRef Name="TeaSerID" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="SpecialtyID" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="GradeName" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="IsMust" />
+            <PropertyRef Name="LoopType" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="RequiredTime" />
+            <PropertyRef Name="Max" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="DTime" />
+          </Key>
+          <Property Name="SchSerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SchYear" Type="Int32" Nullable="false" />
+          <Property Name="SchTerm" Type="Byte" Nullable="false" />
+          <Property Name="CourseSerID" Type="Int64" Nullable="false" />
+          <Property Name="StuSerID" Type="Int64" Nullable="false" />
+          <Property Name="StuName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StuPhoto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StuStatus" Type="Int64" Nullable="false" />
+          <Property Name="TeaSerID" Type="Int64" Nullable="false" />
+          <Property Name="TeaName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TeaPhoto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SpecialtyID" Type="Int64" Nullable="false" />
+          <Property Name="SPEID" Type="Int64" Nullable="false" />
+          <Property Name="SpecName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GRAID" Type="Int64" Nullable="false" />
+          <Property Name="GradeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubjectID" Type="Int64" Nullable="false" />
+          <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsMust" Type="Int64" Nullable="false" />
+          <Property Name="LoopType" Type="Int64" Nullable="false" />
+          <Property Name="Score" Type="Int32" Nullable="false" />
+          <Property Name="RequiredTime" Type="Int32" Nullable="false" />
+          <Property Name="Max" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="DTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="VStudentCourseOfSubject">
+          <Key>
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="StuSerID" />
+            <PropertyRef Name="ClassSerID" />
+            <PropertyRef Name="ClassName" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="GradeName" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="SUBID" />
+            <PropertyRef Name="StuStatus" />
+            <PropertyRef Name="IsMust" />
+          </Key>
+          <Property Name="SchSerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SchYear" Type="Int32" Nullable="false" />
+          <Property Name="SchTerm" Type="Byte" Nullable="false" />
+          <Property Name="StuSerID" Type="Int64" Nullable="false" />
+          <Property Name="StuName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StuPhoto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ClassSerID" Type="Int64" Nullable="false" />
+          <Property Name="ClassName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SPEID" Type="Int64" Nullable="false" />
+          <Property Name="SpecName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GRAID" Type="Int64" Nullable="false" />
+          <Property Name="GradeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubjectID" Type="Int64" Nullable="false" />
+          <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SUBID" Type="Int64" Nullable="false" />
+          <Property Name="StuStatus" Type="Int64" Nullable="false" />
+          <Property Name="IsMust" Type="Int64" Nullable="false" />
+          <Property Name="CourseSerID" Type="Int64" />
+          <Property Name="TeaSerID" Type="Int64" />
+          <Property Name="TeaName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TeaPhoto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LoopType" Type="Int64" />
+          <Property Name="Score" Type="Int32" />
+          <Property Name="RequiredTime" Type="Int32" />
+          <Property Name="Max" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VStudentSelectedCourse">
+          <Key>
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="CourseSerID" />
+            <PropertyRef Name="StuSerID" />
+            <PropertyRef Name="StuStatus" />
+            <PropertyRef Name="TeaSerID" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="SpecialtyID" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="GradeName" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="IsMust" />
+            <PropertyRef Name="LoopType" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="RequiredTime" />
+            <PropertyRef Name="Max" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="DTime" />
+          </Key>
+          <Property Name="SchSerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SchYear" Type="Int32" Nullable="false" />
+          <Property Name="SchTerm" Type="Byte" Nullable="false" />
+          <Property Name="CourseSerID" Type="Int64" Nullable="false" />
+          <Property Name="StuSerID" Type="Int64" Nullable="false" />
+          <Property Name="StuName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StuPhoto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StuStatus" Type="Int64" Nullable="false" />
+          <Property Name="TeaSerID" Type="Int64" Nullable="false" />
+          <Property Name="TeaName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TeaPhoto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SpecialtyID" Type="Int64" Nullable="false" />
+          <Property Name="SPEID" Type="Int64" Nullable="false" />
+          <Property Name="SpecName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GRAID" Type="Int64" Nullable="false" />
+          <Property Name="GradeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubjectID" Type="Int64" Nullable="false" />
+          <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsMust" Type="Int64" Nullable="false" />
+          <Property Name="LoopType" Type="Int64" Nullable="false" />
+          <Property Name="Score" Type="Int32" Nullable="false" />
+          <Property Name="RequiredTime" Type="Int32" Nullable="false" />
+          <Property Name="Max" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="DTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="VStudentSelectedCourseItem">
+          <Key>
+            <PropertyRef Name="SERID" />
+            <PropertyRef Name="CourseTime" />
+            <PropertyRef Name="EndTime" />
+            <PropertyRef Name="BeginTime" />
+            <PropertyRef Name="NDay" />
+            <PropertyRef Name="CourseSerID" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="TeaSerID" />
+            <PropertyRef Name="SpecialtyID" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="Max" />
+            <PropertyRef Name="LoopType" />
+            <PropertyRef Name="RequiredTime" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="SubjectName" />
+          </Key>
+          <Property Name="SERID" Type="Int64" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CourseTime" Type="Int32" Nullable="false" />
+          <Property Name="EndTime" Type="Int32" Nullable="false" />
+          <Property Name="BeginTime" Type="Int32" Nullable="false" />
+          <Property Name="NDay" Type="Int32" Nullable="false" />
+          <Property Name="CourseSerID" Type="Int64" Nullable="false" />
+          <Property Name="StuName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StuPhoto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TeaName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TeaPhoto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SchSerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SchYear" Type="Int32" Nullable="false" />
+          <Property Name="SchTerm" Type="Byte" Nullable="false" />
+          <Property Name="TeaSerID" Type="Int64" Nullable="false" />
+          <Property Name="SpecialtyID" Type="Int64" Nullable="false" />
+          <Property Name="SPEID" Type="Int64" Nullable="false" />
+          <Property Name="SubjectID" Type="Int64" Nullable="false" />
+          <Property Name="GRAID" Type="Int64" Nullable="false" />
+          <Property Name="Max" Type="Int32" Nullable="false" />
+          <Property Name="LoopType" Type="Int64" Nullable="false" />
+          <Property Name="RequiredTime" Type="Int32" Nullable="false" />
+          <Property Name="Score" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="SpecName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VTeaCourse">
+          <Key>
+            <PropertyRef Name="SerID" />
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="TeaSerID" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="SpecialtyID" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="GradeName" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="SUBID" />
+            <PropertyRef Name="Max" />
+            <PropertyRef Name="LoopType" />
+            <PropertyRef Name="RequiredTime" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="IsMust" />
+            <PropertyRef Name="DTime" />
+          </Key>
+          <Property Name="SerID" Type="Int64" Nullable="false" />
+          <Property Name="SchSerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SchYear" Type="Int32" Nullable="false" />
+          <Property Name="SchTerm" Type="Byte" Nullable="false" />
+          <Property Name="TeaSerID" Type="Int64" Nullable="false" />
+          <Property Name="TeaName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SpecialtyID" Type="Int64" Nullable="false" />
+          <Property Name="SPEID" Type="Int64" Nullable="false" />
+          <Property Name="SpecName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GRAID" Type="Int64" Nullable="false" />
+          <Property Name="GradeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubjectID" Type="Int64" Nullable="false" />
+          <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SUBID" Type="Int64" Nullable="false" />
+          <Property Name="Max" Type="Int32" Nullable="false" />
+          <Property Name="LoopType" Type="Int64" Nullable="false" />
+          <Property Name="RequiredTime" Type="Int32" Nullable="false" />
+          <Property Name="Score" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="IsMust" Type="Int64" Nullable="false" />
+          <Property Name="DTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ClassSerID" Type="Int64" />
+          <Property Name="ClassName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ClassNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VTeaCourseItemClass">
+          <Key>
+            <PropertyRef Name="SERID" />
+            <PropertyRef Name="CourseTime" />
+            <PropertyRef Name="EndTime" />
+            <PropertyRef Name="BeginTime" />
+            <PropertyRef Name="NDay" />
+            <PropertyRef Name="CourseSerID" />
+            <PropertyRef Name="ClassName" />
+            <PropertyRef Name="ClassNumber" />
+            <PropertyRef Name="TeaName" />
+            <PropertyRef Name="TeaSerID" />
+            <PropertyRef Name="SchYear" />
+            <PropertyRef Name="SchTerm" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="Max" />
+            <PropertyRef Name="LoopType" />
+            <PropertyRef Name="RequiredTime" />
+            <PropertyRef Name="Score" />
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="SpecialtyID" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="SUBID" />
+          </Key>
+          <Property Name="SERID" Type="Int64" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CourseTime" Type="Int32" Nullable="false" />
+          <Property Name="EndTime" Type="Int32" Nullable="false" />
+          <Property Name="BeginTime" Type="Int32" Nullable="false" />
+          <Property Name="NDay" Type="Int32" Nullable="false" />
+          <Property Name="CourseSerID" Type="Int64" Nullable="false" />
+          <Property Name="ClassName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClassNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TeaName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TeaSerID" Type="Int64" Nullable="false" />
+          <Property Name="TeaPhoto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SchYear" Type="Int32" Nullable="false" />
+          <Property Name="SchTerm" Type="Byte" Nullable="false" />
+          <Property Name="SubjectID" Type="Int64" Nullable="false" />
+          <Property Name="Max" Type="Int32" Nullable="false" />
+          <Property Name="LoopType" Type="Int64" Nullable="false" />
+          <Property Name="RequiredTime" Type="Int32" Nullable="false" />
+          <Property Name="Score" Type="Int32" Nullable="false" />
+          <Property Name="SchSerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="SpecialtyID" Type="Int64" Nullable="false" />
+          <Property Name="SpecName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SPEID" Type="Int64" Nullable="false" />
+          <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SUBID" Type="Int64" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_IAM_StuSelectedCourse_IAM_TeaCourse">
+          <End Role="IAM_TeaCourse" Type="Self.IAM_TeaCourse" Multiplicity="1" />
+          <End Role="IAM_StuSelectedCourse" Type="Self.IAM_StuSelectedCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IAM_TeaCourse">
+              <PropertyRef Name="SerID" />
+            </Principal>
+            <Dependent Role="IAM_StuSelectedCourse">
+              <PropertyRef Name="CourseSerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IAM_TeaCourseClass_IAM_TeaCourse">
+          <End Role="IAM_TeaCourse" Type="Self.IAM_TeaCourse" Multiplicity="1" />
+          <End Role="IAM_TeaCourseClass" Type="Self.IAM_TeaCourseClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IAM_TeaCourse">
+              <PropertyRef Name="SerID" />
+            </Principal>
+            <Dependent Role="IAM_TeaCourseClass">
+              <PropertyRef Name="CourseSerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBSchoolCourseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="IAM_StuSelectedCourse" EntityType="Self.IAM_StuSelectedCourse" />
+          <EntitySet Name="IAM_TeaCourse" EntityType="Self.IAM_TeaCourse" />
+          <EntitySet Name="IAM_TeaCourseClass" EntityType="Self.IAM_TeaCourseClass" />
+          <EntitySet Name="IAM_TeaCourseItem" EntityType="Self.IAM_TeaCourseItem" />
+          <EntitySet Name="VClassTeacher" EntityType="Self.VClassTeacher" />
+          <EntitySet Name="VCourseStudentArrangement" EntityType="Self.VCourseStudentArrangement" />
+          <EntitySet Name="VCourseTeacherArrangement" EntityType="Self.VCourseTeacherArrangement" />
+          <EntitySet Name="VStudentClassCourse" EntityType="Self.VStudentClassCourse" />
+          <EntitySet Name="VStudentCourse" EntityType="Self.VStudentCourse" />
+          <EntitySet Name="VStudentCourseOfSubject" EntityType="Self.VStudentCourseOfSubject" />
+          <EntitySet Name="VStudentSelectedCourse" EntityType="Self.VStudentSelectedCourse" />
+          <EntitySet Name="VStudentSelectedCourseItem" EntityType="Self.VStudentSelectedCourseItem" />
+          <EntitySet Name="VTeaCourse" EntityType="Self.VTeaCourse" />
+          <EntitySet Name="VTeaCourseItemClass" EntityType="Self.VTeaCourseItemClass" />
+          <AssociationSet Name="FK_IAM_StuSelectedCourse_IAM_TeaCourse" Association="Self.FK_IAM_StuSelectedCourse_IAM_TeaCourse">
+            <End Role="IAM_TeaCourse" EntitySet="IAM_TeaCourse" />
+            <End Role="IAM_StuSelectedCourse" EntitySet="IAM_StuSelectedCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IAM_TeaCourseClass_IAM_TeaCourse" Association="Self.FK_IAM_TeaCourseClass_IAM_TeaCourse">
+            <End Role="IAM_TeaCourse" EntitySet="IAM_TeaCourse" />
+            <End Role="IAM_TeaCourseClass" EntitySet="IAM_TeaCourseClass" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBSchoolCourseModelStoreContainer" CdmEntityContainer="DBSchoolCourseEntities">
+          <EntitySetMapping Name="IAM_StuSelectedCourse">
+            <EntityTypeMapping TypeName="DBSchoolCourseModel.IAM_StuSelectedCourse">
+              <MappingFragment StoreEntitySet="IAM_StuSelectedCourse">
+                <ScalarProperty Name="CourseSerID" ColumnName="CourseSerID" />
+                <ScalarProperty Name="StuSerID" ColumnName="StuSerID" />
+                <ScalarProperty Name="isRequired" ColumnName="isRequired" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IAM_TeaCourse">
+            <EntityTypeMapping TypeName="DBSchoolCourseModel.IAM_TeaCourse">
+              <MappingFragment StoreEntitySet="IAM_TeaCourse">
+                <ScalarProperty Name="SerID" ColumnName="SerID" />
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="SchYear" ColumnName="SchYear" />
+                <ScalarProperty Name="SchTerm" ColumnName="SchTerm" />
+                <ScalarProperty Name="TeaSerID" ColumnName="TeaSerID" />
+                <ScalarProperty Name="GRAID" ColumnName="GRAID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="Max" ColumnName="Max" />
+                <ScalarProperty Name="LoopType" ColumnName="LoopType" />
+                <ScalarProperty Name="RequiredTime" ColumnName="RequiredTime" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="DTime" ColumnName="DTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IAM_TeaCourseClass">
+            <EntityTypeMapping TypeName="DBSchoolCourseModel.IAM_TeaCourseClass">
+              <MappingFragment StoreEntitySet="IAM_TeaCourseClass">
+                <ScalarProperty Name="CourseSerID" ColumnName="CourseSerID" />
+                <ScalarProperty Name="ClassSerID" ColumnName="ClassSerID" />
+                <ScalarProperty Name="Switch" ColumnName="Switch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IAM_TeaCourseItem">
+            <EntityTypeMapping TypeName="DBSchoolCourseModel.IAM_TeaCourseItem">
+              <MappingFragment StoreEntitySet="IAM_TeaCourseItem">
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+                <ScalarProperty Name="CourseSerID" ColumnName="CourseSerID" />
+                <ScalarProperty Name="NDay" ColumnName="NDay" />
+                <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="CourseTime" ColumnName="CourseTime" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VClassTeacher">
+            <EntityTypeMapping TypeName="DBSchoolCourseModel.VClassTeacher">
+              <MappingFragment StoreEntitySet="VClassTeacher">
+                <ScalarProperty Name="ClassSerID" ColumnName="ClassSerID" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="SpecialtyNameOfClass" ColumnName="SpecialtyNameOfClass" />
+                <ScalarProperty Name="SpecialtyIDOfClass" ColumnName="SpecialtyIDOfClass" />
+                <ScalarProperty Name="SPEIDOfClass" ColumnName="SPEIDOfClass" />
+                <ScalarProperty Name="TeaSerID" ColumnName="TeaSerID" />
+                <ScalarProperty Name="TeaName" ColumnName="TeaName" />
+                <ScalarProperty Name="TeaPhoto" ColumnName="TeaPhoto" />
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="SpecialtyIDOfSubject" ColumnName="SpecialtyIDOfSubject" />
+                <ScalarProperty Name="SPEIDOfSubject" ColumnName="SPEIDOfSubject" />
+                <ScalarProperty Name="SpecNameOfSubject" ColumnName="SpecNameOfSubject" />
+                <ScalarProperty Name="GRAID" ColumnName="GRAID" />
+                <ScalarProperty Name="GradeName" ColumnName="GradeName" />
+                <ScalarProperty Name="LoopType" ColumnName="LoopType" />
+                <ScalarProperty Name="RequiredTime" ColumnName="RequiredTime" />
+                <ScalarProperty Name="DTime" ColumnName="DTime" />
+                <ScalarProperty Name="Switch" ColumnName="Switch" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="CourseSerID" ColumnName="CourseSerID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="SchYear" ColumnName="SchYear" />
+                <ScalarProperty Name="SchTerm" ColumnName="SchTerm" />
+                <ScalarProperty Name="IsMust" ColumnName="IsMust" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VCourseStudentArrangement">
+            <EntityTypeMapping TypeName="DBSchoolCourseModel.VCourseStudentArrangement">
+              <MappingFragment StoreEntitySet="VCourseStudentArrangement">
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="SpecialtyID" ColumnName="SpecialtyID" />
+                <ScalarProperty Name="SPEID" ColumnName="SPEID" />
+                <ScalarProperty Name="SpecName" ColumnName="SpecName" />
+                <ScalarProperty Name="GRAID" ColumnName="GRAID" />
+                <ScalarProperty Name="GradeName" ColumnName="GradeName" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="SUBID" ColumnName="SUBID" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="CourseSerID" ColumnName="CourseSerID" />
+                <ScalarProperty Name="StuSerID" ColumnName="StuSerID" />
+                <ScalarProperty Name="StuName" ColumnName="StuName" />
+                <ScalarProperty Name="TeaSerID" ColumnName="TeaSerID" />
+                <ScalarProperty Name="SchYear" ColumnName="SchYear" />
+                <ScalarProperty Name="SchTerm" ColumnName="SchTerm" />
+                <ScalarProperty Name="LoopType" ColumnName="LoopType" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="TeaName" ColumnName="TeaName" />
+                <ScalarProperty Name="TeaPhoto" ColumnName="TeaPhoto" />
+                <ScalarProperty Name="DTime" ColumnName="DTime" />
+                <ScalarProperty Name="isRequired" ColumnName="isRequired" />
+                <ScalarProperty Name="RequiredTime" ColumnName="RequiredTime" />
+                <ScalarProperty Name="Max" ColumnName="Max" />
+                <ScalarProperty Name="StuStatus" ColumnName="StuStatus" />
+                <ScalarProperty Name="StuPhoto" ColumnName="StuPhoto" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsMust" ColumnName="IsMust" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VCourseTeacherArrangement">
+            <EntityTypeMapping TypeName="DBSchoolCourseModel.VCourseTeacherArrangement">
+              <MappingFragment StoreEntitySet="VCourseTeacherArrangement">
+                <ScalarProperty Name="SerID" ColumnName="SerID" />
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="SchYear" ColumnName="SchYear" />
+                <ScalarProperty Name="SchTerm" ColumnName="SchTerm" />
+                <ScalarProperty Name="SpecialtyID" ColumnName="SpecialtyID" />
+                <ScalarProperty Name="SPEID" ColumnName="SPEID" />
+                <ScalarProperty Name="SpecName" ColumnName="SpecName" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="GRAID" ColumnName="GRAID" />
+                <ScalarProperty Name="GradeName" ColumnName="GradeName" />
+                <ScalarProperty Name="SUBID" ColumnName="SUBID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="IsMust" ColumnName="IsMust" />
+                <ScalarProperty Name="Max" ColumnName="Max" />
+                <ScalarProperty Name="LoopType" ColumnName="LoopType" />
+                <ScalarProperty Name="RequiredTime" ColumnName="RequiredTime" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TeaName" ColumnName="TeaName" />
+                <ScalarProperty Name="Switch" ColumnName="Switch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VStudentClassCourse">
+            <EntityTypeMapping TypeName="DBSchoolCourseModel.VStudentClassCourse">
+              <MappingFragment StoreEntitySet="VStudentClassCourse">
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="SchYear" ColumnName="SchYear" />
+                <ScalarProperty Name="SchTerm" ColumnName="SchTerm" />
+                <ScalarProperty Name="CourseSerID" ColumnName="CourseSerID" />
+                <ScalarProperty Name="StuSerID" ColumnName="StuSerID" />
+                <ScalarProperty Name="StuName" ColumnName="StuName" />
+                <ScalarProperty Name="StuPhoto" ColumnName="StuPhoto" />
+                <ScalarProperty Name="StuStatus" ColumnName="StuStatus" />
+                <ScalarProperty Name="TeaSerID" ColumnName="TeaSerID" />
+                <ScalarProperty Name="TeaName" ColumnName="TeaName" />
+                <ScalarProperty Name="TeaPhoto" ColumnName="TeaPhoto" />
+                <ScalarProperty Name="SpecialtyID" ColumnName="SpecialtyID" />
+                <ScalarProperty Name="SPEID" ColumnName="SPEID" />
+                <ScalarProperty Name="SpecName" ColumnName="SpecName" />
+                <ScalarProperty Name="GRAID" ColumnName="GRAID" />
+                <ScalarProperty Name="GradeName" ColumnName="GradeName" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="IsMust" ColumnName="IsMust" />
+                <ScalarProperty Name="LoopType" ColumnName="LoopType" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="RequiredTime" ColumnName="RequiredTime" />
+                <ScalarProperty Name="Max" ColumnName="Max" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DTime" ColumnName="DTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VStudentCourse">
+            <EntityTypeMapping TypeName="DBSchoolCourseModel.VStudentCourse">
+              <MappingFragment StoreEntitySet="VStudentCourse">
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="SchYear" ColumnName="SchYear" />
+                <ScalarProperty Name="SchTerm" ColumnName="SchTerm" />
+                <ScalarProperty Name="CourseSerID" ColumnName="CourseSerID" />
+                <ScalarProperty Name="StuSerID" ColumnName="StuSerID" />
+                <ScalarProperty Name="StuName" ColumnName="StuName" />
+                <ScalarProperty Name="StuPhoto" ColumnName="StuPhoto" />
+                <ScalarProperty Name="StuStatus" ColumnName="StuStatus" />
+                <ScalarProperty Name="TeaSerID" ColumnName="TeaSerID" />
+                <ScalarProperty Name="TeaName" ColumnName="TeaName" />
+                <ScalarProperty Name="TeaPhoto" ColumnName="TeaPhoto" />
+                <ScalarProperty Name="SpecialtyID" ColumnName="SpecialtyID" />
+                <ScalarProperty Name="SPEID" ColumnName="SPEID" />
+                <ScalarProperty Name="SpecName" ColumnName="SpecName" />
+                <ScalarProperty Name="GRAID" ColumnName="GRAID" />
+                <ScalarProperty Name="GradeName" ColumnName="GradeName" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="IsMust" ColumnName="IsMust" />
+                <ScalarProperty Name="LoopType" ColumnName="LoopType" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="RequiredTime" ColumnName="RequiredTime" />
+                <ScalarProperty Name="Max" ColumnName="Max" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DTime" ColumnName="DTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VStudentCourseOfSubject">
+            <EntityTypeMapping TypeName="DBSchoolCourseModel.VStudentCourseOfSubject">
+              <MappingFragment StoreEntitySet="VStudentCourseOfSubject">
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="SchYear" ColumnName="SchYear" />
+                <ScalarProperty Name="SchTerm" ColumnName="SchTerm" />
+                <ScalarProperty Name="StuSerID" ColumnName="StuSerID" />
+                <ScalarProperty Name="StuName" ColumnName="StuName" />
+                <ScalarProperty Name="StuPhoto" ColumnName="StuPhoto" />
+                <ScalarProperty Name="ClassSerID" ColumnName="ClassSerID" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="SPEID" ColumnName="SPEID" />
+                <ScalarProperty Name="SpecName" ColumnName="SpecName" />
+                <ScalarProperty Name="GRAID" ColumnName="GRAID" />
+                <ScalarProperty Name="GradeName" ColumnName="GradeName" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="SUBID" ColumnName="SUBID" />
+                <ScalarProperty Name="StuStatus" ColumnName="StuStatus" />
+                <ScalarProperty Name="IsMust" ColumnName="IsMust" />
+                <ScalarProperty Name="CourseSerID" ColumnName="CourseSerID" />
+                <ScalarProperty Name="TeaSerID" ColumnName="TeaSerID" />
+                <ScalarProperty Name="TeaName" ColumnName="TeaName" />
+                <ScalarProperty Name="TeaPhoto" ColumnName="TeaPhoto" />
+                <ScalarProperty Name="LoopType" ColumnName="LoopType" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="RequiredTime" ColumnName="RequiredTime" />
+                <ScalarProperty Name="Max" ColumnName="Max" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VStudentSelectedCourse">
+            <EntityTypeMapping TypeName="DBSchoolCourseModel.VStudentSelectedCourse">
+              <MappingFragment StoreEntitySet="VStudentSelectedCourse">
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="SchYear" ColumnName="SchYear" />
+                <ScalarProperty Name="SchTerm" ColumnName="SchTerm" />
+                <ScalarProperty Name="CourseSerID" ColumnName="CourseSerID" />
+                <ScalarProperty Name="StuSerID" ColumnName="StuSerID" />
+                <ScalarProperty Name="StuName" ColumnName="StuName" />
+                <ScalarProperty Name="StuPhoto" ColumnName="StuPhoto" />
+                <ScalarProperty Name="StuStatus" ColumnName="StuStatus" />
+                <ScalarProperty Name="TeaSerID" ColumnName="TeaSerID" />
+                <ScalarProperty Name="TeaName" ColumnName="TeaName" />
+                <ScalarProperty Name="TeaPhoto" ColumnName="TeaPhoto" />
+                <ScalarProperty Name="SpecialtyID" ColumnName="SpecialtyID" />
+                <ScalarProperty Name="SPEID" ColumnName="SPEID" />
+                <ScalarProperty Name="SpecName" ColumnName="SpecName" />
+                <ScalarProperty Name="GRAID" ColumnName="GRAID" />
+                <ScalarProperty Name="GradeName" ColumnName="GradeName" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="IsMust" ColumnName="IsMust" />
+                <ScalarProperty Name="LoopType" ColumnName="LoopType" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="RequiredTime" ColumnName="RequiredTime" />
+                <ScalarProperty Name="Max" ColumnName="Max" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DTime" ColumnName="DTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VStudentSelectedCourseItem">
+            <EntityTypeMapping TypeName="DBSchoolCourseModel.VStudentSelectedCourseItem">
+              <MappingFragment StoreEntitySet="VStudentSelectedCourseItem">
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CourseTime" ColumnName="CourseTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+                <ScalarProperty Name="NDay" ColumnName="NDay" />
+                <ScalarProperty Name="CourseSerID" ColumnName="CourseSerID" />
+                <ScalarProperty Name="StuName" ColumnName="StuName" />
+                <ScalarProperty Name="StuPhoto" ColumnName="StuPhoto" />
+                <ScalarProperty Name="TeaName" ColumnName="TeaName" />
+                <ScalarProperty Name="TeaPhoto" ColumnName="TeaPhoto" />
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="SchYear" ColumnName="SchYear" />
+                <ScalarProperty Name="SchTerm" ColumnName="SchTerm" />
+                <ScalarProperty Name="TeaSerID" ColumnName="TeaSerID" />
+                <ScalarProperty Name="SpecialtyID" ColumnName="SpecialtyID" />
+                <ScalarProperty Name="SPEID" ColumnName="SPEID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="GRAID" ColumnName="GRAID" />
+                <ScalarProperty Name="Max" ColumnName="Max" />
+                <ScalarProperty Name="LoopType" ColumnName="LoopType" />
+                <ScalarProperty Name="RequiredTime" ColumnName="RequiredTime" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SpecName" ColumnName="SpecName" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VTeaCourse">
+            <EntityTypeMapping TypeName="DBSchoolCourseModel.VTeaCourse">
+              <MappingFragment StoreEntitySet="VTeaCourse">
+                <ScalarProperty Name="SerID" ColumnName="SerID" />
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="SchYear" ColumnName="SchYear" />
+                <ScalarProperty Name="SchTerm" ColumnName="SchTerm" />
+                <ScalarProperty Name="TeaSerID" ColumnName="TeaSerID" />
+                <ScalarProperty Name="TeaName" ColumnName="TeaName" />
+                <ScalarProperty Name="SpecialtyID" ColumnName="SpecialtyID" />
+                <ScalarProperty Name="SPEID" ColumnName="SPEID" />
+                <ScalarProperty Name="SpecName" ColumnName="SpecName" />
+                <ScalarProperty Name="GRAID" ColumnName="GRAID" />
+                <ScalarProperty Name="GradeName" ColumnName="GradeName" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="SUBID" ColumnName="SUBID" />
+                <ScalarProperty Name="Max" ColumnName="Max" />
+                <ScalarProperty Name="LoopType" ColumnName="LoopType" />
+                <ScalarProperty Name="RequiredTime" ColumnName="RequiredTime" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsMust" ColumnName="IsMust" />
+                <ScalarProperty Name="DTime" ColumnName="DTime" />
+                <ScalarProperty Name="ClassSerID" ColumnName="ClassSerID" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="ClassNumber" ColumnName="ClassNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VTeaCourseItemClass">
+            <EntityTypeMapping TypeName="DBSchoolCourseModel.VTeaCourseItemClass">
+              <MappingFragment StoreEntitySet="VTeaCourseItemClass">
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CourseTime" ColumnName="CourseTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+                <ScalarProperty Name="NDay" ColumnName="NDay" />
+                <ScalarProperty Name="CourseSerID" ColumnName="CourseSerID" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="ClassNumber" ColumnName="ClassNumber" />
+                <ScalarProperty Name="TeaName" ColumnName="TeaName" />
+                <ScalarProperty Name="TeaSerID" ColumnName="TeaSerID" />
+                <ScalarProperty Name="TeaPhoto" ColumnName="TeaPhoto" />
+                <ScalarProperty Name="SchYear" ColumnName="SchYear" />
+                <ScalarProperty Name="SchTerm" ColumnName="SchTerm" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="Max" ColumnName="Max" />
+                <ScalarProperty Name="LoopType" ColumnName="LoopType" />
+                <ScalarProperty Name="RequiredTime" ColumnName="RequiredTime" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SpecialtyID" ColumnName="SpecialtyID" />
+                <ScalarProperty Name="SpecName" ColumnName="SpecName" />
+                <ScalarProperty Name="SPEID" ColumnName="SPEID" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="SUBID" ColumnName="SUBID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,2329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="App_Calendars">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="200" />
+          <Property Name="Location" Type="varchar" MaxLength="200" />
+          <Property Name="MasterId" Type="float" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="2000" />
+          <Property Name="CalendarType" Type="int" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" Nullable="false" />
+          <Property Name="IsAllDayEvent" Type="bit" Nullable="false" />
+          <Property Name="HasAttachment" Type="bit" Nullable="false" />
+          <Property Name="Category" Type="int" Nullable="false" />
+          <Property Name="InstanceType" Type="int" Nullable="false" />
+          <Property Name="Attendees" Type="varchar" MaxLength="50" />
+          <Property Name="AttendeeNames" Type="varchar" MaxLength="50" />
+          <Property Name="OtherAttendee" Type="varchar" MaxLength="50" />
+          <Property Name="UPAccount" Type="bigint" Nullable="false" />
+          <Property Name="UPName" Type="varchar" MaxLength="50" />
+          <Property Name="UPTime" Type="datetime" Nullable="false" />
+          <Property Name="RecurringRule" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="app_version">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="appid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="os" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="vcode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="filesize" Type="int" Nullable="false" />
+          <Property Name="dtime" Type="datetime" Nullable="false" />
+          <Property Name="appdesc" Type="text" />
+          <Property Name="fileurl" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Base_Admin">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="bigint" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tel" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Addr" Type="nvarchar" MaxLength="150" />
+          <Property Name="DTime" Type="datetime" Nullable="false" />
+          <Property Name="IP" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Base_Config">
+          <Key>
+            <PropertyRef Name="HostAndPort" />
+          </Key>
+          <Property Name="DepID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HostAndPort" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TemplateName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Copyright" Type="ntext" />
+          <Property Name="Blocking" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Base_DepInfo">
+          <Key>
+            <PropertyRef Name="DepID" />
+          </Key>
+          <Property Name="DepID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DepName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="DepCode" Type="varchar" MaxLength="50" />
+          <Property Name="NameEn" Type="varchar" MaxLength="200" />
+          <Property Name="Addr" Type="varchar" MaxLength="300" />
+          <Property Name="TypeCode" Type="varchar" MaxLength="50" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="50" />
+          <Property Name="Tel" Type="varchar" MaxLength="50" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="WebHome" Type="varchar" MaxLength="200" />
+          <Property Name="step" Type="int" />
+          <Property Name="Desktop" Type="varchar" MaxLength="50" />
+          <Property Name="DeskStyle" Type="varchar" MaxLength="500" />
+          <Property Name="OrgCode" Type="varchar" MaxLength="50" />
+          <Property Name="SchHistory" Type="varchar" MaxLength="2000" />
+          <Property Name="HPSerID" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Base_DepPlug">
+          <Key>
+            <PropertyRef Name="PlugID" />
+            <PropertyRef Name="DepID" />
+          </Key>
+          <Property Name="PlugID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DepID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Permission" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Base_Group">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DepID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserType" Type="bigint" Nullable="false" />
+          <Property Name="GName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GDes" Type="varchar" MaxLength="500" />
+          <Property Name="GMgr" Type="bigint" />
+          <Property Name="GMgrName" Type="varchar" MaxLength="50" />
+          <Property Name="GDate" Type="datetime" Nullable="false" />
+          <Property Name="IsOpen" Type="tinyint" Nullable="false" />
+          <Property Name="IsRole" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Base_GroupPlug">
+          <Key>
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="PlugID" />
+          </Key>
+          <Property Name="DepID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GroupID" Type="bigint" Nullable="false" />
+          <Property Name="PlugID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Permission" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Base_GroupUser">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="GroupID" Type="bigint" Nullable="false" />
+          <Property Name="UID" Type="bigint" Nullable="false" />
+          <Property Name="Switch" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Base_MyPlug">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="PlugID" />
+          </Key>
+          <Property Name="UID" Type="bigint" Nullable="false" />
+          <Property Name="DepID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GroupID" Type="bigint" Nullable="false" />
+          <Property Name="PlugID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Permission" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Base_Plug">
+          <Key>
+            <PropertyRef Name="PlugID" />
+          </Key>
+          <Property Name="PlugID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParentID" Type="varchar" MaxLength="50" />
+          <Property Name="Permission" Type="bigint" Nullable="false" />
+          <Property Name="DskType" Type="varchar" MaxLength="50" />
+          <Property Name="PSort" Type="int" Nullable="false" />
+          <Property Name="PName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PUrl" Type="varchar" MaxLength="100" />
+          <Property Name="PCode" Type="varchar" MaxLength="100" />
+          <Property Name="OpenType" Type="varchar" MaxLength="50" />
+          <Property Name="PIcon" Type="varchar" MaxLength="100" />
+          <Property Name="PDes" Type="nvarchar" MaxLength="1000" />
+          <Property Name="UserType" Type="bigint" Nullable="false" />
+          <Property Name="ChildrenNum" Type="tinyint" Nullable="false" />
+          <Property Name="Depth" Type="tinyint" Nullable="false" />
+          <Property Name="IsStop" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Base_PlugSet">
+          <Key>
+            <PropertyRef Name="SortID" />
+            <PropertyRef Name="PlugID" />
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="SortID" Type="bigint" Nullable="false" />
+          <Property Name="PlugID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UID" Type="bigint" Nullable="false" />
+          <Property Name="PIndex" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DskType" Type="varchar" MaxLength="50" />
+          <Property Name="UseTimes" Type="bigint" Nullable="false" />
+          <Property Name="IsUse" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Base_PlugSort">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UID" Type="bigint" Nullable="false" />
+          <Property Name="SIndex" Type="int" Nullable="false" />
+          <Property Name="DskType" Type="varchar" MaxLength="50" />
+          <Property Name="IsShow" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Base_UpFiles">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Guid" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="UploadKey" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FilePath" Type="varchar" MaxLength="255" />
+          <Property Name="FileSize" Type="int" />
+          <Property Name="FileType" Type="varchar" MaxLength="10" />
+          <Property Name="UID" Type="bigint" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="FileServer" Type="varchar" MaxLength="20" />
+          <Property Name="IsRemote" Type="tinyint" Nullable="false" />
+          <Property Name="DTime" Type="datetime" Nullable="false" />
+          <Property Name="IP" Type="varchar" MaxLength="50" />
+          <Property Name="ZT" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tFile">
+          <Key>
+            <PropertyRef Name="file_uuid" />
+          </Key>
+          <Property Name="file_uuid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="folder_uuid" Type="nvarchar" MaxLength="50" />
+          <Property Name="file_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="file_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="file_descp" Type="nvarchar" MaxLength="500" />
+          <Property Name="file_path" Type="nvarchar" MaxLength="100" />
+          <Property Name="file_url" Type="nvarchar" MaxLength="200" />
+          <Property Name="file_md5" Type="nvarchar" MaxLength="50" />
+          <Property Name="file_blob" Type="image" />
+          <Property Name="file_size" Type="int" />
+          <Property Name="file_owner" Type="bigint" Nullable="false" />
+          <Property Name="file_creator" Type="bigint" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="modify_time" Type="datetime" />
+          <Property Name="valid" Type="bit" Nullable="false" />
+          <Property Name="zip" Type="bit" />
+        </EntityType>
+        <EntityType Name="tFolder">
+          <Key>
+            <PropertyRef Name="folder_id" />
+          </Key>
+          <Property Name="folder_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="folder_uuid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="parent_uuid" Type="nvarchar" MaxLength="50" />
+          <Property Name="folder_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="folder_descp" Type="nvarchar" MaxLength="500" />
+          <Property Name="folder_type" Type="int" />
+          <Property Name="folder_owner" Type="bigint" />
+          <Property Name="folder_creator" Type="bigint" />
+          <Property Name="create_time" Type="datetime" />
+          <Property Name="modify_time" Type="datetime" />
+          <Property Name="valid" Type="bit" />
+        </EntityType>
+        <EntityType Name="tUser_ex">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="bigint" Nullable="false" />
+          <Property Name="Accout" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Switch" Type="tinyint" Nullable="false" />
+          <Property Name="DefaultApp" Type="varchar" MaxLength="500" />
+          <Property Name="DepID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserType" Type="bigint" Nullable="false" />
+          <Property Name="UserID2" Type="varchar" MaxLength="50" />
+          <Property Name="UserID3" Type="varchar" MaxLength="50" />
+          <Property Name="Photo" Type="varchar" MaxLength="200" />
+          <Property Name="UserSex" Type="int" Nullable="false" />
+          <Property Name="UserTel" Type="varchar" MaxLength="50" />
+          <Property Name="UserBirthday" Type="datetime" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKBase.dbo.WxAppKey”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="WxAppKey">
+          <Key>
+            <PropertyRef Name="appid" />
+            <PropertyRef Name="akid" />
+            <PropertyRef Name="uid" />
+            <PropertyRef Name="dtime" />
+            <PropertyRef Name="exptime" />
+            <PropertyRef Name="state" />
+          </Key>
+          <Property Name="appid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="akid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="uid" Type="int" Nullable="false" />
+          <Property Name="dtime" Type="datetime" Nullable="false" />
+          <Property Name="exptime" Type="datetime" Nullable="false" />
+          <Property Name="state" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WxApplication">
+          <Key>
+            <PropertyRef Name="appid" />
+          </Key>
+          <Property Name="appid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="appname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="appdesc" Type="text" />
+          <Property Name="appicon" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="dtime" Type="datetime" Nullable="false" />
+          <Property Name="vsupport" Type="int" Nullable="false" />
+          <Property Name="state" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WxToken">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="bigint" Nullable="false" />
+          <Property Name="token" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="loginnum" Type="int" Nullable="false" />
+          <Property Name="lastlogintime" Type="datetime" Nullable="false" />
+          <Property Name="logintime" Type="datetime" Nullable="false" />
+          <Property Name="timestamp" Type="bigint" Nullable="false" />
+          <Property Name="timediff" Type="bigint" Nullable="false" />
+          <Property Name="stauts" Type="int" Nullable="false" />
+          <Property Name="vid" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKBase.dbo.Base_VAdmin”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="Base_VAdmin">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="UserType" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="Switch" />
+            <PropertyRef Name="DTime" />
+          </Key>
+          <Property Name="UID" Type="bigint" Nullable="false" />
+          <Property Name="Accout" Type="varchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserType" Type="bigint" Nullable="false" />
+          <Property Name="DefaultApp" Type="varchar" MaxLength="500" />
+          <Property Name="DepID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Switch" Type="tinyint" Nullable="false" />
+          <Property Name="Tel" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Addr" Type="nvarchar" MaxLength="150" />
+          <Property Name="DTime" Type="datetime" Nullable="false" />
+          <Property Name="IP" Type="varchar" MaxLength="20" />
+          <Property Name="DepName" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKBase.dbo.Base_VDepPlug”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="Base_VDepPlug">
+          <Key>
+            <PropertyRef Name="DepName" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="PlugID" />
+            <PropertyRef Name="Permission" />
+          </Key>
+          <Property Name="DepName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="DepID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PlugID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PIcon" Type="varchar" MaxLength="100" />
+          <Property Name="PName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PDes" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PUrl" Type="varchar" MaxLength="100" />
+          <Property Name="ParentID" Type="varchar" MaxLength="50" />
+          <Property Name="ChildrenNum" Type="tinyint" />
+          <Property Name="Depth" Type="tinyint" />
+          <Property Name="OpenType" Type="varchar" MaxLength="50" />
+          <Property Name="PCode" Type="varchar" MaxLength="100" />
+          <Property Name="DskType" Type="varchar" MaxLength="50" />
+          <Property Name="UserType" Type="bigint" />
+          <Property Name="Permission" Type="bigint" Nullable="false" />
+          <Property Name="IsStop" Type="tinyint" />
+          <Property Name="PSort" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKBase.dbo.Base_VGroupPlug”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="Base_VGroupPlug">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="PlugID" />
+            <PropertyRef Name="PName" />
+            <PropertyRef Name="ChildrenNum" />
+            <PropertyRef Name="Depth" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="Permission" />
+            <PropertyRef Name="PSort" />
+            <PropertyRef Name="UserType" />
+            <PropertyRef Name="IsStop" />
+            <PropertyRef Name="GName" />
+            <PropertyRef Name="IsRole" />
+            <PropertyRef Name="GroupUserType" />
+          </Key>
+          <Property Name="GroupID" Type="bigint" Nullable="false" />
+          <Property Name="PlugID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PIcon" Type="varchar" MaxLength="100" />
+          <Property Name="PName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PCode" Type="varchar" MaxLength="100" />
+          <Property Name="PDes" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PUrl" Type="varchar" MaxLength="100" />
+          <Property Name="ParentID" Type="varchar" MaxLength="50" />
+          <Property Name="ChildrenNum" Type="tinyint" Nullable="false" />
+          <Property Name="Depth" Type="tinyint" Nullable="false" />
+          <Property Name="OpenType" Type="varchar" MaxLength="50" />
+          <Property Name="DepID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Permission" Type="bigint" Nullable="false" />
+          <Property Name="PSort" Type="int" Nullable="false" />
+          <Property Name="DskType" Type="varchar" MaxLength="50" />
+          <Property Name="UserType" Type="bigint" Nullable="false" />
+          <Property Name="IsStop" Type="tinyint" Nullable="false" />
+          <Property Name="GName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsRole" Type="bit" Nullable="false" />
+          <Property Name="GroupUserType" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKBase.dbo.Base_VGroupUser”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="Base_VGroupUser">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="GroupID" Type="bigint" />
+          <Property Name="UID" Type="bigint" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DepID" Type="varchar" MaxLength="50" />
+          <Property Name="UserType" Type="bigint" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKBase.dbo.Base_VMyPlug”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="Base_VMyPlug">
+          <Key>
+            <PropertyRef Name="PlugID" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="PName" />
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="Depth" />
+            <PropertyRef Name="ChildrenNum" />
+            <PropertyRef Name="Permission" />
+            <PropertyRef Name="UserType" />
+            <PropertyRef Name="PSort" />
+            <PropertyRef Name="IsStop" />
+          </Key>
+          <Property Name="PlugID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DepID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GroupID" Type="bigint" Nullable="false" />
+          <Property Name="PIcon" Type="varchar" MaxLength="100" />
+          <Property Name="PName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PDes" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PUrl" Type="varchar" MaxLength="100" />
+          <Property Name="UID" Type="bigint" Nullable="false" />
+          <Property Name="ParentID" Type="varchar" MaxLength="50" />
+          <Property Name="Depth" Type="tinyint" Nullable="false" />
+          <Property Name="OpenType" Type="varchar" MaxLength="50" />
+          <Property Name="PCode" Type="varchar" MaxLength="100" />
+          <Property Name="DskType" Type="varchar" MaxLength="50" />
+          <Property Name="ChildrenNum" Type="tinyint" Nullable="false" />
+          <Property Name="Permission" Type="bigint" Nullable="false" />
+          <Property Name="UserType" Type="bigint" Nullable="false" />
+          <Property Name="PSort" Type="int" Nullable="false" />
+          <Property Name="IsStop" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKBase.dbo.Base_VPlugSet”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="Base_VPlugSet">
+          <Key>
+            <PropertyRef Name="PlugID" />
+            <PropertyRef Name="PName" />
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="SortID" />
+            <PropertyRef Name="IsUse" />
+            <PropertyRef Name="IsStop" />
+            <PropertyRef Name="ChildrenNum" />
+            <PropertyRef Name="Depth" />
+            <PropertyRef Name="SortName" />
+          </Key>
+          <Property Name="PlugID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PUrl" Type="varchar" MaxLength="100" />
+          <Property Name="UID" Type="bigint" Nullable="false" />
+          <Property Name="ParentID" Type="varchar" MaxLength="50" />
+          <Property Name="DskType" Type="varchar" MaxLength="50" />
+          <Property Name="SortID" Type="bigint" Nullable="false" />
+          <Property Name="IsUse" Type="tinyint" Nullable="false" />
+          <Property Name="PIcon" Type="varchar" MaxLength="100" />
+          <Property Name="PDes" Type="nvarchar" MaxLength="1000" />
+          <Property Name="IsStop" Type="tinyint" Nullable="false" />
+          <Property Name="PIndex" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ChildrenNum" Type="tinyint" Nullable="false" />
+          <Property Name="Depth" Type="tinyint" Nullable="false" />
+          <Property Name="OpenType" Type="varchar" MaxLength="50" />
+          <Property Name="SortName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKBase.dbo.VConfig”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VConfig">
+          <Key>
+            <PropertyRef Name="HostAndPort" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="TemplateName" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="Blocking" />
+            <PropertyRef Name="DepName" />
+          </Key>
+          <Property Name="HostAndPort" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DepID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TemplateName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Copyright" Type="ntext" />
+          <Property Name="Blocking" Type="tinyint" Nullable="false" />
+          <Property Name="DepName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="NameEn" Type="varchar" MaxLength="200" />
+          <Property Name="Addr" Type="varchar" MaxLength="300" />
+          <Property Name="TypeCode" Type="varchar" MaxLength="50" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="50" />
+          <Property Name="Tel" Type="varchar" MaxLength="50" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="WebHome" Type="varchar" MaxLength="200" />
+          <Property Name="Step" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKBase.dbo.VGroup”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VGroup">
+          <Key>
+            <PropertyRef Name="SERID" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="DepName" />
+            <PropertyRef Name="GCode" />
+            <PropertyRef Name="UserType" />
+            <PropertyRef Name="GName" />
+            <PropertyRef Name="GDate" />
+            <PropertyRef Name="IsOpen" />
+            <PropertyRef Name="IsRole" />
+          </Key>
+          <Property Name="SERID" Type="bigint" Nullable="false" />
+          <Property Name="DepID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DepName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="NameEn" Type="varchar" MaxLength="200" />
+          <Property Name="GCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserType" Type="bigint" Nullable="false" />
+          <Property Name="GName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GDes" Type="varchar" MaxLength="500" />
+          <Property Name="GMgr" Type="bigint" />
+          <Property Name="GMgrName" Type="varchar" MaxLength="50" />
+          <Property Name="GDate" Type="datetime" Nullable="false" />
+          <Property Name="IsOpen" Type="tinyint" Nullable="false" />
+          <Property Name="IsRole" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKBase.dbo.VUser”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VUser">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="UserType" />
+            <PropertyRef Name="Switch" />
+            <PropertyRef Name="pwd" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Personmsg" />
+          </Key>
+          <Property Name="UID" Type="bigint" Nullable="false" />
+          <Property Name="DepID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserType" Type="bigint" Nullable="false" />
+          <Property Name="Accout" Type="varchar" MaxLength="50" />
+          <Property Name="Switch" Type="tinyint" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Photo" Type="varchar" MaxLength="200" />
+          <Property Name="DefaultApp" Type="varchar" MaxLength="500" />
+          <Property Name="UserID2" Type="varchar" MaxLength="50" />
+          <Property Name="UserID3" Type="varchar" MaxLength="50" />
+          <Property Name="pwd" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Personmsg" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Logintime" Type="datetime" />
+          <Property Name="Logouttime" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_app_version_WxApplication">
+          <End Role="WxApplication" Type="Self.WxApplication" Multiplicity="1" />
+          <End Role="app_version" Type="Self.app_version" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WxApplication">
+              <PropertyRef Name="appid" />
+            </Principal>
+            <Dependent Role="app_version">
+              <PropertyRef Name="appid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_Admin_tUser_ex">
+          <End Role="tUser_ex" Type="Self.tUser_ex" Multiplicity="1" />
+          <End Role="Base_Admin" Type="Self.Base_Admin" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tUser_ex">
+              <PropertyRef Name="UID" />
+            </Principal>
+            <Dependent Role="Base_Admin">
+              <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_DepPlug_Base_DepInfo">
+          <End Role="Base_DepInfo" Type="Self.Base_DepInfo" Multiplicity="1" />
+          <End Role="Base_DepPlug" Type="Self.Base_DepPlug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Base_DepInfo">
+              <PropertyRef Name="DepID" />
+            </Principal>
+            <Dependent Role="Base_DepPlug">
+              <PropertyRef Name="DepID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_DepPlug_Base_Plug">
+          <End Role="Base_Plug" Type="Self.Base_Plug" Multiplicity="1" />
+          <End Role="Base_DepPlug" Type="Self.Base_DepPlug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Base_Plug">
+              <PropertyRef Name="PlugID" />
+            </Principal>
+            <Dependent Role="Base_DepPlug">
+              <PropertyRef Name="PlugID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_GroupPlug_Base_Group">
+          <End Role="Base_Group" Type="Self.Base_Group" Multiplicity="1" />
+          <End Role="Base_GroupPlug" Type="Self.Base_GroupPlug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Base_Group">
+              <PropertyRef Name="SERID" />
+            </Principal>
+            <Dependent Role="Base_GroupPlug">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_GroupPlug_Base_Plug">
+          <End Role="Base_Plug" Type="Self.Base_Plug" Multiplicity="1" />
+          <End Role="Base_GroupPlug" Type="Self.Base_GroupPlug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Base_Plug">
+              <PropertyRef Name="PlugID" />
+            </Principal>
+            <Dependent Role="Base_GroupPlug">
+              <PropertyRef Name="PlugID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_GroupUser_Base_Group">
+          <End Role="Base_Group" Type="Self.Base_Group" Multiplicity="1" />
+          <End Role="Base_GroupUser" Type="Self.Base_GroupUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Base_Group">
+              <PropertyRef Name="SERID" />
+            </Principal>
+            <Dependent Role="Base_GroupUser">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_GroupUser_tUser_ex">
+          <End Role="tUser_ex" Type="Self.tUser_ex" Multiplicity="1" />
+          <End Role="Base_GroupUser" Type="Self.Base_GroupUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tUser_ex">
+              <PropertyRef Name="UID" />
+            </Principal>
+            <Dependent Role="Base_GroupUser">
+              <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_MyPlug_Base_Group">
+          <End Role="Base_Group" Type="Self.Base_Group" Multiplicity="1" />
+          <End Role="Base_MyPlug" Type="Self.Base_MyPlug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Base_Group">
+              <PropertyRef Name="SERID" />
+            </Principal>
+            <Dependent Role="Base_MyPlug">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_MyPlug_Base_Plug">
+          <End Role="Base_Plug" Type="Self.Base_Plug" Multiplicity="1" />
+          <End Role="Base_MyPlug" Type="Self.Base_MyPlug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Base_Plug">
+              <PropertyRef Name="PlugID" />
+            </Principal>
+            <Dependent Role="Base_MyPlug">
+              <PropertyRef Name="PlugID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_MyPlug_tUser_ex">
+          <End Role="tUser_ex" Type="Self.tUser_ex" Multiplicity="1" />
+          <End Role="Base_MyPlug" Type="Self.Base_MyPlug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tUser_ex">
+              <PropertyRef Name="UID" />
+            </Principal>
+            <Dependent Role="Base_MyPlug">
+              <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_PlugSet_Base_Plug">
+          <End Role="Base_Plug" Type="Self.Base_Plug" Multiplicity="1" />
+          <End Role="Base_PlugSet" Type="Self.Base_PlugSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Base_Plug">
+              <PropertyRef Name="PlugID" />
+            </Principal>
+            <Dependent Role="Base_PlugSet">
+              <PropertyRef Name="PlugID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_PlugSet_tUser_ex">
+          <End Role="tUser_ex" Type="Self.tUser_ex" Multiplicity="1" />
+          <End Role="Base_PlugSet" Type="Self.Base_PlugSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tUser_ex">
+              <PropertyRef Name="UID" />
+            </Principal>
+            <Dependent Role="Base_PlugSet">
+              <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WxAppKey_WxApplication">
+          <End Role="WxApplication" Type="Self.WxApplication" Multiplicity="1" />
+          <End Role="WxAppKey" Type="Self.WxAppKey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WxApplication">
+              <PropertyRef Name="appid" />
+            </Principal>
+            <Dependent Role="WxAppKey">
+              <PropertyRef Name="appid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBBaseModelStoreContainer">
+          <EntitySet Name="App_Calendars" EntityType="Self.App_Calendars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="app_version" EntityType="Self.app_version" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Base_Admin" EntityType="Self.Base_Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Base_Config" EntityType="Self.Base_Config" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Base_DepInfo" EntityType="Self.Base_DepInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Base_DepPlug" EntityType="Self.Base_DepPlug" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Base_Group" EntityType="Self.Base_Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Base_GroupPlug" EntityType="Self.Base_GroupPlug" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Base_GroupUser" EntityType="Self.Base_GroupUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Base_MyPlug" EntityType="Self.Base_MyPlug" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Base_Plug" EntityType="Self.Base_Plug" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Base_PlugSet" EntityType="Self.Base_PlugSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Base_PlugSort" EntityType="Self.Base_PlugSort" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Base_UpFiles" EntityType="Self.Base_UpFiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tFile" EntityType="Self.tFile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tFolder" EntityType="Self.tFolder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tUser_ex" EntityType="Self.tUser_ex" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WxApplication" EntityType="Self.WxApplication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WxToken" EntityType="Self.WxToken" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WxAppKey" EntityType="Self.WxAppKey" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[WxAppKey].[appid] AS [appid], 
+[WxAppKey].[akid] AS [akid], 
+[WxAppKey].[uid] AS [uid], 
+[WxAppKey].[dtime] AS [dtime], 
+[WxAppKey].[exptime] AS [exptime], 
+[WxAppKey].[state] AS [state]
+FROM [dbo].[WxAppKey] AS [WxAppKey]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Base_VAdmin" EntityType="Self.Base_VAdmin" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Base_VAdmin].[UID] AS [UID], 
+[Base_VAdmin].[Accout] AS [Accout], 
+[Base_VAdmin].[UserName] AS [UserName], 
+[Base_VAdmin].[UserType] AS [UserType], 
+[Base_VAdmin].[DefaultApp] AS [DefaultApp], 
+[Base_VAdmin].[DepID] AS [DepID], 
+[Base_VAdmin].[Switch] AS [Switch], 
+[Base_VAdmin].[Tel] AS [Tel], 
+[Base_VAdmin].[Email] AS [Email], 
+[Base_VAdmin].[Addr] AS [Addr], 
+[Base_VAdmin].[DTime] AS [DTime], 
+[Base_VAdmin].[IP] AS [IP], 
+[Base_VAdmin].[DepName] AS [DepName]
+FROM [dbo].[Base_VAdmin] AS [Base_VAdmin]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Base_VDepPlug" EntityType="Self.Base_VDepPlug" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Base_VDepPlug].[DepName] AS [DepName], 
+[Base_VDepPlug].[DepID] AS [DepID], 
+[Base_VDepPlug].[PlugID] AS [PlugID], 
+[Base_VDepPlug].[PIcon] AS [PIcon], 
+[Base_VDepPlug].[PName] AS [PName], 
+[Base_VDepPlug].[PDes] AS [PDes], 
+[Base_VDepPlug].[PUrl] AS [PUrl], 
+[Base_VDepPlug].[ParentID] AS [ParentID], 
+[Base_VDepPlug].[ChildrenNum] AS [ChildrenNum], 
+[Base_VDepPlug].[Depth] AS [Depth], 
+[Base_VDepPlug].[OpenType] AS [OpenType], 
+[Base_VDepPlug].[PCode] AS [PCode], 
+[Base_VDepPlug].[DskType] AS [DskType], 
+[Base_VDepPlug].[UserType] AS [UserType], 
+[Base_VDepPlug].[Permission] AS [Permission], 
+[Base_VDepPlug].[IsStop] AS [IsStop], 
+[Base_VDepPlug].[PSort] AS [PSort]
+FROM [dbo].[Base_VDepPlug] AS [Base_VDepPlug]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Base_VGroupPlug" EntityType="Self.Base_VGroupPlug" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Base_VGroupPlug].[GroupID] AS [GroupID], 
+[Base_VGroupPlug].[PlugID] AS [PlugID], 
+[Base_VGroupPlug].[PIcon] AS [PIcon], 
+[Base_VGroupPlug].[PName] AS [PName], 
+[Base_VGroupPlug].[PCode] AS [PCode], 
+[Base_VGroupPlug].[PDes] AS [PDes], 
+[Base_VGroupPlug].[PUrl] AS [PUrl], 
+[Base_VGroupPlug].[ParentID] AS [ParentID], 
+[Base_VGroupPlug].[ChildrenNum] AS [ChildrenNum], 
+[Base_VGroupPlug].[Depth] AS [Depth], 
+[Base_VGroupPlug].[OpenType] AS [OpenType], 
+[Base_VGroupPlug].[DepID] AS [DepID], 
+[Base_VGroupPlug].[Permission] AS [Permission], 
+[Base_VGroupPlug].[PSort] AS [PSort], 
+[Base_VGroupPlug].[DskType] AS [DskType], 
+[Base_VGroupPlug].[UserType] AS [UserType], 
+[Base_VGroupPlug].[IsStop] AS [IsStop], 
+[Base_VGroupPlug].[GName] AS [GName], 
+[Base_VGroupPlug].[IsRole] AS [IsRole], 
+[Base_VGroupPlug].[GroupUserType] AS [GroupUserType]
+FROM [dbo].[Base_VGroupPlug] AS [Base_VGroupPlug]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Base_VGroupUser" EntityType="Self.Base_VGroupUser" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Base_VGroupUser].[GroupID] AS [GroupID], 
+[Base_VGroupUser].[UID] AS [UID], 
+[Base_VGroupUser].[UserName] AS [UserName], 
+[Base_VGroupUser].[DepID] AS [DepID], 
+[Base_VGroupUser].[UserType] AS [UserType]
+FROM [dbo].[Base_VGroupUser] AS [Base_VGroupUser]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Base_VMyPlug" EntityType="Self.Base_VMyPlug" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Base_VMyPlug].[PlugID] AS [PlugID], 
+[Base_VMyPlug].[DepID] AS [DepID], 
+[Base_VMyPlug].[GroupID] AS [GroupID], 
+[Base_VMyPlug].[PIcon] AS [PIcon], 
+[Base_VMyPlug].[PName] AS [PName], 
+[Base_VMyPlug].[PDes] AS [PDes], 
+[Base_VMyPlug].[PUrl] AS [PUrl], 
+[Base_VMyPlug].[UID] AS [UID], 
+[Base_VMyPlug].[ParentID] AS [ParentID], 
+[Base_VMyPlug].[Depth] AS [Depth], 
+[Base_VMyPlug].[OpenType] AS [OpenType], 
+[Base_VMyPlug].[PCode] AS [PCode], 
+[Base_VMyPlug].[DskType] AS [DskType], 
+[Base_VMyPlug].[ChildrenNum] AS [ChildrenNum], 
+[Base_VMyPlug].[Permission] AS [Permission], 
+[Base_VMyPlug].[UserType] AS [UserType], 
+[Base_VMyPlug].[PSort] AS [PSort], 
+[Base_VMyPlug].[IsStop] AS [IsStop]
+FROM [dbo].[Base_VMyPlug] AS [Base_VMyPlug]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Base_VPlugSet" EntityType="Self.Base_VPlugSet" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Base_VPlugSet].[PlugID] AS [PlugID], 
+[Base_VPlugSet].[PName] AS [PName], 
+[Base_VPlugSet].[PUrl] AS [PUrl], 
+[Base_VPlugSet].[UID] AS [UID], 
+[Base_VPlugSet].[ParentID] AS [ParentID], 
+[Base_VPlugSet].[DskType] AS [DskType], 
+[Base_VPlugSet].[SortID] AS [SortID], 
+[Base_VPlugSet].[IsUse] AS [IsUse], 
+[Base_VPlugSet].[PIcon] AS [PIcon], 
+[Base_VPlugSet].[PDes] AS [PDes], 
+[Base_VPlugSet].[IsStop] AS [IsStop], 
+[Base_VPlugSet].[PIndex] AS [PIndex], 
+[Base_VPlugSet].[ChildrenNum] AS [ChildrenNum], 
+[Base_VPlugSet].[Depth] AS [Depth], 
+[Base_VPlugSet].[OpenType] AS [OpenType], 
+[Base_VPlugSet].[SortName] AS [SortName]
+FROM [dbo].[Base_VPlugSet] AS [Base_VPlugSet]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VConfig" EntityType="Self.VConfig" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[VConfig].[HostAndPort] AS [HostAndPort], 
+[VConfig].[DepID] AS [DepID], 
+[VConfig].[TemplateName] AS [TemplateName], 
+[VConfig].[Title] AS [Title], 
+[VConfig].[Copyright] AS [Copyright], 
+[VConfig].[Blocking] AS [Blocking], 
+[VConfig].[DepName] AS [DepName], 
+[VConfig].[NameEn] AS [NameEn], 
+[VConfig].[Addr] AS [Addr], 
+[VConfig].[TypeCode] AS [TypeCode], 
+[VConfig].[ZipCode] AS [ZipCode], 
+[VConfig].[Tel] AS [Tel], 
+[VConfig].[Fax] AS [Fax], 
+[VConfig].[Email] AS [Email], 
+[VConfig].[WebHome] AS [WebHome], 
+[VConfig].[Step] AS [Step]
+FROM [dbo].[VConfig] AS [VConfig]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VGroup" EntityType="Self.VGroup" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[VGroup].[SERID] AS [SERID], 
+[VGroup].[DepID] AS [DepID], 
+[VGroup].[DepName] AS [DepName], 
+[VGroup].[NameEn] AS [NameEn], 
+[VGroup].[GCode] AS [GCode], 
+[VGroup].[UserType] AS [UserType], 
+[VGroup].[GName] AS [GName], 
+[VGroup].[GDes] AS [GDes], 
+[VGroup].[GMgr] AS [GMgr], 
+[VGroup].[GMgrName] AS [GMgrName], 
+[VGroup].[GDate] AS [GDate], 
+[VGroup].[IsOpen] AS [IsOpen], 
+[VGroup].[IsRole] AS [IsRole]
+FROM [dbo].[VGroup] AS [VGroup]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VUser" EntityType="Self.VUser" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[VUser].[UID] AS [UID], 
+[VUser].[DepID] AS [DepID], 
+[VUser].[UserType] AS [UserType], 
+[VUser].[Accout] AS [Accout], 
+[VUser].[Switch] AS [Switch], 
+[VUser].[Email] AS [Email], 
+[VUser].[Photo] AS [Photo], 
+[VUser].[DefaultApp] AS [DefaultApp], 
+[VUser].[UserID2] AS [UserID2], 
+[VUser].[UserID3] AS [UserID3], 
+[VUser].[pwd] AS [pwd], 
+[VUser].[UserName] AS [UserName], 
+[VUser].[Personmsg] AS [Personmsg], 
+[VUser].[Logintime] AS [Logintime], 
+[VUser].[Logouttime] AS [Logouttime]
+FROM [dbo].[VUser] AS [VUser]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_app_version_WxApplication" Association="Self.FK_app_version_WxApplication">
+            <End Role="WxApplication" EntitySet="WxApplication" />
+            <End Role="app_version" EntitySet="app_version" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_Admin_tUser_ex" Association="Self.FK_Base_Admin_tUser_ex">
+            <End Role="tUser_ex" EntitySet="tUser_ex" />
+            <End Role="Base_Admin" EntitySet="Base_Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_DepPlug_Base_DepInfo" Association="Self.FK_Base_DepPlug_Base_DepInfo">
+            <End Role="Base_DepInfo" EntitySet="Base_DepInfo" />
+            <End Role="Base_DepPlug" EntitySet="Base_DepPlug" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_DepPlug_Base_Plug" Association="Self.FK_Base_DepPlug_Base_Plug">
+            <End Role="Base_Plug" EntitySet="Base_Plug" />
+            <End Role="Base_DepPlug" EntitySet="Base_DepPlug" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_GroupPlug_Base_Group" Association="Self.FK_Base_GroupPlug_Base_Group">
+            <End Role="Base_Group" EntitySet="Base_Group" />
+            <End Role="Base_GroupPlug" EntitySet="Base_GroupPlug" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_GroupPlug_Base_Plug" Association="Self.FK_Base_GroupPlug_Base_Plug">
+            <End Role="Base_Plug" EntitySet="Base_Plug" />
+            <End Role="Base_GroupPlug" EntitySet="Base_GroupPlug" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_GroupUser_Base_Group" Association="Self.FK_Base_GroupUser_Base_Group">
+            <End Role="Base_Group" EntitySet="Base_Group" />
+            <End Role="Base_GroupUser" EntitySet="Base_GroupUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_GroupUser_tUser_ex" Association="Self.FK_Base_GroupUser_tUser_ex">
+            <End Role="tUser_ex" EntitySet="tUser_ex" />
+            <End Role="Base_GroupUser" EntitySet="Base_GroupUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_MyPlug_Base_Group" Association="Self.FK_Base_MyPlug_Base_Group">
+            <End Role="Base_Group" EntitySet="Base_Group" />
+            <End Role="Base_MyPlug" EntitySet="Base_MyPlug" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_MyPlug_Base_Plug" Association="Self.FK_Base_MyPlug_Base_Plug">
+            <End Role="Base_Plug" EntitySet="Base_Plug" />
+            <End Role="Base_MyPlug" EntitySet="Base_MyPlug" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_MyPlug_tUser_ex" Association="Self.FK_Base_MyPlug_tUser_ex">
+            <End Role="tUser_ex" EntitySet="tUser_ex" />
+            <End Role="Base_MyPlug" EntitySet="Base_MyPlug" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_PlugSet_Base_Plug" Association="Self.FK_Base_PlugSet_Base_Plug">
+            <End Role="Base_Plug" EntitySet="Base_Plug" />
+            <End Role="Base_PlugSet" EntitySet="Base_PlugSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_PlugSet_tUser_ex" Association="Self.FK_Base_PlugSet_tUser_ex">
+            <End Role="tUser_ex" EntitySet="tUser_ex" />
+            <End Role="Base_PlugSet" EntitySet="Base_PlugSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WxAppKey_WxApplication" Association="Self.FK_WxAppKey_WxApplication">
+            <End Role="WxApplication" EntitySet="WxApplication" />
+            <End Role="WxAppKey" EntitySet="WxAppKey" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="OKBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="App_Calendars" EntityType="DBBaseModel.App_Calendars" />
+          <EntitySet Name="app_version" EntityType="DBBaseModel.app_version" />
+          <EntitySet Name="Base_Admin" EntityType="DBBaseModel.Base_Admin" />
+          <EntitySet Name="Base_Config" EntityType="DBBaseModel.Base_Config" />
+          <EntitySet Name="Base_DepInfo" EntityType="DBBaseModel.Base_DepInfo" />
+          <EntitySet Name="Base_DepPlug" EntityType="DBBaseModel.Base_DepPlug" />
+          <EntitySet Name="Base_Group" EntityType="DBBaseModel.Base_Group" />
+          <EntitySet Name="Base_GroupPlug" EntityType="DBBaseModel.Base_GroupPlug" />
+          <EntitySet Name="Base_GroupUser" EntityType="DBBaseModel.Base_GroupUser" />
+          <EntitySet Name="Base_MyPlug" EntityType="DBBaseModel.Base_MyPlug" />
+          <EntitySet Name="Base_Plug" EntityType="DBBaseModel.Base_Plug" />
+          <EntitySet Name="Base_PlugSet" EntityType="DBBaseModel.Base_PlugSet" />
+          <EntitySet Name="Base_PlugSort" EntityType="DBBaseModel.Base_PlugSort" />
+          <EntitySet Name="Base_UpFiles" EntityType="DBBaseModel.Base_UpFiles" />
+          <EntitySet Name="tFile" EntityType="DBBaseModel.tFile" />
+          <EntitySet Name="tFolder" EntityType="DBBaseModel.tFolder" />
+          <EntitySet Name="tUser_ex" EntityType="DBBaseModel.tUser_ex" />
+          <EntitySet Name="WxApplication" EntityType="DBBaseModel.WxApplication" />
+          <EntitySet Name="WxToken" EntityType="DBBaseModel.WxToken" />
+          <EntitySet Name="WxAppKey" EntityType="DBBaseModel.WxAppKey" />
+          <EntitySet Name="Base_VAdmin" EntityType="DBBaseModel.Base_VAdmin" />
+          <EntitySet Name="Base_VDepPlug" EntityType="DBBaseModel.Base_VDepPlug" />
+          <EntitySet Name="Base_VGroupPlug" EntityType="DBBaseModel.Base_VGroupPlug" />
+          <EntitySet Name="Base_VGroupUser" EntityType="DBBaseModel.Base_VGroupUser" />
+          <EntitySet Name="Base_VMyPlug" EntityType="DBBaseModel.Base_VMyPlug" />
+          <EntitySet Name="Base_VPlugSet" EntityType="DBBaseModel.Base_VPlugSet" />
+          <EntitySet Name="VConfig" EntityType="DBBaseModel.VConfig" />
+          <EntitySet Name="VGroup" EntityType="DBBaseModel.VGroup" />
+          <EntitySet Name="VUser" EntityType="DBBaseModel.VUser" />
+          <AssociationSet Name="FK_app_version_WxApplication" Association="DBBaseModel.FK_app_version_WxApplication">
+            <End Role="WxApplication" EntitySet="WxApplication" />
+            <End Role="app_version" EntitySet="app_version" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_Admin_tUser_ex" Association="DBBaseModel.FK_Base_Admin_tUser_ex">
+            <End Role="tUser_ex" EntitySet="tUser_ex" />
+            <End Role="Base_Admin" EntitySet="Base_Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_DepPlug_Base_DepInfo" Association="DBBaseModel.FK_Base_DepPlug_Base_DepInfo">
+            <End Role="Base_DepInfo" EntitySet="Base_DepInfo" />
+            <End Role="Base_DepPlug" EntitySet="Base_DepPlug" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_DepPlug_Base_Plug" Association="DBBaseModel.FK_Base_DepPlug_Base_Plug">
+            <End Role="Base_Plug" EntitySet="Base_Plug" />
+            <End Role="Base_DepPlug" EntitySet="Base_DepPlug" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_GroupPlug_Base_Group" Association="DBBaseModel.FK_Base_GroupPlug_Base_Group">
+            <End Role="Base_Group" EntitySet="Base_Group" />
+            <End Role="Base_GroupPlug" EntitySet="Base_GroupPlug" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_GroupUser_Base_Group" Association="DBBaseModel.FK_Base_GroupUser_Base_Group">
+            <End Role="Base_Group" EntitySet="Base_Group" />
+            <End Role="Base_GroupUser" EntitySet="Base_GroupUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_MyPlug_Base_Group" Association="DBBaseModel.FK_Base_MyPlug_Base_Group">
+            <End Role="Base_Group" EntitySet="Base_Group" />
+            <End Role="Base_MyPlug" EntitySet="Base_MyPlug" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_GroupPlug_Base_Plug" Association="DBBaseModel.FK_Base_GroupPlug_Base_Plug">
+            <End Role="Base_Plug" EntitySet="Base_Plug" />
+            <End Role="Base_GroupPlug" EntitySet="Base_GroupPlug" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_GroupUser_tUser_ex" Association="DBBaseModel.FK_Base_GroupUser_tUser_ex">
+            <End Role="tUser_ex" EntitySet="tUser_ex" />
+            <End Role="Base_GroupUser" EntitySet="Base_GroupUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_MyPlug_Base_Plug" Association="DBBaseModel.FK_Base_MyPlug_Base_Plug">
+            <End Role="Base_Plug" EntitySet="Base_Plug" />
+            <End Role="Base_MyPlug" EntitySet="Base_MyPlug" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_MyPlug_tUser_ex" Association="DBBaseModel.FK_Base_MyPlug_tUser_ex">
+            <End Role="tUser_ex" EntitySet="tUser_ex" />
+            <End Role="Base_MyPlug" EntitySet="Base_MyPlug" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_PlugSet_Base_Plug" Association="DBBaseModel.FK_Base_PlugSet_Base_Plug">
+            <End Role="Base_Plug" EntitySet="Base_Plug" />
+            <End Role="Base_PlugSet" EntitySet="Base_PlugSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Base_PlugSet_tUser_ex" Association="DBBaseModel.FK_Base_PlugSet_tUser_ex">
+            <End Role="tUser_ex" EntitySet="tUser_ex" />
+            <End Role="Base_PlugSet" EntitySet="Base_PlugSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WxAppKey_WxApplication" Association="DBBaseModel.FK_WxAppKey_WxApplication">
+            <End Role="WxApplication" EntitySet="WxApplication" />
+            <End Role="WxAppKey" EntitySet="WxAppKey" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="App_Calendars">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MasterId" Type="Double" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="CalendarType" Type="Int32" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsAllDayEvent" Type="Boolean" Nullable="false" />
+          <Property Name="HasAttachment" Type="Boolean" Nullable="false" />
+          <Property Name="Category" Type="Int32" Nullable="false" />
+          <Property Name="InstanceType" Type="Int32" Nullable="false" />
+          <Property Name="Attendees" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AttendeeNames" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OtherAttendee" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UPAccount" Type="Int64" Nullable="false" />
+          <Property Name="UPName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UPTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RecurringRule" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="app_version">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="appid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="os" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="vcode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="filesize" Type="Int32" Nullable="false" />
+          <Property Name="dtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="appdesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fileurl" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="WxApplication" Relationship="DBBaseModel.FK_app_version_WxApplication" FromRole="app_version" ToRole="WxApplication" />
+        </EntityType>
+        <EntityType Name="Base_Admin">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int64" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Addr" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tUser_ex" Relationship="DBBaseModel.FK_Base_Admin_tUser_ex" FromRole="Base_Admin" ToRole="tUser_ex" />
+        </EntityType>
+        <EntityType Name="Base_Config">
+          <Key>
+            <PropertyRef Name="HostAndPort" />
+          </Key>
+          <Property Name="DepID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HostAndPort" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Copyright" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Blocking" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Base_DepInfo">
+          <Key>
+            <PropertyRef Name="DepID" />
+          </Key>
+          <Property Name="DepID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DepCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NameEn" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Addr" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="TypeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WebHome" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="step" Type="Int32" />
+          <Property Name="Desktop" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeskStyle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OrgCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SchHistory" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="HPSerID" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Base_DepPlug" Relationship="DBBaseModel.FK_Base_DepPlug_Base_DepInfo" FromRole="Base_DepInfo" ToRole="Base_DepPlug" />
+        </EntityType>
+        <EntityType Name="Base_DepPlug">
+          <Key>
+            <PropertyRef Name="PlugID" />
+            <PropertyRef Name="DepID" />
+          </Key>
+          <Property Name="PlugID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Permission" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Base_DepInfo" Relationship="DBBaseModel.FK_Base_DepPlug_Base_DepInfo" FromRole="Base_DepPlug" ToRole="Base_DepInfo" />
+          <NavigationProperty Name="Base_Plug" Relationship="DBBaseModel.FK_Base_DepPlug_Base_Plug" FromRole="Base_DepPlug" ToRole="Base_Plug" />
+        </EntityType>
+        <EntityType Name="Base_Group">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="Int64" Nullable="false" />
+          <Property Name="GName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GDes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="GMgr" Type="Int64" />
+          <Property Name="GMgrName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsOpen" Type="Byte" Nullable="false" />
+          <Property Name="IsRole" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Base_GroupPlug" Relationship="DBBaseModel.FK_Base_GroupPlug_Base_Group" FromRole="Base_Group" ToRole="Base_GroupPlug" />
+          <NavigationProperty Name="Base_GroupUser" Relationship="DBBaseModel.FK_Base_GroupUser_Base_Group" FromRole="Base_Group" ToRole="Base_GroupUser" />
+          <NavigationProperty Name="Base_MyPlug" Relationship="DBBaseModel.FK_Base_MyPlug_Base_Group" FromRole="Base_Group" ToRole="Base_MyPlug" />
+        </EntityType>
+        <EntityType Name="Base_GroupPlug">
+          <Key>
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="PlugID" />
+          </Key>
+          <Property Name="DepID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GroupID" Type="Int64" Nullable="false" />
+          <Property Name="PlugID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Permission" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Base_Group" Relationship="DBBaseModel.FK_Base_GroupPlug_Base_Group" FromRole="Base_GroupPlug" ToRole="Base_Group" />
+          <NavigationProperty Name="Base_Plug" Relationship="DBBaseModel.FK_Base_GroupPlug_Base_Plug" FromRole="Base_GroupPlug" ToRole="Base_Plug" />
+        </EntityType>
+        <EntityType Name="Base_GroupUser">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="GroupID" Type="Int64" Nullable="false" />
+          <Property Name="UID" Type="Int64" Nullable="false" />
+          <Property Name="Switch" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Base_Group" Relationship="DBBaseModel.FK_Base_GroupUser_Base_Group" FromRole="Base_GroupUser" ToRole="Base_Group" />
+          <NavigationProperty Name="tUser_ex" Relationship="DBBaseModel.FK_Base_GroupUser_tUser_ex" FromRole="Base_GroupUser" ToRole="tUser_ex" />
+        </EntityType>
+        <EntityType Name="Base_MyPlug">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="PlugID" />
+          </Key>
+          <Property Name="UID" Type="Int64" Nullable="false" />
+          <Property Name="DepID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GroupID" Type="Int64" Nullable="false" />
+          <Property Name="PlugID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Permission" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Base_Group" Relationship="DBBaseModel.FK_Base_MyPlug_Base_Group" FromRole="Base_MyPlug" ToRole="Base_Group" />
+          <NavigationProperty Name="Base_Plug" Relationship="DBBaseModel.FK_Base_MyPlug_Base_Plug" FromRole="Base_MyPlug" ToRole="Base_Plug" />
+          <NavigationProperty Name="tUser_ex" Relationship="DBBaseModel.FK_Base_MyPlug_tUser_ex" FromRole="Base_MyPlug" ToRole="tUser_ex" />
+        </EntityType>
+        <EntityType Name="Base_Plug">
+          <Key>
+            <PropertyRef Name="PlugID" />
+          </Key>
+          <Property Name="PlugID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParentID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Permission" Type="Int64" Nullable="false" />
+          <Property Name="DskType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PSort" Type="Int32" Nullable="false" />
+          <Property Name="PName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OpenType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PIcon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PDes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="UserType" Type="Int64" Nullable="false" />
+          <Property Name="ChildrenNum" Type="Byte" Nullable="false" />
+          <Property Name="Depth" Type="Byte" Nullable="false" />
+          <Property Name="IsStop" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Base_DepPlug" Relationship="DBBaseModel.FK_Base_DepPlug_Base_Plug" FromRole="Base_Plug" ToRole="Base_DepPlug" />
+          <NavigationProperty Name="Base_GroupPlug" Relationship="DBBaseModel.FK_Base_GroupPlug_Base_Plug" FromRole="Base_Plug" ToRole="Base_GroupPlug" />
+          <NavigationProperty Name="Base_MyPlug" Relationship="DBBaseModel.FK_Base_MyPlug_Base_Plug" FromRole="Base_Plug" ToRole="Base_MyPlug" />
+          <NavigationProperty Name="Base_PlugSet" Relationship="DBBaseModel.FK_Base_PlugSet_Base_Plug" FromRole="Base_Plug" ToRole="Base_PlugSet" />
+        </EntityType>
+        <EntityType Name="Base_PlugSet">
+          <Key>
+            <PropertyRef Name="SortID" />
+            <PropertyRef Name="PlugID" />
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="SortID" Type="Int64" Nullable="false" />
+          <Property Name="PlugID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UID" Type="Int64" Nullable="false" />
+          <Property Name="PIndex" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DskType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UseTimes" Type="Int64" Nullable="false" />
+          <Property Name="IsUse" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Base_Plug" Relationship="DBBaseModel.FK_Base_PlugSet_Base_Plug" FromRole="Base_PlugSet" ToRole="Base_Plug" />
+          <NavigationProperty Name="tUser_ex" Relationship="DBBaseModel.FK_Base_PlugSet_tUser_ex" FromRole="Base_PlugSet" ToRole="tUser_ex" />
+        </EntityType>
+        <EntityType Name="Base_PlugSort">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UID" Type="Int64" Nullable="false" />
+          <Property Name="SIndex" Type="Int32" Nullable="false" />
+          <Property Name="DskType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsShow" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Base_UpFiles">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guid" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UploadKey" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FilePath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FileSize" Type="Int32" />
+          <Property Name="FileType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UID" Type="Int64" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FileServer" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsRemote" Type="Byte" Nullable="false" />
+          <Property Name="DTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZT" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tFile">
+          <Key>
+            <PropertyRef Name="file_uuid" />
+          </Key>
+          <Property Name="file_uuid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="folder_uuid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="file_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="file_type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="file_descp" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="file_path" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="file_url" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="file_md5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="file_blob" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="file_size" Type="Int32" />
+          <Property Name="file_owner" Type="Int64" Nullable="false" />
+          <Property Name="file_creator" Type="Int64" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modify_time" Type="DateTime" Precision="3" />
+          <Property Name="valid" Type="Boolean" Nullable="false" />
+          <Property Name="zip" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tFolder">
+          <Key>
+            <PropertyRef Name="folder_id" />
+          </Key>
+          <Property Name="folder_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="folder_uuid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parent_uuid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="folder_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="folder_descp" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="folder_type" Type="Int32" />
+          <Property Name="folder_owner" Type="Int64" />
+          <Property Name="folder_creator" Type="Int64" />
+          <Property Name="create_time" Type="DateTime" Precision="3" />
+          <Property Name="modify_time" Type="DateTime" Precision="3" />
+          <Property Name="valid" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tUser_ex">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int64" Nullable="false" />
+          <Property Name="Accout" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Switch" Type="Byte" Nullable="false" />
+          <Property Name="DefaultApp" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DepID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="Int64" Nullable="false" />
+          <Property Name="UserID2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserID3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserSex" Type="Int32" Nullable="false" />
+          <Property Name="UserTel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserBirthday" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Base_Admin" Relationship="DBBaseModel.FK_Base_Admin_tUser_ex" FromRole="tUser_ex" ToRole="Base_Admin" />
+          <NavigationProperty Name="Base_GroupUser" Relationship="DBBaseModel.FK_Base_GroupUser_tUser_ex" FromRole="tUser_ex" ToRole="Base_GroupUser" />
+          <NavigationProperty Name="Base_MyPlug" Relationship="DBBaseModel.FK_Base_MyPlug_tUser_ex" FromRole="tUser_ex" ToRole="Base_MyPlug" />
+          <NavigationProperty Name="Base_PlugSet" Relationship="DBBaseModel.FK_Base_PlugSet_tUser_ex" FromRole="tUser_ex" ToRole="Base_PlugSet" />
+        </EntityType>
+        <EntityType Name="WxApplication">
+          <Key>
+            <PropertyRef Name="appid" />
+          </Key>
+          <Property Name="appid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="appname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="appdesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="appicon" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="vsupport" Type="Int32" Nullable="false" />
+          <Property Name="state" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="app_version" Relationship="DBBaseModel.FK_app_version_WxApplication" FromRole="WxApplication" ToRole="app_version" />
+          <NavigationProperty Name="WxAppKey" Relationship="DBBaseModel.FK_WxAppKey_WxApplication" FromRole="WxApplication" ToRole="WxAppKey" />
+        </EntityType>
+        <EntityType Name="WxToken">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="Int64" Nullable="false" />
+          <Property Name="token" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="loginnum" Type="Int32" Nullable="false" />
+          <Property Name="lastlogintime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="logintime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="timestamp" Type="Int64" Nullable="false" />
+          <Property Name="timediff" Type="Int64" Nullable="false" />
+          <Property Name="stauts" Type="Int32" Nullable="false" />
+          <Property Name="vid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="WxAppKey">
+          <Key>
+            <PropertyRef Name="appid" />
+            <PropertyRef Name="akid" />
+            <PropertyRef Name="uid" />
+            <PropertyRef Name="dtime" />
+            <PropertyRef Name="exptime" />
+            <PropertyRef Name="state" />
+          </Key>
+          <Property Name="appid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="akid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="uid" Type="Int32" Nullable="false" />
+          <Property Name="dtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="exptime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="state" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="WxApplication" Relationship="DBBaseModel.FK_WxAppKey_WxApplication" FromRole="WxAppKey" ToRole="WxApplication" />
+        </EntityType>
+        <EntityType Name="Base_VAdmin">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="UserType" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="Switch" />
+            <PropertyRef Name="DTime" />
+          </Key>
+          <Property Name="UID" Type="Int64" Nullable="false" />
+          <Property Name="Accout" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserType" Type="Int64" Nullable="false" />
+          <Property Name="DefaultApp" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DepID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Switch" Type="Byte" Nullable="false" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Addr" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DepName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Base_VDepPlug">
+          <Key>
+            <PropertyRef Name="DepName" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="PlugID" />
+            <PropertyRef Name="Permission" />
+          </Key>
+          <Property Name="DepName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DepID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PlugID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PIcon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PDes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="PUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ParentID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChildrenNum" Type="Byte" />
+          <Property Name="Depth" Type="Byte" />
+          <Property Name="OpenType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DskType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="Int64" />
+          <Property Name="Permission" Type="Int64" Nullable="false" />
+          <Property Name="IsStop" Type="Byte" />
+          <Property Name="PSort" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Base_VGroupPlug">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="PlugID" />
+            <PropertyRef Name="PName" />
+            <PropertyRef Name="ChildrenNum" />
+            <PropertyRef Name="Depth" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="Permission" />
+            <PropertyRef Name="PSort" />
+            <PropertyRef Name="UserType" />
+            <PropertyRef Name="IsStop" />
+            <PropertyRef Name="GName" />
+            <PropertyRef Name="IsRole" />
+            <PropertyRef Name="GroupUserType" />
+          </Key>
+          <Property Name="GroupID" Type="Int64" Nullable="false" />
+          <Property Name="PlugID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PIcon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PDes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="PUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ParentID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChildrenNum" Type="Byte" Nullable="false" />
+          <Property Name="Depth" Type="Byte" Nullable="false" />
+          <Property Name="OpenType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Permission" Type="Int64" Nullable="false" />
+          <Property Name="PSort" Type="Int32" Nullable="false" />
+          <Property Name="DskType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="Int64" Nullable="false" />
+          <Property Name="IsStop" Type="Byte" Nullable="false" />
+          <Property Name="GName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsRole" Type="Boolean" Nullable="false" />
+          <Property Name="GroupUserType" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Base_VGroupUser">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="GroupID" Type="Int64" />
+          <Property Name="UID" Type="Int64" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DepID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Base_VMyPlug">
+          <Key>
+            <PropertyRef Name="PlugID" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="PName" />
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="Depth" />
+            <PropertyRef Name="ChildrenNum" />
+            <PropertyRef Name="Permission" />
+            <PropertyRef Name="UserType" />
+            <PropertyRef Name="PSort" />
+            <PropertyRef Name="IsStop" />
+          </Key>
+          <Property Name="PlugID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GroupID" Type="Int64" Nullable="false" />
+          <Property Name="PIcon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PDes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="PUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UID" Type="Int64" Nullable="false" />
+          <Property Name="ParentID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Depth" Type="Byte" Nullable="false" />
+          <Property Name="OpenType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DskType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChildrenNum" Type="Byte" Nullable="false" />
+          <Property Name="Permission" Type="Int64" Nullable="false" />
+          <Property Name="UserType" Type="Int64" Nullable="false" />
+          <Property Name="PSort" Type="Int32" Nullable="false" />
+          <Property Name="IsStop" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Base_VPlugSet">
+          <Key>
+            <PropertyRef Name="PlugID" />
+            <PropertyRef Name="PName" />
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="SortID" />
+            <PropertyRef Name="IsUse" />
+            <PropertyRef Name="IsStop" />
+            <PropertyRef Name="ChildrenNum" />
+            <PropertyRef Name="Depth" />
+            <PropertyRef Name="SortName" />
+          </Key>
+          <Property Name="PlugID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UID" Type="Int64" Nullable="false" />
+          <Property Name="ParentID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DskType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SortID" Type="Int64" Nullable="false" />
+          <Property Name="IsUse" Type="Byte" Nullable="false" />
+          <Property Name="PIcon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PDes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="IsStop" Type="Byte" Nullable="false" />
+          <Property Name="PIndex" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ChildrenNum" Type="Byte" Nullable="false" />
+          <Property Name="Depth" Type="Byte" Nullable="false" />
+          <Property Name="OpenType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SortName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VConfig">
+          <Key>
+            <PropertyRef Name="HostAndPort" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="TemplateName" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="Blocking" />
+            <PropertyRef Name="DepName" />
+          </Key>
+          <Property Name="HostAndPort" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DepID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Copyright" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Blocking" Type="Byte" Nullable="false" />
+          <Property Name="DepName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NameEn" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Addr" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="TypeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WebHome" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Step" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VGroup">
+          <Key>
+            <PropertyRef Name="SERID" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="DepName" />
+            <PropertyRef Name="GCode" />
+            <PropertyRef Name="UserType" />
+            <PropertyRef Name="GName" />
+            <PropertyRef Name="GDate" />
+            <PropertyRef Name="IsOpen" />
+            <PropertyRef Name="IsRole" />
+          </Key>
+          <Property Name="SERID" Type="Int64" Nullable="false" />
+          <Property Name="DepID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NameEn" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="GCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="Int64" Nullable="false" />
+          <Property Name="GName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GDes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="GMgr" Type="Int64" />
+          <Property Name="GMgrName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsOpen" Type="Byte" Nullable="false" />
+          <Property Name="IsRole" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VUser">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="DepID" />
+            <PropertyRef Name="UserType" />
+            <PropertyRef Name="Switch" />
+            <PropertyRef Name="pwd" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Personmsg" />
+          </Key>
+          <Property Name="UID" Type="Int64" Nullable="false" />
+          <Property Name="DepID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="Int64" Nullable="false" />
+          <Property Name="Accout" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Switch" Type="Byte" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DefaultApp" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UserID2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserID3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pwd" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Personmsg" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Logintime" Type="DateTime" Precision="3" />
+          <Property Name="Logouttime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_app_version_WxApplication">
+          <End Type="DBBaseModel.WxApplication" Role="WxApplication" Multiplicity="1" />
+          <End Type="DBBaseModel.app_version" Role="app_version" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WxApplication">
+              <PropertyRef Name="appid" />
+            </Principal>
+            <Dependent Role="app_version">
+              <PropertyRef Name="appid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_Admin_tUser_ex">
+          <End Type="DBBaseModel.tUser_ex" Role="tUser_ex" Multiplicity="1" />
+          <End Type="DBBaseModel.Base_Admin" Role="Base_Admin" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tUser_ex">
+              <PropertyRef Name="UID" />
+            </Principal>
+            <Dependent Role="Base_Admin">
+              <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_DepPlug_Base_DepInfo">
+          <End Type="DBBaseModel.Base_DepInfo" Role="Base_DepInfo" Multiplicity="1" />
+          <End Type="DBBaseModel.Base_DepPlug" Role="Base_DepPlug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Base_DepInfo">
+              <PropertyRef Name="DepID" />
+            </Principal>
+            <Dependent Role="Base_DepPlug">
+              <PropertyRef Name="DepID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_DepPlug_Base_Plug">
+          <End Type="DBBaseModel.Base_Plug" Role="Base_Plug" Multiplicity="1" />
+          <End Type="DBBaseModel.Base_DepPlug" Role="Base_DepPlug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Base_Plug">
+              <PropertyRef Name="PlugID" />
+            </Principal>
+            <Dependent Role="Base_DepPlug">
+              <PropertyRef Name="PlugID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_GroupPlug_Base_Group">
+          <End Type="DBBaseModel.Base_Group" Role="Base_Group" Multiplicity="1" />
+          <End Type="DBBaseModel.Base_GroupPlug" Role="Base_GroupPlug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Base_Group">
+              <PropertyRef Name="SERID" />
+            </Principal>
+            <Dependent Role="Base_GroupPlug">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_GroupUser_Base_Group">
+          <End Type="DBBaseModel.Base_Group" Role="Base_Group" Multiplicity="1" />
+          <End Type="DBBaseModel.Base_GroupUser" Role="Base_GroupUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Base_Group">
+              <PropertyRef Name="SERID" />
+            </Principal>
+            <Dependent Role="Base_GroupUser">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_MyPlug_Base_Group">
+          <End Type="DBBaseModel.Base_Group" Role="Base_Group" Multiplicity="1" />
+          <End Type="DBBaseModel.Base_MyPlug" Role="Base_MyPlug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Base_Group">
+              <PropertyRef Name="SERID" />
+            </Principal>
+            <Dependent Role="Base_MyPlug">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_GroupPlug_Base_Plug">
+          <End Type="DBBaseModel.Base_Plug" Role="Base_Plug" Multiplicity="1" />
+          <End Type="DBBaseModel.Base_GroupPlug" Role="Base_GroupPlug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Base_Plug">
+              <PropertyRef Name="PlugID" />
+            </Principal>
+            <Dependent Role="Base_GroupPlug">
+              <PropertyRef Name="PlugID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_GroupUser_tUser_ex">
+          <End Type="DBBaseModel.tUser_ex" Role="tUser_ex" Multiplicity="1" />
+          <End Type="DBBaseModel.Base_GroupUser" Role="Base_GroupUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tUser_ex">
+              <PropertyRef Name="UID" />
+            </Principal>
+            <Dependent Role="Base_GroupUser">
+              <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_MyPlug_Base_Plug">
+          <End Type="DBBaseModel.Base_Plug" Role="Base_Plug" Multiplicity="1" />
+          <End Type="DBBaseModel.Base_MyPlug" Role="Base_MyPlug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Base_Plug">
+              <PropertyRef Name="PlugID" />
+            </Principal>
+            <Dependent Role="Base_MyPlug">
+              <PropertyRef Name="PlugID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_MyPlug_tUser_ex">
+          <End Type="DBBaseModel.tUser_ex" Role="tUser_ex" Multiplicity="1" />
+          <End Type="DBBaseModel.Base_MyPlug" Role="Base_MyPlug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tUser_ex">
+              <PropertyRef Name="UID" />
+            </Principal>
+            <Dependent Role="Base_MyPlug">
+              <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_PlugSet_Base_Plug">
+          <End Type="DBBaseModel.Base_Plug" Role="Base_Plug" Multiplicity="1" />
+          <End Type="DBBaseModel.Base_PlugSet" Role="Base_PlugSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Base_Plug">
+              <PropertyRef Name="PlugID" />
+            </Principal>
+            <Dependent Role="Base_PlugSet">
+              <PropertyRef Name="PlugID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Base_PlugSet_tUser_ex">
+          <End Type="DBBaseModel.tUser_ex" Role="tUser_ex" Multiplicity="1" />
+          <End Type="DBBaseModel.Base_PlugSet" Role="Base_PlugSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tUser_ex">
+              <PropertyRef Name="UID" />
+            </Principal>
+            <Dependent Role="Base_PlugSet">
+              <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WxAppKey_WxApplication">
+          <End Type="DBBaseModel.WxApplication" Role="WxApplication" Multiplicity="1" />
+          <End Type="DBBaseModel.WxAppKey" Role="WxAppKey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WxApplication">
+              <PropertyRef Name="appid" />
+            </Principal>
+            <Dependent Role="WxAppKey">
+              <PropertyRef Name="appid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBBaseModelStoreContainer" CdmEntityContainer="OKBaseEntities">
+          <EntitySetMapping Name="App_Calendars">
+            <EntityTypeMapping TypeName="DBBaseModel.App_Calendars">
+              <MappingFragment StoreEntitySet="App_Calendars">
+                <ScalarProperty Name="RecurringRule" ColumnName="RecurringRule" />
+                <ScalarProperty Name="UPTime" ColumnName="UPTime" />
+                <ScalarProperty Name="UPName" ColumnName="UPName" />
+                <ScalarProperty Name="UPAccount" ColumnName="UPAccount" />
+                <ScalarProperty Name="OtherAttendee" ColumnName="OtherAttendee" />
+                <ScalarProperty Name="AttendeeNames" ColumnName="AttendeeNames" />
+                <ScalarProperty Name="Attendees" ColumnName="Attendees" />
+                <ScalarProperty Name="InstanceType" ColumnName="InstanceType" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="HasAttachment" ColumnName="HasAttachment" />
+                <ScalarProperty Name="IsAllDayEvent" ColumnName="IsAllDayEvent" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="CalendarType" ColumnName="CalendarType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="app_version">
+            <EntityTypeMapping TypeName="DBBaseModel.app_version">
+              <MappingFragment StoreEntitySet="app_version">
+                <ScalarProperty Name="fileurl" ColumnName="fileurl" />
+                <ScalarProperty Name="appdesc" ColumnName="appdesc" />
+                <ScalarProperty Name="dtime" ColumnName="dtime" />
+                <ScalarProperty Name="filesize" ColumnName="filesize" />
+                <ScalarProperty Name="vcode" ColumnName="vcode" />
+                <ScalarProperty Name="os" ColumnName="os" />
+                <ScalarProperty Name="appid" ColumnName="appid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_Admin">
+            <EntityTypeMapping TypeName="DBBaseModel.Base_Admin">
+              <MappingFragment StoreEntitySet="Base_Admin">
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="DTime" ColumnName="DTime" />
+                <ScalarProperty Name="Addr" ColumnName="Addr" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_Config">
+            <EntityTypeMapping TypeName="DBBaseModel.Base_Config">
+              <MappingFragment StoreEntitySet="Base_Config">
+                <ScalarProperty Name="Blocking" ColumnName="Blocking" />
+                <ScalarProperty Name="Copyright" ColumnName="Copyright" />
+                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="HostAndPort" ColumnName="HostAndPort" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_DepInfo">
+            <EntityTypeMapping TypeName="DBBaseModel.Base_DepInfo">
+              <MappingFragment StoreEntitySet="Base_DepInfo">
+                <ScalarProperty Name="HPSerID" ColumnName="HPSerID" />
+                <ScalarProperty Name="SchHistory" ColumnName="SchHistory" />
+                <ScalarProperty Name="OrgCode" ColumnName="OrgCode" />
+                <ScalarProperty Name="DeskStyle" ColumnName="DeskStyle" />
+                <ScalarProperty Name="Desktop" ColumnName="Desktop" />
+                <ScalarProperty Name="step" ColumnName="step" />
+                <ScalarProperty Name="WebHome" ColumnName="WebHome" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="Addr" ColumnName="Addr" />
+                <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+                <ScalarProperty Name="DepCode" ColumnName="DepCode" />
+                <ScalarProperty Name="DepName" ColumnName="DepName" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_DepPlug">
+            <EntityTypeMapping TypeName="DBBaseModel.Base_DepPlug">
+              <MappingFragment StoreEntitySet="Base_DepPlug">
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+                <ScalarProperty Name="PlugID" ColumnName="PlugID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_Group">
+            <EntityTypeMapping TypeName="DBBaseModel.Base_Group">
+              <MappingFragment StoreEntitySet="Base_Group">
+                <ScalarProperty Name="IsRole" ColumnName="IsRole" />
+                <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+                <ScalarProperty Name="GDate" ColumnName="GDate" />
+                <ScalarProperty Name="GMgrName" ColumnName="GMgrName" />
+                <ScalarProperty Name="GMgr" ColumnName="GMgr" />
+                <ScalarProperty Name="GDes" ColumnName="GDes" />
+                <ScalarProperty Name="GName" ColumnName="GName" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+                <ScalarProperty Name="GCode" ColumnName="GCode" />
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_GroupPlug">
+            <EntityTypeMapping TypeName="DBBaseModel.Base_GroupPlug">
+              <MappingFragment StoreEntitySet="Base_GroupPlug">
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="PlugID" ColumnName="PlugID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_GroupUser">
+            <EntityTypeMapping TypeName="DBBaseModel.Base_GroupUser">
+              <MappingFragment StoreEntitySet="Base_GroupUser">
+                <ScalarProperty Name="Switch" ColumnName="Switch" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_MyPlug">
+            <EntityTypeMapping TypeName="DBBaseModel.Base_MyPlug">
+              <MappingFragment StoreEntitySet="Base_MyPlug">
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="PlugID" ColumnName="PlugID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_Plug">
+            <EntityTypeMapping TypeName="DBBaseModel.Base_Plug">
+              <MappingFragment StoreEntitySet="Base_Plug">
+                <ScalarProperty Name="IsStop" ColumnName="IsStop" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="ChildrenNum" ColumnName="ChildrenNum" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="PDes" ColumnName="PDes" />
+                <ScalarProperty Name="PIcon" ColumnName="PIcon" />
+                <ScalarProperty Name="OpenType" ColumnName="OpenType" />
+                <ScalarProperty Name="PCode" ColumnName="PCode" />
+                <ScalarProperty Name="PUrl" ColumnName="PUrl" />
+                <ScalarProperty Name="PName" ColumnName="PName" />
+                <ScalarProperty Name="PSort" ColumnName="PSort" />
+                <ScalarProperty Name="DskType" ColumnName="DskType" />
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="PlugID" ColumnName="PlugID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_PlugSet">
+            <EntityTypeMapping TypeName="DBBaseModel.Base_PlugSet">
+              <MappingFragment StoreEntitySet="Base_PlugSet">
+                <ScalarProperty Name="IsUse" ColumnName="IsUse" />
+                <ScalarProperty Name="UseTimes" ColumnName="UseTimes" />
+                <ScalarProperty Name="DskType" ColumnName="DskType" />
+                <ScalarProperty Name="PIndex" ColumnName="PIndex" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="PlugID" ColumnName="PlugID" />
+                <ScalarProperty Name="SortID" ColumnName="SortID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_PlugSort">
+            <EntityTypeMapping TypeName="DBBaseModel.Base_PlugSort">
+              <MappingFragment StoreEntitySet="Base_PlugSort">
+                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
+                <ScalarProperty Name="DskType" ColumnName="DskType" />
+                <ScalarProperty Name="SIndex" ColumnName="SIndex" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="SName" ColumnName="SName" />
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_UpFiles">
+            <EntityTypeMapping TypeName="DBBaseModel.Base_UpFiles">
+              <MappingFragment StoreEntitySet="Base_UpFiles">
+                <ScalarProperty Name="ZT" ColumnName="ZT" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="DTime" ColumnName="DTime" />
+                <ScalarProperty Name="IsRemote" ColumnName="IsRemote" />
+                <ScalarProperty Name="FileServer" ColumnName="FileServer" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="UploadKey" ColumnName="UploadKey" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tFile">
+            <EntityTypeMapping TypeName="DBBaseModel.tFile">
+              <MappingFragment StoreEntitySet="tFile">
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="valid" ColumnName="valid" />
+                <ScalarProperty Name="modify_time" ColumnName="modify_time" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="file_creator" ColumnName="file_creator" />
+                <ScalarProperty Name="file_owner" ColumnName="file_owner" />
+                <ScalarProperty Name="file_size" ColumnName="file_size" />
+                <ScalarProperty Name="file_blob" ColumnName="file_blob" />
+                <ScalarProperty Name="file_md5" ColumnName="file_md5" />
+                <ScalarProperty Name="file_url" ColumnName="file_url" />
+                <ScalarProperty Name="file_path" ColumnName="file_path" />
+                <ScalarProperty Name="file_descp" ColumnName="file_descp" />
+                <ScalarProperty Name="file_type" ColumnName="file_type" />
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="folder_uuid" ColumnName="folder_uuid" />
+                <ScalarProperty Name="file_uuid" ColumnName="file_uuid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tFolder">
+            <EntityTypeMapping TypeName="DBBaseModel.tFolder">
+              <MappingFragment StoreEntitySet="tFolder">
+                <ScalarProperty Name="valid" ColumnName="valid" />
+                <ScalarProperty Name="modify_time" ColumnName="modify_time" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="folder_creator" ColumnName="folder_creator" />
+                <ScalarProperty Name="folder_owner" ColumnName="folder_owner" />
+                <ScalarProperty Name="folder_type" ColumnName="folder_type" />
+                <ScalarProperty Name="folder_descp" ColumnName="folder_descp" />
+                <ScalarProperty Name="folder_name" ColumnName="folder_name" />
+                <ScalarProperty Name="parent_uuid" ColumnName="parent_uuid" />
+                <ScalarProperty Name="folder_uuid" ColumnName="folder_uuid" />
+                <ScalarProperty Name="folder_id" ColumnName="folder_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tUser_ex">
+            <EntityTypeMapping TypeName="DBBaseModel.tUser_ex">
+              <MappingFragment StoreEntitySet="tUser_ex">
+                <ScalarProperty Name="UserBirthday" ColumnName="UserBirthday" />
+                <ScalarProperty Name="UserTel" ColumnName="UserTel" />
+                <ScalarProperty Name="UserSex" ColumnName="UserSex" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="UserID3" ColumnName="UserID3" />
+                <ScalarProperty Name="UserID2" ColumnName="UserID2" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+                <ScalarProperty Name="DefaultApp" ColumnName="DefaultApp" />
+                <ScalarProperty Name="Switch" ColumnName="Switch" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Accout" ColumnName="Accout" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WxApplication">
+            <EntityTypeMapping TypeName="DBBaseModel.WxApplication">
+              <MappingFragment StoreEntitySet="WxApplication">
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="vsupport" ColumnName="vsupport" />
+                <ScalarProperty Name="dtime" ColumnName="dtime" />
+                <ScalarProperty Name="appicon" ColumnName="appicon" />
+                <ScalarProperty Name="appdesc" ColumnName="appdesc" />
+                <ScalarProperty Name="appname" ColumnName="appname" />
+                <ScalarProperty Name="appid" ColumnName="appid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WxToken">
+            <EntityTypeMapping TypeName="DBBaseModel.WxToken">
+              <MappingFragment StoreEntitySet="WxToken">
+                <ScalarProperty Name="vid" ColumnName="vid" />
+                <ScalarProperty Name="stauts" ColumnName="stauts" />
+                <ScalarProperty Name="timediff" ColumnName="timediff" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="logintime" ColumnName="logintime" />
+                <ScalarProperty Name="lastlogintime" ColumnName="lastlogintime" />
+                <ScalarProperty Name="loginnum" ColumnName="loginnum" />
+                <ScalarProperty Name="token" ColumnName="token" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WxAppKey">
+            <EntityTypeMapping TypeName="DBBaseModel.WxAppKey">
+              <MappingFragment StoreEntitySet="WxAppKey">
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="exptime" ColumnName="exptime" />
+                <ScalarProperty Name="dtime" ColumnName="dtime" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="akid" ColumnName="akid" />
+                <ScalarProperty Name="appid" ColumnName="appid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_VAdmin">
+            <EntityTypeMapping TypeName="DBBaseModel.Base_VAdmin">
+              <MappingFragment StoreEntitySet="Base_VAdmin">
+                <ScalarProperty Name="DepName" ColumnName="DepName" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="DTime" ColumnName="DTime" />
+                <ScalarProperty Name="Addr" ColumnName="Addr" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Switch" ColumnName="Switch" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+                <ScalarProperty Name="DefaultApp" ColumnName="DefaultApp" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Accout" ColumnName="Accout" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_VDepPlug">
+            <EntityTypeMapping TypeName="DBBaseModel.Base_VDepPlug">
+              <MappingFragment StoreEntitySet="Base_VDepPlug">
+                <ScalarProperty Name="PSort" ColumnName="PSort" />
+                <ScalarProperty Name="IsStop" ColumnName="IsStop" />
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="DskType" ColumnName="DskType" />
+                <ScalarProperty Name="PCode" ColumnName="PCode" />
+                <ScalarProperty Name="OpenType" ColumnName="OpenType" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="ChildrenNum" ColumnName="ChildrenNum" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="PUrl" ColumnName="PUrl" />
+                <ScalarProperty Name="PDes" ColumnName="PDes" />
+                <ScalarProperty Name="PName" ColumnName="PName" />
+                <ScalarProperty Name="PIcon" ColumnName="PIcon" />
+                <ScalarProperty Name="PlugID" ColumnName="PlugID" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+                <ScalarProperty Name="DepName" ColumnName="DepName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_VGroupPlug">
+            <EntityTypeMapping TypeName="DBBaseModel.Base_VGroupPlug">
+              <MappingFragment StoreEntitySet="Base_VGroupPlug">
+                <ScalarProperty Name="GroupUserType" ColumnName="GroupUserType" />
+                <ScalarProperty Name="IsRole" ColumnName="IsRole" />
+                <ScalarProperty Name="GName" ColumnName="GName" />
+                <ScalarProperty Name="IsStop" ColumnName="IsStop" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="DskType" ColumnName="DskType" />
+                <ScalarProperty Name="PSort" ColumnName="PSort" />
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+                <ScalarProperty Name="OpenType" ColumnName="OpenType" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="ChildrenNum" ColumnName="ChildrenNum" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="PUrl" ColumnName="PUrl" />
+                <ScalarProperty Name="PDes" ColumnName="PDes" />
+                <ScalarProperty Name="PCode" ColumnName="PCode" />
+                <ScalarProperty Name="PName" ColumnName="PName" />
+                <ScalarProperty Name="PIcon" ColumnName="PIcon" />
+                <ScalarProperty Name="PlugID" ColumnName="PlugID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_VGroupUser">
+            <EntityTypeMapping TypeName="DBBaseModel.Base_VGroupUser">
+              <MappingFragment StoreEntitySet="Base_VGroupUser">
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_VMyPlug">
+            <EntityTypeMapping TypeName="DBBaseModel.Base_VMyPlug">
+              <MappingFragment StoreEntitySet="Base_VMyPlug">
+                <ScalarProperty Name="IsStop" ColumnName="IsStop" />
+                <ScalarProperty Name="PSort" ColumnName="PSort" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="ChildrenNum" ColumnName="ChildrenNum" />
+                <ScalarProperty Name="DskType" ColumnName="DskType" />
+                <ScalarProperty Name="PCode" ColumnName="PCode" />
+                <ScalarProperty Name="OpenType" ColumnName="OpenType" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="PUrl" ColumnName="PUrl" />
+                <ScalarProperty Name="PDes" ColumnName="PDes" />
+                <ScalarProperty Name="PName" ColumnName="PName" />
+                <ScalarProperty Name="PIcon" ColumnName="PIcon" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+                <ScalarProperty Name="PlugID" ColumnName="PlugID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_VPlugSet">
+            <EntityTypeMapping TypeName="DBBaseModel.Base_VPlugSet">
+              <MappingFragment StoreEntitySet="Base_VPlugSet">
+                <ScalarProperty Name="SortName" ColumnName="SortName" />
+                <ScalarProperty Name="OpenType" ColumnName="OpenType" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="ChildrenNum" ColumnName="ChildrenNum" />
+                <ScalarProperty Name="PIndex" ColumnName="PIndex" />
+                <ScalarProperty Name="IsStop" ColumnName="IsStop" />
+                <ScalarProperty Name="PDes" ColumnName="PDes" />
+                <ScalarProperty Name="PIcon" ColumnName="PIcon" />
+                <ScalarProperty Name="IsUse" ColumnName="IsUse" />
+                <ScalarProperty Name="SortID" ColumnName="SortID" />
+                <ScalarProperty Name="DskType" ColumnName="DskType" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="PUrl" ColumnName="PUrl" />
+                <ScalarProperty Name="PName" ColumnName="PName" />
+                <ScalarProperty Name="PlugID" ColumnName="PlugID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VConfig">
+            <EntityTypeMapping TypeName="DBBaseModel.VConfig">
+              <MappingFragment StoreEntitySet="VConfig">
+                <ScalarProperty Name="Step" ColumnName="Step" />
+                <ScalarProperty Name="WebHome" ColumnName="WebHome" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="Addr" ColumnName="Addr" />
+                <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+                <ScalarProperty Name="DepName" ColumnName="DepName" />
+                <ScalarProperty Name="Blocking" ColumnName="Blocking" />
+                <ScalarProperty Name="Copyright" ColumnName="Copyright" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+                <ScalarProperty Name="HostAndPort" ColumnName="HostAndPort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VGroup">
+            <EntityTypeMapping TypeName="DBBaseModel.VGroup">
+              <MappingFragment StoreEntitySet="VGroup">
+                <ScalarProperty Name="IsRole" ColumnName="IsRole" />
+                <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+                <ScalarProperty Name="GDate" ColumnName="GDate" />
+                <ScalarProperty Name="GMgrName" ColumnName="GMgrName" />
+                <ScalarProperty Name="GMgr" ColumnName="GMgr" />
+                <ScalarProperty Name="GDes" ColumnName="GDes" />
+                <ScalarProperty Name="GName" ColumnName="GName" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="GCode" ColumnName="GCode" />
+                <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+                <ScalarProperty Name="DepName" ColumnName="DepName" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VUser">
+            <EntityTypeMapping TypeName="DBBaseModel.VUser">
+              <MappingFragment StoreEntitySet="VUser">
+                <ScalarProperty Name="Logouttime" ColumnName="Logouttime" />
+                <ScalarProperty Name="Logintime" ColumnName="Logintime" />
+                <ScalarProperty Name="Personmsg" ColumnName="Personmsg" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="pwd" ColumnName="pwd" />
+                <ScalarProperty Name="UserID3" ColumnName="UserID3" />
+                <ScalarProperty Name="UserID2" ColumnName="UserID2" />
+                <ScalarProperty Name="DefaultApp" ColumnName="DefaultApp" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Switch" ColumnName="Switch" />
+                <ScalarProperty Name="Accout" ColumnName="Accout" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,674 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{924ED650-CF85-4F1F-87D7-4A83EC2FB0B4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>api.schoolbase.entities</RootNamespace>
+    <AssemblyName>api.schoolbase.entities</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MyLib.DAO">
+      <HintPath>..\Import\MyLib.DAO.dll</HintPath>
+    </Reference>
+    <Reference Include="MyLib.DbAccess">
+      <HintPath>..\Import\MyLib.DbAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DBBase\App_Calendars.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\app_version.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\Base_Admin.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\Base_Config.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\Base_DepInfo.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\Base_DepPlug.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\Base_Group.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\Base_GroupPlug.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\Base_GroupUser.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\Base_MyPlug.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\Base_Plug.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\Base_PlugSet.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\Base_PlugSort.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\Base_UpFiles.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\Base_VAdmin.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\Base_VDepPlug.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\Base_VGroupPlug.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\Base_VGroupUser.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\Base_VMyPlug.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\Base_VPlugSet.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\DBBase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBBase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\DBBase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\DBBase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBBase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\FakeOKBaseEntities.generated.cs">
+      <DependentUpon>DBBase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\FakeOKBaseEntitiesBase.generated.cs">
+      <DependentUpon>DBBase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\IOKBaseEntities.generated.cs">
+      <DependentUpon>DBBase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\tFile.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\tFolder.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\tUser_ex.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\VConfig.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\VGroup.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\VUser.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\WxAppKey.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\WxApplication.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBBase\WxToken.datamodel.cs">
+      <DependentUpon>DBBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\DBSchoolCourse.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSchoolCourse.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\DBSchoolCourse.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSchoolCourse.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\DBSchoolCourse.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSchoolCourse.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\FakeDBSchoolCourseEntities.generated.cs">
+      <DependentUpon>DBSchoolCourse.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\FakeDBSchoolCourseEntitiesBase.generated.cs">
+      <DependentUpon>DBSchoolCourse.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\IAM_StuSelectedCourse.datamodel.cs">
+      <DependentUpon>DBSchoolCourse.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\IAM_TeaCourse.datamodel.cs">
+      <DependentUpon>DBSchoolCourse.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\IAM_TeaCourseClass.datamodel.cs">
+      <DependentUpon>DBSchoolCourse.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\IAM_TeaCourseItem.datamodel.cs">
+      <DependentUpon>DBSchoolCourse.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\IDBSchoolCourseEntities.generated.cs">
+      <DependentUpon>DBSchoolCourse.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\VClassTeacher.datamodel.cs">
+      <DependentUpon>DBSchoolCourse.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\VCourseStudentArrangement.datamodel.cs">
+      <DependentUpon>DBSchoolCourse.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\VCourseTeacherArrangement.datamodel.cs">
+      <DependentUpon>DBSchoolCourse.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\VStudentClassCourse.datamodel.cs">
+      <DependentUpon>DBSchoolCourse.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\VStudentCourse.datamodel.cs">
+      <DependentUpon>DBSchoolCourse.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\VStudentCourseOfSubject.datamodel.cs">
+      <DependentUpon>DBSchoolCourse.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\VStudentSelectedCourse.datamodel.cs">
+      <DependentUpon>DBSchoolCourse.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\VStudentSelectedCourseItem.datamodel.cs">
+      <DependentUpon>DBSchoolCourse.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\VTeaCourse.datamodel.cs">
+      <DependentUpon>DBSchoolCourse.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchoolCourse\VTeaCourseItemClass.datamodel.cs">
+      <DependentUpon>DBSchoolCourse.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\DBSchool.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSchool.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\DBSchool.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\DBSchool.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSchool.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\FakeDBSchoolEntities.generated.cs">
+      <DependentUpon>DBSchool.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\FakeDBSchoolEntitiesBase.generated.cs">
+      <DependentUpon>DBSchool.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IAM_ClassHistory.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IAM_GradeSubject.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IAM_Group4Campus.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IAM_Group4Grade.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IAM_Group4Specialty.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IAM_Group4Subject.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IAM_SchCampus.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IAM_SchClass.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IAM_SchDept.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IAM_SchGrade.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IAM_SchInfo.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IAM_SchoolServer.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IAM_SchSpecialty.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IAM_SchSubject.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IAM_SchTerm.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IAM_StuClass.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IAM_Student.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IAM_Teacher.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IAM_TeaSubject.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\IDBSchoolEntities.generated.cs">
+      <DependentUpon>DBSchool.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VClass.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VClassHistory.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VClassOfCurrentTerm.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VClassStudent.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VGrade.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VGradeSubject.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VGroup4Campus.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VGroup4CampusUser.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VGroup4Grade.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VGroup4GradeUser.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VGroup4Specialty.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VGroup4SpecialtyUser.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VGroup4Subject.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VGroup4SubjectUser.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VSchool.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VStudent.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VStudentSubject.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VSubject.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VTeacher.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSchool\VTeaSubject.datamodel.cs">
+      <DependentUpon>DBSchool.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\area.datamodel.cs">
+      <DependentUpon>DBSyllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\chapters.datamodel.cs">
+      <DependentUpon>DBSyllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\DBSyllabus.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSyllabus.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\DBSyllabus.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSyllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\DBSyllabus.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSyllabus.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\dtproperties.datamodel.cs">
+      <DependentUpon>DBSyllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\FakeDBSyllabusEntities.generated.cs">
+      <DependentUpon>DBSyllabus.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\FakeDBSyllabusEntitiesBase.generated.cs">
+      <DependentUpon>DBSyllabus.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\IDBSyllabusEntities.generated.cs">
+      <DependentUpon>DBSyllabus.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\sclass.datamodel.cs">
+      <DependentUpon>DBSyllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\sclasstosection.datamodel.cs">
+      <DependentUpon>DBSyllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\sections.datamodel.cs">
+      <DependentUpon>DBSyllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\subjects.datamodel.cs">
+      <DependentUpon>DBSyllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\syllabus.datamodel.cs">
+      <DependentUpon>DBSyllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\syllabuschapters.datamodel.cs">
+      <DependentUpon>DBSyllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\syllabussections.datamodel.cs">
+      <DependentUpon>DBSyllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\syllabussubject.datamodel.cs">
+      <DependentUpon>DBSyllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\syllabustosection.datamodel.cs">
+      <DependentUpon>DBSyllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\vsclass.datamodel.cs">
+      <DependentUpon>DBSyllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\vsections.datamodel.cs">
+      <DependentUpon>DBSyllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBSyllabus\vsyllabussections.datamodel.cs">
+      <DependentUpon>DBSyllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBUser\DBUser.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBUser.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBUser\DBUser.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBUser.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBUser\DBUser.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBUser.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DBUser\FakeDBUserEntities.generated.cs">
+      <DependentUpon>DBUser.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBUser\FakeDBUserEntitiesBase.generated.cs">
+      <DependentUpon>DBUser.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBUser\IDBUserEntities.generated.cs">
+      <DependentUpon>DBUser.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBUser\tUser.datamodel.cs">
+      <DependentUpon>DBUser.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\DBZiyuan.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBZiyuan.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\DBZiyuan.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\DBZiyuan.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBZiyuan.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\FakeDBZiyuanEntities.generated.cs">
+      <DependentUpon>DBZiyuan.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\FakeDBZiyuanEntitiesBase.generated.cs">
+      <DependentUpon>DBZiyuan.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\IAM_Sclass.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\IAM_SclassSection.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\IDBZiyuanEntities.generated.cs">
+      <DependentUpon>DBZiyuan.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\View_ResRemark.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\View_ZYKResource.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\ZYK_HistoryDownLoad.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\ZYK_HistoryFavorite.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\ZYK_HistoryPinJia.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\ZYK_HistoryUse.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\ZYK_HistoryView.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\ZYK_PingjiaRemark.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\ZYK_ResAccessRecord.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\ZYK_ResoucePush.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\ZYK_Resource.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\ZYK_ResourceCategory.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\ZYK_ResourceFavorite.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\ZYK_ResourceFavoriteCategory.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\ZYK_ResourceFile.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\ZYK_ResourceSclass.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\ZYK_ResourceSection.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBZiyuan\ZYK_SchoolCategory.datamodel.cs">
+      <DependentUpon>DBZiyuan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntitiesGen.Functions1.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="DBBase\DBBase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBBase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DBBase\DBBase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBBase.edmx</DependentUpon>
+      <LastGenOutput>DBBase.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DBBase\DBBase.edmx.diagram">
+      <DependentUpon>DBBase.edmx</DependentUpon>
+    </None>
+    <None Include="DBBase\DBBase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBBase.edmx</DependentUpon>
+      <LastGenOutput>DBBase.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="DBUser\DBUser.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBUser.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="DBSchool\DBSchool.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBSchool.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="DBSchoolCourse\DBSchoolCourse.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBSchoolCourse.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DBSchoolCourse\DBSchoolCourse.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBSchoolCourse.edmx</DependentUpon>
+      <LastGenOutput>DBSchoolCourse.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DBSchoolCourse\DBSchoolCourse.edmx.diagram">
+      <DependentUpon>DBSchoolCourse.edmx</DependentUpon>
+    </None>
+    <None Include="DBSchoolCourse\DBSchoolCourse.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBSchoolCourse.edmx</DependentUpon>
+      <LastGenOutput>DBSchoolCourse.cs</LastGenOutput>
+    </None>
+    <None Include="DBSchool\DBSchool.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBSchool.edmx</DependentUpon>
+      <LastGenOutput>DBSchool.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DBSchool\DBSchool.edmx.diagram">
+      <DependentUpon>DBSchool.edmx</DependentUpon>
+    </None>
+    <None Include="DBSchool\DBSchool.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBSchool.edmx</DependentUpon>
+      <LastGenOutput>DBSchool.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="DBSyllabus\DBSyllabus.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBSyllabus.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DBSyllabus\DBSyllabus.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBSyllabus.edmx</DependentUpon>
+      <LastGenOutput>DBSyllabus.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DBSyllabus\DBSyllabus.edmx.diagram">
+      <DependentUpon>DBSyllabus.edmx</DependentUpon>
+    </None>
+    <None Include="DBSyllabus\DBSyllabus.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBSyllabus.edmx</DependentUpon>
+      <LastGenOutput>DBSyllabus.cs</LastGenOutput>
+    </None>
+    <None Include="DBUser\DBUser.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBUser.edmx</DependentUpon>
+      <LastGenOutput>DBUser.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DBUser\DBUser.edmx.diagram">
+      <DependentUpon>DBUser.edmx</DependentUpon>
+    </None>
+    <None Include="DBUser\DBUser.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBUser.edmx</DependentUpon>
+      <LastGenOutput>DBUser.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="DBZiyuan\DBZiyuan.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBZiyuan.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DBZiyuan\DBZiyuan.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBZiyuan.edmx</DependentUpon>
+      <LastGenOutput>DBZiyuan.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DBZiyuan\DBZiyuan.edmx.diagram">
+      <DependentUpon>DBZiyuan.edmx</DependentUpon>
+    </None>
+    <None Include="DBZiyuan\DBZiyuan.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBZiyuan.edmx</DependentUpon>
+      <LastGenOutput>DBZiyuan.cs</LastGenOutput>
+    </None>
+    <None Include="EntitiesGen.Functions.t4" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

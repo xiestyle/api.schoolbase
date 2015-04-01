@@ -1,0 +1,980 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBSyllabusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="area">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="areaname" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="chapters">
+          <Key>
+            <PropertyRef Name="chapterid" />
+          </Key>
+          <Property Name="chapterid" Type="int" Nullable="false" />
+          <Property Name="chapter" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="subjectid" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dtproperties">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="property" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="objectid" Type="int" />
+          <Property Name="property" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="value" Type="varchar" MaxLength="255" />
+          <Property Name="uvalue" Type="nvarchar" MaxLength="255" />
+          <Property Name="lvalue" Type="image" />
+          <Property Name="version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sclass">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GRAID" Type="bigint" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" Nullable="false" />
+          <Property Name="PID" Type="bigint" Nullable="false" />
+          <Property Name="Sname" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Sorder" Type="int" Nullable="false" />
+          <Property Name="Depth" Type="int" Nullable="false" />
+          <Property Name="NodePath" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="FullCnPath" Type="varchar" MaxLength="500" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sclasstosection">
+          <Key>
+            <PropertyRef Name="sclassid" />
+            <PropertyRef Name="sectionid" />
+          </Key>
+          <Property Name="sclassid" Type="bigint" Nullable="false" />
+          <Property Name="sectionid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sections">
+          <Key>
+            <PropertyRef Name="sectionid" />
+          </Key>
+          <Property Name="sectionid" Type="int" Nullable="false" />
+          <Property Name="section" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="chapterid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="subjects">
+          <Key>
+            <PropertyRef Name="subjectid" />
+          </Key>
+          <Property Name="subjectid" Type="bigint" Nullable="false" />
+          <Property Name="subject" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="subjectname" Type="varchar" MaxLength="50" />
+          <Property Name="line" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="syllabus">
+          <Key>
+            <PropertyRef Name="syllabusid" />
+          </Key>
+          <Property Name="syllabusid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="syllabusname" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="area" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="syllabuschapters">
+          <Key>
+            <PropertyRef Name="chapterid" />
+          </Key>
+          <Property Name="chapterid" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="syllabussbujectid" Type="int" Nullable="false" />
+          <Property Name="chapter" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="chapter_prefix" Type="varchar" MaxLength="50" />
+          <Property Name="term" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="syllabussections">
+          <Key>
+            <PropertyRef Name="sectionid" />
+          </Key>
+          <Property Name="sectionid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="chapterid" Type="smallint" Nullable="false" />
+          <Property Name="section_prefix" Type="varchar" MaxLength="20" />
+          <Property Name="sectiontext" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="syllabussubject">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="syllabusid" Type="int" Nullable="false" />
+          <Property Name="subjectid" Type="bigint" Nullable="false" />
+          <Property Name="gradeid" Type="bigint" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="syllabustosection">
+          <Key>
+            <PropertyRef Name="sectionid" />
+            <PropertyRef Name="syllabussectionid" />
+          </Key>
+          <Property Name="sectionid" Type="int" Nullable="false" />
+          <Property Name="syllabussectionid" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKSyllabus.dbo.vsclass”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="vsclass">
+          <Key>
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="SUBID" />
+            <PropertyRef Name="SERID" />
+            <PropertyRef Name="PID" />
+            <PropertyRef Name="Sname" />
+            <PropertyRef Name="Sorder" />
+            <PropertyRef Name="Depth" />
+            <PropertyRef Name="NodePath" />
+            <PropertyRef Name="isDeleted" />
+            <PropertyRef Name="SpecialtyID" />
+          </Key>
+          <Property Name="SchSerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SpecName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SPEID" Type="bigint" Nullable="false" />
+          <Property Name="GRAID" Type="bigint" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" Nullable="false" />
+          <Property Name="SubjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SUBID" Type="bigint" Nullable="false" />
+          <Property Name="SERID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PID" Type="bigint" Nullable="false" />
+          <Property Name="Sname" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Sorder" Type="int" Nullable="false" />
+          <Property Name="Depth" Type="int" Nullable="false" />
+          <Property Name="NodePath" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="FullCnPath" Type="varchar" MaxLength="500" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+          <Property Name="SpecialtyID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKSyllabus.dbo.vsections”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="vsections">
+          <Key>
+            <PropertyRef Name="subjectid" />
+            <PropertyRef Name="chapterid" />
+            <PropertyRef Name="chapter" />
+            <PropertyRef Name="sectionid" />
+            <PropertyRef Name="section" />
+          </Key>
+          <Property Name="subjectid" Type="bigint" Nullable="false" />
+          <Property Name="subjectname" Type="varchar" MaxLength="50" />
+          <Property Name="chapterid" Type="int" Nullable="false" />
+          <Property Name="chapter" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sectionid" Type="int" Nullable="false" />
+          <Property Name="section" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“OKSyllabus.dbo.vsyllabussections”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="vsyllabussections">
+          <Key>
+            <PropertyRef Name="syllabusid" />
+            <PropertyRef Name="syllabusname" />
+            <PropertyRef Name="subjectid" />
+            <PropertyRef Name="gradeid" />
+            <PropertyRef Name="chapterid" />
+            <PropertyRef Name="chapter" />
+            <PropertyRef Name="term" />
+            <PropertyRef Name="sectionid" />
+            <PropertyRef Name="sectiontext" />
+          </Key>
+          <Property Name="syllabusid" Type="int" Nullable="false" />
+          <Property Name="syllabusname" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="subjectid" Type="bigint" Nullable="false" />
+          <Property Name="gradeid" Type="bigint" Nullable="false" />
+          <Property Name="chapterid" Type="smallint" Nullable="false" />
+          <Property Name="chapter" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="chapter_prefix" Type="varchar" MaxLength="50" />
+          <Property Name="term" Type="smallint" Nullable="false" />
+          <Property Name="sectionid" Type="int" Nullable="false" />
+          <Property Name="section_prefix" Type="varchar" MaxLength="20" />
+          <Property Name="sectiontext" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_chapters_subjects">
+          <End Role="subjects" Type="Self.subjects" Multiplicity="1" />
+          <End Role="chapters" Type="Self.chapters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="subjects">
+              <PropertyRef Name="subjectid" />
+            </Principal>
+            <Dependent Role="chapters">
+              <PropertyRef Name="subjectid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sections_chapters">
+          <End Role="chapters" Type="Self.chapters" Multiplicity="1" />
+          <End Role="sections" Type="Self.sections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chapters">
+              <PropertyRef Name="chapterid" />
+            </Principal>
+            <Dependent Role="sections">
+              <PropertyRef Name="chapterid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_syllabus_area">
+          <End Role="area" Type="Self.area" Multiplicity="1" />
+          <End Role="syllabus" Type="Self.syllabus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="area">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="syllabus">
+              <PropertyRef Name="area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_syllabuschapters_syllabuschapters">
+          <End Role="syllabuschapters" Type="Self.syllabuschapters" Multiplicity="1" />
+          <End Role="syllabuschapters1" Type="Self.syllabuschapters" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="syllabuschapters">
+              <PropertyRef Name="chapterid" />
+            </Principal>
+            <Dependent Role="syllabuschapters1">
+              <PropertyRef Name="chapterid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_syllabuschapters_syllabussubject">
+          <End Role="syllabussubject" Type="Self.syllabussubject" Multiplicity="1" />
+          <End Role="syllabuschapters" Type="Self.syllabuschapters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="syllabussubject">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="syllabuschapters">
+              <PropertyRef Name="syllabussbujectid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_syllabussubject_syllabus">
+          <End Role="syllabus" Type="Self.syllabus" Multiplicity="1" />
+          <End Role="syllabussubject" Type="Self.syllabussubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="syllabus">
+              <PropertyRef Name="syllabusid" />
+            </Principal>
+            <Dependent Role="syllabussubject">
+              <PropertyRef Name="syllabusid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_syllabussubject_syllabussubject">
+          <End Role="subjects" Type="Self.subjects" Multiplicity="1" />
+          <End Role="syllabussubject" Type="Self.syllabussubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="subjects">
+              <PropertyRef Name="subjectid" />
+            </Principal>
+            <Dependent Role="syllabussubject">
+              <PropertyRef Name="subjectid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tosection_sections">
+          <End Role="sections" Type="Self.sections" Multiplicity="1" />
+          <End Role="sclasstosection" Type="Self.sclasstosection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sections">
+              <PropertyRef Name="sectionid" />
+            </Principal>
+            <Dependent Role="sclasstosection">
+              <PropertyRef Name="sectionid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tosyllabus_tosyllabus">
+          <End Role="sections" Type="Self.sections" Multiplicity="1" />
+          <End Role="syllabustosection" Type="Self.syllabustosection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sections">
+              <PropertyRef Name="sectionid" />
+            </Principal>
+            <Dependent Role="syllabustosection">
+              <PropertyRef Name="sectionid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBSyllabusModelStoreContainer">
+          <EntitySet Name="area" EntityType="Self.area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chapters" EntityType="Self.chapters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dtproperties" EntityType="Self.dtproperties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sclass" EntityType="Self.sclass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sclasstosection" EntityType="Self.sclasstosection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sections" EntityType="Self.sections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="subjects" EntityType="Self.subjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="syllabus" EntityType="Self.syllabus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="syllabuschapters" EntityType="Self.syllabuschapters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="syllabussections" EntityType="Self.syllabussections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="syllabussubject" EntityType="Self.syllabussubject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="syllabustosection" EntityType="Self.syllabustosection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vsclass" EntityType="Self.vsclass" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vsclass].[SchSerID] AS [SchSerID], 
+[vsclass].[SpecName] AS [SpecName], 
+[vsclass].[SPEID] AS [SPEID], 
+[vsclass].[GRAID] AS [GRAID], 
+[vsclass].[SubjectID] AS [SubjectID], 
+[vsclass].[SubjectName] AS [SubjectName], 
+[vsclass].[SUBID] AS [SUBID], 
+[vsclass].[SERID] AS [SERID], 
+[vsclass].[PID] AS [PID], 
+[vsclass].[Sname] AS [Sname], 
+[vsclass].[Sorder] AS [Sorder], 
+[vsclass].[Depth] AS [Depth], 
+[vsclass].[NodePath] AS [NodePath], 
+[vsclass].[FullCnPath] AS [FullCnPath], 
+[vsclass].[isDeleted] AS [isDeleted], 
+[vsclass].[SpecialtyID] AS [SpecialtyID]
+FROM [dbo].[vsclass] AS [vsclass]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vsections" EntityType="Self.vsections" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vsections].[subjectid] AS [subjectid], 
+[vsections].[subjectname] AS [subjectname], 
+[vsections].[chapterid] AS [chapterid], 
+[vsections].[chapter] AS [chapter], 
+[vsections].[sectionid] AS [sectionid], 
+[vsections].[section] AS [section]
+FROM [dbo].[vsections] AS [vsections]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vsyllabussections" EntityType="Self.vsyllabussections" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vsyllabussections].[syllabusid] AS [syllabusid], 
+[vsyllabussections].[syllabusname] AS [syllabusname], 
+[vsyllabussections].[subjectid] AS [subjectid], 
+[vsyllabussections].[gradeid] AS [gradeid], 
+[vsyllabussections].[chapterid] AS [chapterid], 
+[vsyllabussections].[chapter] AS [chapter], 
+[vsyllabussections].[chapter_prefix] AS [chapter_prefix], 
+[vsyllabussections].[term] AS [term], 
+[vsyllabussections].[sectionid] AS [sectionid], 
+[vsyllabussections].[section_prefix] AS [section_prefix], 
+[vsyllabussections].[sectiontext] AS [sectiontext]
+FROM [dbo].[vsyllabussections] AS [vsyllabussections]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_chapters_subjects" Association="Self.FK_chapters_subjects">
+            <End Role="subjects" EntitySet="subjects" />
+            <End Role="chapters" EntitySet="chapters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sections_chapters" Association="Self.FK_sections_chapters">
+            <End Role="chapters" EntitySet="chapters" />
+            <End Role="sections" EntitySet="sections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_syllabus_area" Association="Self.FK_syllabus_area">
+            <End Role="area" EntitySet="area" />
+            <End Role="syllabus" EntitySet="syllabus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_syllabuschapters_syllabuschapters" Association="Self.FK_syllabuschapters_syllabuschapters">
+            <End Role="syllabuschapters" EntitySet="syllabuschapters" />
+            <End Role="syllabuschapters1" EntitySet="syllabuschapters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_syllabuschapters_syllabussubject" Association="Self.FK_syllabuschapters_syllabussubject">
+            <End Role="syllabussubject" EntitySet="syllabussubject" />
+            <End Role="syllabuschapters" EntitySet="syllabuschapters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_syllabussubject_syllabus" Association="Self.FK_syllabussubject_syllabus">
+            <End Role="syllabus" EntitySet="syllabus" />
+            <End Role="syllabussubject" EntitySet="syllabussubject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_syllabussubject_syllabussubject" Association="Self.FK_syllabussubject_syllabussubject">
+            <End Role="subjects" EntitySet="subjects" />
+            <End Role="syllabussubject" EntitySet="syllabussubject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tosection_sections" Association="Self.FK_tosection_sections">
+            <End Role="sections" EntitySet="sections" />
+            <End Role="sclasstosection" EntitySet="sclasstosection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tosyllabus_tosyllabus" Association="Self.FK_tosyllabus_tosyllabus">
+            <End Role="sections" EntitySet="sections" />
+            <End Role="syllabustosection" EntitySet="syllabustosection" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBSyllabusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="area">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="areaname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="syllabus" Relationship="Self.FK_syllabus_area" FromRole="area" ToRole="syllabus" />
+        </EntityType>
+        <EntityType Name="chapters">
+          <Key>
+            <PropertyRef Name="chapterid" />
+          </Key>
+          <Property Name="chapterid" Type="Int32" Nullable="false" />
+          <Property Name="chapter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="subjectid" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="subjects" Relationship="Self.FK_chapters_subjects" FromRole="chapters" ToRole="subjects" />
+          <NavigationProperty Name="sections" Relationship="Self.FK_sections_chapters" FromRole="chapters" ToRole="sections" />
+        </EntityType>
+        <EntityType Name="dtproperties">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="property" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="objectid" Type="Int32" />
+          <Property Name="property" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="value" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="uvalue" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lvalue" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sclass">
+          <Key>
+            <PropertyRef Name="SERID" />
+          </Key>
+          <Property Name="SERID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GRAID" Type="Int64" Nullable="false" />
+          <Property Name="SubjectID" Type="Int64" Nullable="false" />
+          <Property Name="PID" Type="Int64" Nullable="false" />
+          <Property Name="Sname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sorder" Type="Int32" Nullable="false" />
+          <Property Name="Depth" Type="Int32" Nullable="false" />
+          <Property Name="NodePath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FullCnPath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sclasstosection">
+          <Key>
+            <PropertyRef Name="sclassid" />
+            <PropertyRef Name="sectionid" />
+          </Key>
+          <Property Name="sclassid" Type="Int64" Nullable="false" />
+          <Property Name="sectionid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="sections" Relationship="Self.FK_tosection_sections" FromRole="sclasstosection" ToRole="sections" />
+        </EntityType>
+        <EntityType Name="sections">
+          <Key>
+            <PropertyRef Name="sectionid" />
+          </Key>
+          <Property Name="sectionid" Type="Int32" Nullable="false" />
+          <Property Name="section" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chapterid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="chapters" Relationship="Self.FK_sections_chapters" FromRole="sections" ToRole="chapters" />
+          <NavigationProperty Name="sclasstosection" Relationship="Self.FK_tosection_sections" FromRole="sections" ToRole="sclasstosection" />
+          <NavigationProperty Name="syllabustosection" Relationship="Self.FK_tosyllabus_tosyllabus" FromRole="sections" ToRole="syllabustosection" />
+        </EntityType>
+        <EntityType Name="subjects">
+          <Key>
+            <PropertyRef Name="subjectid" />
+          </Key>
+          <Property Name="subjectid" Type="Int64" Nullable="false" />
+          <Property Name="subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="subjectname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="line" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="chapters" Relationship="Self.FK_chapters_subjects" FromRole="subjects" ToRole="chapters" />
+          <NavigationProperty Name="syllabussubject" Relationship="Self.FK_syllabussubject_syllabussubject" FromRole="subjects" ToRole="syllabussubject" />
+        </EntityType>
+        <EntityType Name="syllabus">
+          <Key>
+            <PropertyRef Name="syllabusid" />
+          </Key>
+          <Property Name="syllabusid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="syllabusname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="area" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="area1" Relationship="Self.FK_syllabus_area" FromRole="syllabus" ToRole="area" />
+          <NavigationProperty Name="syllabussubject" Relationship="Self.FK_syllabussubject_syllabus" FromRole="syllabus" ToRole="syllabussubject" />
+        </EntityType>
+        <EntityType Name="syllabuschapters">
+          <Key>
+            <PropertyRef Name="chapterid" />
+          </Key>
+          <Property Name="chapterid" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="syllabussbujectid" Type="Int32" Nullable="false" />
+          <Property Name="chapter" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chapter_prefix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="term" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="syllabuschapters1" Relationship="Self.FK_syllabuschapters_syllabuschapters" FromRole="syllabuschapters" ToRole="syllabuschapters1" />
+          <NavigationProperty Name="syllabuschapters2" Relationship="Self.FK_syllabuschapters_syllabuschapters" FromRole="syllabuschapters1" ToRole="syllabuschapters" />
+          <NavigationProperty Name="syllabussubject" Relationship="Self.FK_syllabuschapters_syllabussubject" FromRole="syllabuschapters" ToRole="syllabussubject" />
+        </EntityType>
+        <EntityType Name="syllabussections">
+          <Key>
+            <PropertyRef Name="sectionid" />
+          </Key>
+          <Property Name="sectionid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="chapterid" Type="Int16" Nullable="false" />
+          <Property Name="section_prefix" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="sectiontext" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="syllabussubject">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="syllabusid" Type="Int32" Nullable="false" />
+          <Property Name="subjectid" Type="Int64" Nullable="false" />
+          <Property Name="gradeid" Type="Int64" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="subjects" Relationship="Self.FK_syllabussubject_syllabussubject" FromRole="syllabussubject" ToRole="subjects" />
+          <NavigationProperty Name="syllabus" Relationship="Self.FK_syllabussubject_syllabus" FromRole="syllabussubject" ToRole="syllabus" />
+          <NavigationProperty Name="syllabuschapters" Relationship="Self.FK_syllabuschapters_syllabussubject" FromRole="syllabussubject" ToRole="syllabuschapters" />
+        </EntityType>
+        <EntityType Name="syllabustosection">
+          <Key>
+            <PropertyRef Name="sectionid" />
+            <PropertyRef Name="syllabussectionid" />
+          </Key>
+          <Property Name="sectionid" Type="Int32" Nullable="false" />
+          <Property Name="syllabussectionid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="sections" Relationship="Self.FK_tosyllabus_tosyllabus" FromRole="syllabustosection" ToRole="sections" />
+        </EntityType>
+        <EntityType Name="vsclass">
+          <Key>
+            <PropertyRef Name="SchSerID" />
+            <PropertyRef Name="SpecName" />
+            <PropertyRef Name="SPEID" />
+            <PropertyRef Name="GRAID" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="SUBID" />
+            <PropertyRef Name="SERID" />
+            <PropertyRef Name="PID" />
+            <PropertyRef Name="Sname" />
+            <PropertyRef Name="Sorder" />
+            <PropertyRef Name="Depth" />
+            <PropertyRef Name="NodePath" />
+            <PropertyRef Name="isDeleted" />
+            <PropertyRef Name="SpecialtyID" />
+          </Key>
+          <Property Name="SchSerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SpecName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SPEID" Type="Int64" Nullable="false" />
+          <Property Name="GRAID" Type="Int64" Nullable="false" />
+          <Property Name="SubjectID" Type="Int64" Nullable="false" />
+          <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SUBID" Type="Int64" Nullable="false" />
+          <Property Name="SERID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PID" Type="Int64" Nullable="false" />
+          <Property Name="Sname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sorder" Type="Int32" Nullable="false" />
+          <Property Name="Depth" Type="Int32" Nullable="false" />
+          <Property Name="NodePath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FullCnPath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="SpecialtyID" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vsections">
+          <Key>
+            <PropertyRef Name="subjectid" />
+            <PropertyRef Name="chapterid" />
+            <PropertyRef Name="chapter" />
+            <PropertyRef Name="sectionid" />
+            <PropertyRef Name="section" />
+          </Key>
+          <Property Name="subjectid" Type="Int64" Nullable="false" />
+          <Property Name="subjectname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="chapterid" Type="Int32" Nullable="false" />
+          <Property Name="chapter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sectionid" Type="Int32" Nullable="false" />
+          <Property Name="section" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vsyllabussections">
+          <Key>
+            <PropertyRef Name="syllabusid" />
+            <PropertyRef Name="syllabusname" />
+            <PropertyRef Name="subjectid" />
+            <PropertyRef Name="gradeid" />
+            <PropertyRef Name="chapterid" />
+            <PropertyRef Name="chapter" />
+            <PropertyRef Name="term" />
+            <PropertyRef Name="sectionid" />
+            <PropertyRef Name="sectiontext" />
+          </Key>
+          <Property Name="syllabusid" Type="Int32" Nullable="false" />
+          <Property Name="syllabusname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="subjectid" Type="Int64" Nullable="false" />
+          <Property Name="gradeid" Type="Int64" Nullable="false" />
+          <Property Name="chapterid" Type="Int16" Nullable="false" />
+          <Property Name="chapter" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chapter_prefix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="term" Type="Int16" Nullable="false" />
+          <Property Name="sectionid" Type="Int32" Nullable="false" />
+          <Property Name="section_prefix" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="sectiontext" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_syllabus_area">
+          <End Role="area" Type="Self.area" Multiplicity="1" />
+          <End Role="syllabus" Type="Self.syllabus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="area">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="syllabus">
+              <PropertyRef Name="area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_chapters_subjects">
+          <End Role="subjects" Type="Self.subjects" Multiplicity="1" />
+          <End Role="chapters" Type="Self.chapters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="subjects">
+              <PropertyRef Name="subjectid" />
+            </Principal>
+            <Dependent Role="chapters">
+              <PropertyRef Name="subjectid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sections_chapters">
+          <End Role="chapters" Type="Self.chapters" Multiplicity="1" />
+          <End Role="sections" Type="Self.sections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chapters">
+              <PropertyRef Name="chapterid" />
+            </Principal>
+            <Dependent Role="sections">
+              <PropertyRef Name="chapterid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tosection_sections">
+          <End Role="sections" Type="Self.sections" Multiplicity="1" />
+          <End Role="sclasstosection" Type="Self.sclasstosection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sections">
+              <PropertyRef Name="sectionid" />
+            </Principal>
+            <Dependent Role="sclasstosection">
+              <PropertyRef Name="sectionid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tosyllabus_tosyllabus">
+          <End Role="sections" Type="Self.sections" Multiplicity="1" />
+          <End Role="syllabustosection" Type="Self.syllabustosection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sections">
+              <PropertyRef Name="sectionid" />
+            </Principal>
+            <Dependent Role="syllabustosection">
+              <PropertyRef Name="sectionid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_syllabussubject_syllabussubject">
+          <End Role="subjects" Type="Self.subjects" Multiplicity="1" />
+          <End Role="syllabussubject" Type="Self.syllabussubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="subjects">
+              <PropertyRef Name="subjectid" />
+            </Principal>
+            <Dependent Role="syllabussubject">
+              <PropertyRef Name="subjectid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_syllabussubject_syllabus">
+          <End Role="syllabus" Type="Self.syllabus" Multiplicity="1" />
+          <End Role="syllabussubject" Type="Self.syllabussubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="syllabus">
+              <PropertyRef Name="syllabusid" />
+            </Principal>
+            <Dependent Role="syllabussubject">
+              <PropertyRef Name="syllabusid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_syllabuschapters_syllabuschapters">
+          <End Role="syllabuschapters" Type="Self.syllabuschapters" Multiplicity="1" />
+          <End Role="syllabuschapters1" Type="Self.syllabuschapters" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="syllabuschapters">
+              <PropertyRef Name="chapterid" />
+            </Principal>
+            <Dependent Role="syllabuschapters1">
+              <PropertyRef Name="chapterid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_syllabuschapters_syllabussubject">
+          <End Role="syllabussubject" Type="Self.syllabussubject" Multiplicity="1" />
+          <End Role="syllabuschapters" Type="Self.syllabuschapters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="syllabussubject">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="syllabuschapters">
+              <PropertyRef Name="syllabussbujectid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBSyllabusEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="area" EntityType="Self.area" />
+          <EntitySet Name="chapters" EntityType="Self.chapters" />
+          <EntitySet Name="dtproperties" EntityType="Self.dtproperties" />
+          <EntitySet Name="sclass" EntityType="Self.sclass" />
+          <EntitySet Name="sclasstosection" EntityType="Self.sclasstosection" />
+          <EntitySet Name="sections" EntityType="Self.sections" />
+          <EntitySet Name="subjects" EntityType="Self.subjects" />
+          <EntitySet Name="syllabus" EntityType="Self.syllabus" />
+          <EntitySet Name="syllabuschapters" EntityType="Self.syllabuschapters" />
+          <EntitySet Name="syllabussections" EntityType="Self.syllabussections" />
+          <EntitySet Name="syllabussubject" EntityType="Self.syllabussubject" />
+          <EntitySet Name="syllabustosection" EntityType="Self.syllabustosection" />
+          <EntitySet Name="vsclass" EntityType="Self.vsclass" />
+          <EntitySet Name="vsections" EntityType="Self.vsections" />
+          <EntitySet Name="vsyllabussections" EntityType="Self.vsyllabussections" />
+          <AssociationSet Name="FK_syllabus_area" Association="Self.FK_syllabus_area">
+            <End Role="area" EntitySet="area" />
+            <End Role="syllabus" EntitySet="syllabus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_chapters_subjects" Association="Self.FK_chapters_subjects">
+            <End Role="subjects" EntitySet="subjects" />
+            <End Role="chapters" EntitySet="chapters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sections_chapters" Association="Self.FK_sections_chapters">
+            <End Role="chapters" EntitySet="chapters" />
+            <End Role="sections" EntitySet="sections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tosection_sections" Association="Self.FK_tosection_sections">
+            <End Role="sections" EntitySet="sections" />
+            <End Role="sclasstosection" EntitySet="sclasstosection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tosyllabus_tosyllabus" Association="Self.FK_tosyllabus_tosyllabus">
+            <End Role="sections" EntitySet="sections" />
+            <End Role="syllabustosection" EntitySet="syllabustosection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_syllabussubject_syllabussubject" Association="Self.FK_syllabussubject_syllabussubject">
+            <End Role="subjects" EntitySet="subjects" />
+            <End Role="syllabussubject" EntitySet="syllabussubject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_syllabussubject_syllabus" Association="Self.FK_syllabussubject_syllabus">
+            <End Role="syllabus" EntitySet="syllabus" />
+            <End Role="syllabussubject" EntitySet="syllabussubject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_syllabuschapters_syllabuschapters" Association="Self.FK_syllabuschapters_syllabuschapters">
+            <End Role="syllabuschapters" EntitySet="syllabuschapters" />
+            <End Role="syllabuschapters1" EntitySet="syllabuschapters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_syllabuschapters_syllabussubject" Association="Self.FK_syllabuschapters_syllabussubject">
+            <End Role="syllabussubject" EntitySet="syllabussubject" />
+            <End Role="syllabuschapters" EntitySet="syllabuschapters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBSyllabusModelStoreContainer" CdmEntityContainer="DBSyllabusEntities">
+          <EntitySetMapping Name="area">
+            <EntityTypeMapping TypeName="DBSyllabusModel.area">
+              <MappingFragment StoreEntitySet="area">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="areaname" ColumnName="areaname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chapters">
+            <EntityTypeMapping TypeName="DBSyllabusModel.chapters">
+              <MappingFragment StoreEntitySet="chapters">
+                <ScalarProperty Name="chapterid" ColumnName="chapterid" />
+                <ScalarProperty Name="chapter" ColumnName="chapter" />
+                <ScalarProperty Name="subjectid" ColumnName="subjectid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dtproperties">
+            <EntityTypeMapping TypeName="DBSyllabusModel.dtproperties">
+              <MappingFragment StoreEntitySet="dtproperties">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="objectid" ColumnName="objectid" />
+                <ScalarProperty Name="property" ColumnName="property" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="uvalue" ColumnName="uvalue" />
+                <ScalarProperty Name="lvalue" ColumnName="lvalue" />
+                <ScalarProperty Name="version" ColumnName="version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sclass">
+            <EntityTypeMapping TypeName="DBSyllabusModel.sclass">
+              <MappingFragment StoreEntitySet="sclass">
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+                <ScalarProperty Name="GRAID" ColumnName="GRAID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="Sname" ColumnName="Sname" />
+                <ScalarProperty Name="Sorder" ColumnName="Sorder" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="NodePath" ColumnName="NodePath" />
+                <ScalarProperty Name="FullCnPath" ColumnName="FullCnPath" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sclasstosection">
+            <EntityTypeMapping TypeName="DBSyllabusModel.sclasstosection">
+              <MappingFragment StoreEntitySet="sclasstosection">
+                <ScalarProperty Name="sclassid" ColumnName="sclassid" />
+                <ScalarProperty Name="sectionid" ColumnName="sectionid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sections">
+            <EntityTypeMapping TypeName="DBSyllabusModel.sections">
+              <MappingFragment StoreEntitySet="sections">
+                <ScalarProperty Name="sectionid" ColumnName="sectionid" />
+                <ScalarProperty Name="section" ColumnName="section" />
+                <ScalarProperty Name="chapterid" ColumnName="chapterid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="subjects">
+            <EntityTypeMapping TypeName="DBSyllabusModel.subjects">
+              <MappingFragment StoreEntitySet="subjects">
+                <ScalarProperty Name="subjectid" ColumnName="subjectid" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="subjectname" ColumnName="subjectname" />
+                <ScalarProperty Name="line" ColumnName="line" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="syllabus">
+            <EntityTypeMapping TypeName="DBSyllabusModel.syllabus">
+              <MappingFragment StoreEntitySet="syllabus">
+                <ScalarProperty Name="syllabusid" ColumnName="syllabusid" />
+                <ScalarProperty Name="syllabusname" ColumnName="syllabusname" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="syllabuschapters">
+            <EntityTypeMapping TypeName="DBSyllabusModel.syllabuschapters">
+              <MappingFragment StoreEntitySet="syllabuschapters">
+                <ScalarProperty Name="chapterid" ColumnName="chapterid" />
+                <ScalarProperty Name="syllabussbujectid" ColumnName="syllabussbujectid" />
+                <ScalarProperty Name="chapter" ColumnName="chapter" />
+                <ScalarProperty Name="chapter_prefix" ColumnName="chapter_prefix" />
+                <ScalarProperty Name="term" ColumnName="term" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="syllabussections">
+            <EntityTypeMapping TypeName="DBSyllabusModel.syllabussections">
+              <MappingFragment StoreEntitySet="syllabussections">
+                <ScalarProperty Name="sectionid" ColumnName="sectionid" />
+                <ScalarProperty Name="chapterid" ColumnName="chapterid" />
+                <ScalarProperty Name="section_prefix" ColumnName="section_prefix" />
+                <ScalarProperty Name="sectiontext" ColumnName="sectiontext" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="syllabussubject">
+            <EntityTypeMapping TypeName="DBSyllabusModel.syllabussubject">
+              <MappingFragment StoreEntitySet="syllabussubject">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="syllabusid" ColumnName="syllabusid" />
+                <ScalarProperty Name="subjectid" ColumnName="subjectid" />
+                <ScalarProperty Name="gradeid" ColumnName="gradeid" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="syllabustosection">
+            <EntityTypeMapping TypeName="DBSyllabusModel.syllabustosection">
+              <MappingFragment StoreEntitySet="syllabustosection">
+                <ScalarProperty Name="sectionid" ColumnName="sectionid" />
+                <ScalarProperty Name="syllabussectionid" ColumnName="syllabussectionid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vsclass">
+            <EntityTypeMapping TypeName="DBSyllabusModel.vsclass">
+              <MappingFragment StoreEntitySet="vsclass">
+                <ScalarProperty Name="SchSerID" ColumnName="SchSerID" />
+                <ScalarProperty Name="SpecName" ColumnName="SpecName" />
+                <ScalarProperty Name="SPEID" ColumnName="SPEID" />
+                <ScalarProperty Name="GRAID" ColumnName="GRAID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="SUBID" ColumnName="SUBID" />
+                <ScalarProperty Name="SERID" ColumnName="SERID" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="Sname" ColumnName="Sname" />
+                <ScalarProperty Name="Sorder" ColumnName="Sorder" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="NodePath" ColumnName="NodePath" />
+                <ScalarProperty Name="FullCnPath" ColumnName="FullCnPath" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="SpecialtyID" ColumnName="SpecialtyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vsections">
+            <EntityTypeMapping TypeName="DBSyllabusModel.vsections">
+              <MappingFragment StoreEntitySet="vsections">
+                <ScalarProperty Name="subjectid" ColumnName="subjectid" />
+                <ScalarProperty Name="subjectname" ColumnName="subjectname" />
+                <ScalarProperty Name="chapterid" ColumnName="chapterid" />
+                <ScalarProperty Name="chapter" ColumnName="chapter" />
+                <ScalarProperty Name="sectionid" ColumnName="sectionid" />
+                <ScalarProperty Name="section" ColumnName="section" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vsyllabussections">
+            <EntityTypeMapping TypeName="DBSyllabusModel.vsyllabussections">
+              <MappingFragment StoreEntitySet="vsyllabussections">
+                <ScalarProperty Name="syllabusid" ColumnName="syllabusid" />
+                <ScalarProperty Name="syllabusname" ColumnName="syllabusname" />
+                <ScalarProperty Name="subjectid" ColumnName="subjectid" />
+                <ScalarProperty Name="gradeid" ColumnName="gradeid" />
+                <ScalarProperty Name="chapterid" ColumnName="chapterid" />
+                <ScalarProperty Name="chapter" ColumnName="chapter" />
+                <ScalarProperty Name="chapter_prefix" ColumnName="chapter_prefix" />
+                <ScalarProperty Name="term" ColumnName="term" />
+                <ScalarProperty Name="sectionid" ColumnName="sectionid" />
+                <ScalarProperty Name="section_prefix" ColumnName="section_prefix" />
+                <ScalarProperty Name="sectiontext" ColumnName="sectiontext" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

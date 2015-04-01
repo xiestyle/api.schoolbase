@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3abdbbe6f03245c99dedc6d4bd4303b6" Name="Diagram1" ZoomLevel="29">
+        <EntityTypeShape EntityType="DBZiyuanModel.IAM_Sclass" Width="1.5" PointX="5.75" PointY="8.375" />
+        <EntityTypeShape EntityType="DBZiyuanModel.IAM_SclassSection" Width="1.5" PointX="8" PointY="9.25" />
+        <EntityTypeShape EntityType="DBZiyuanModel.ZYK_HistoryDownLoad" Width="1.5" PointX="8.75" PointY="2.125" />
+        <EntityTypeShape EntityType="DBZiyuanModel.ZYK_HistoryFavorite" Width="1.5" PointX="10.75" PointY="2.125" />
+        <EntityTypeShape EntityType="DBZiyuanModel.ZYK_HistoryPinJia" Width="1.5" PointX="10.75" PointY="6.125" />
+        <EntityTypeShape EntityType="DBZiyuanModel.ZYK_HistoryUse" Width="1.5" PointX="7.75" PointY="12.125" />
+        <EntityTypeShape EntityType="DBZiyuanModel.ZYK_HistoryView" Width="1.5" PointX="10.75" PointY="10.125" />
+        <EntityTypeShape EntityType="DBZiyuanModel.ZYK_PingjiaRemark" Width="1.5" PointX="3.75" PointY="13.125" />
+        <EntityTypeShape EntityType="DBZiyuanModel.ZYK_Resource" Width="1.5" PointX="0.75" PointY="3.125" />
+        <EntityTypeShape EntityType="DBZiyuanModel.ZYK_ResourceCategory" Width="1.5" PointX="6" PointY="4.875" />
+        <EntityTypeShape EntityType="DBZiyuanModel.ZYK_ResourceFavorite" Width="1.5" PointX="12.75" PointY="2.125" />
+        <EntityTypeShape EntityType="DBZiyuanModel.ZYK_ResourceFavoriteCategory" Width="1.5" PointX="12.75" PointY="6.125" />
+        <EntityTypeShape EntityType="DBZiyuanModel.ZYK_ResourceFile" Width="1.5" PointX="1.5" PointY="12.25" />
+        <EntityTypeShape EntityType="DBZiyuanModel.ZYK_ResourceSclass" Width="1.5" PointX="3" PointY="3.875" />
+        <EntityTypeShape EntityType="DBZiyuanModel.ZYK_ResourceSection" Width="1.5" PointX="3" PointY="8.875" />
+        <EntityTypeShape EntityType="DBZiyuanModel.ZYK_SchoolCategory" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBZiyuanModel.ZYK_ResAccessRecord" Width="1.5" PointX="5.75" PointY="2.125" />
+        <EntityTypeShape EntityType="DBZiyuanModel.ZYK_ResoucePush" Width="1.5" PointX="12.75" PointY="10.125" />
+        <EntityTypeShape EntityType="DBZiyuanModel.View_ResRemark" Width="1.5" PointX="9.75" PointY="14.125" />
+        <EntityTypeShape EntityType="DBZiyuanModel.View_ZYKResource" Width="1.5" PointX="11.75" PointY="15.125" />
+        <AssociationConnector Association="DBZiyuanModel.FK_IAM_SclassSection_IAM_SclassSection" />
+        <AssociationConnector Association="DBZiyuanModel.FK_ZYK_Resource_ZYK_ResourceFile" />
+        <AssociationConnector Association="DBZiyuanModel.FK_ZYK_ResourceCategory_ZYK_Resource" />
+        <AssociationConnector Association="DBZiyuanModel.FK_ZYK_ResourceSclass_ZYK_Resource" />
+        <AssociationConnector Association="DBZiyuanModel.FK_ZYK_ResourceSection_ZYK_Resource" />
+        <AssociationConnector Association="DBZiyuanModel.FK_ZYK_ResourceCategory_ZYK_SchoolCategory" />
+        <AssociationConnector Association="DBZiyuanModel.FK_ZYK_ResourceFile_ZYK_ResourceFile" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

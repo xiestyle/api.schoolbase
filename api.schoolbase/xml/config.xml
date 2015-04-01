@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <skydrive schid="public" filesize="52428800">
+    <filetype>
+      <item typegroup="image" extension="jpg"></item>
+      <item typegroup="image" extension="gif"></item>
+      <item typegroup="image" extension="png"></item>
+      <item typegroup="video" extension="flv"></item>
+      <item typegroup="video" extension="mp4"></item>
+      <item typegroup="file" extension="txt"></item>
+      <item typegroup="file" extension="doc"></item>
+      <item typegroup="file" extension="pdf"></item>
+    </filetype>
+  </skydrive>
+  <skydrive schid="100801" filesize="52428800">
+    <filetype>
+      <item typegroup="image" extension="jpg"></item>
+      <item typegroup="image" extension="gif"></item>
+      <item typegroup="image" extension="png"></item>
+      <item typegroup="video" extension="flv"></item>
+      <item typegroup="video" extension="mp4"></item>
+      <item typegroup="file" extension="txt"></item>
+      <item typegroup="file" extension="doc"></item>
+      <item typegroup="file" extension="pdf"></item>
+    </filetype>
+  </skydrive>
+</root>

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBUserModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tUser">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="pwd" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="fullname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="personmsg" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="moreinfo" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="flags" Type="int" Nullable="false" />
+          <Property Name="roles" Type="int" Nullable="false" />
+          <Property Name="status" Type="smallint" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="online" Type="bit" Nullable="false" />
+          <Property Name="msgrsvr_id" Type="int" Nullable="false" />
+          <Property Name="entry_addr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="net_power" Type="smallint" Nullable="false" />
+          <Property Name="login_time" Type="datetime" />
+          <Property Name="logout_time" Type="datetime" />
+          <Property Name="pwd_plain" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="DBUserModelStoreContainer">
+          <EntitySet Name="tUser" EntityType="Self.tUser" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBUserModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tUser">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pwd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="personmsg" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="moreinfo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="flags" Type="Int32" Nullable="false" />
+          <Property Name="roles" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int16" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="online" Type="Boolean" Nullable="false" />
+          <Property Name="msgrsvr_id" Type="Int32" Nullable="false" />
+          <Property Name="entry_addr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="net_power" Type="Int16" Nullable="false" />
+          <Property Name="login_time" Type="DateTime" Precision="3" />
+          <Property Name="logout_time" Type="DateTime" Precision="3" />
+          <Property Name="pwd_plain" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="DBUserEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tUser" EntityType="Self.tUser" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBUserModelStoreContainer" CdmEntityContainer="DBUserEntities">
+          <EntitySetMapping Name="tUser">
+            <EntityTypeMapping TypeName="DBUserModel.tUser">
+              <MappingFragment StoreEntitySet="tUser">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="pwd" ColumnName="pwd" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="personmsg" ColumnName="personmsg" />
+                <ScalarProperty Name="moreinfo" ColumnName="moreinfo" />
+                <ScalarProperty Name="flags" ColumnName="flags" />
+                <ScalarProperty Name="roles" ColumnName="roles" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="online" ColumnName="online" />
+                <ScalarProperty Name="msgrsvr_id" ColumnName="msgrsvr_id" />
+                <ScalarProperty Name="entry_addr" ColumnName="entry_addr" />
+                <ScalarProperty Name="net_power" ColumnName="net_power" />
+                <ScalarProperty Name="login_time" ColumnName="login_time" />
+                <ScalarProperty Name="logout_time" ColumnName="logout_time" />
+                <ScalarProperty Name="pwd_plain" ColumnName="pwd_plain" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

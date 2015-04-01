@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7fec39a5abe14ac0b4f8a6036b6d25b6" Name="Diagram1" ZoomLevel="65">
+        <EntityTypeShape EntityType="DBSyllabusModel.area" Width="1.5" PointX="1.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSyllabusModel.chapters" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSyllabusModel.dtproperties" Width="1.5" PointX="7.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSyllabusModel.sclass" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSyllabusModel.sclasstosection" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSyllabusModel.sections" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSyllabusModel.subjects" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSyllabusModel.syllabus" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSyllabusModel.syllabuschapters" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSyllabusModel.syllabussections" Width="1.5" PointX="9.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSyllabusModel.syllabussubject" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSyllabusModel.syllabustosection" Width="1.5" PointX="7.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSyllabusModel.vsclass" Width="1.5" PointX="9.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSyllabusModel.vsections" Width="1.5" PointX="3.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSyllabusModel.vsyllabussections" Width="1.5" PointX="11.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="DBSyllabusModel.FK_syllabus_area" ManuallyRouted="false" />
+        <AssociationConnector Association="DBSyllabusModel.FK_chapters_subjects" ManuallyRouted="false" />
+        <AssociationConnector Association="DBSyllabusModel.FK_sections_chapters" ManuallyRouted="false" />
+        <AssociationConnector Association="DBSyllabusModel.FK_tosection_sections" ManuallyRouted="false" />
+        <AssociationConnector Association="DBSyllabusModel.FK_tosyllabus_tosyllabus" ManuallyRouted="false" />
+        <AssociationConnector Association="DBSyllabusModel.FK_syllabussubject_syllabussubject" ManuallyRouted="false" />
+        <AssociationConnector Association="DBSyllabusModel.FK_syllabussubject_syllabus" ManuallyRouted="false" />
+        <AssociationConnector Association="DBSyllabusModel.FK_syllabuschapters_syllabuschapters" ManuallyRouted="false" />
+        <AssociationConnector Association="DBSyllabusModel.FK_syllabuschapters_syllabussubject" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

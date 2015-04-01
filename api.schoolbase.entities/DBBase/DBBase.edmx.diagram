@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bbbc7c46d8de4874b85a89a7fd054a75" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="DBBaseModel.App_Calendars" Width="1.5" PointX="8.75" PointY="8" />
+        <EntityTypeShape EntityType="DBBaseModel.app_version" Width="1.5" PointX="11" PointY="1.375" />
+        <EntityTypeShape EntityType="DBBaseModel.Base_Admin" Width="1.5" PointX="3" PointY="15.625" />
+        <EntityTypeShape EntityType="DBBaseModel.Base_Config" Width="1.5" PointX="5.75" PointY="1" />
+        <EntityTypeShape EntityType="DBBaseModel.Base_DepInfo" Width="1.5" PointX="3.75" PointY="19.375" />
+        <EntityTypeShape EntityType="DBBaseModel.Base_DepPlug" Width="1.5" PointX="6" PointY="12.625" />
+        <EntityTypeShape EntityType="DBBaseModel.Base_Group" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBBaseModel.Base_GroupPlug" Width="1.5" PointX="3" PointY="10.25" />
+        <EntityTypeShape EntityType="DBBaseModel.Base_GroupUser" Width="1.5" PointX="3" PointY="3.625" />
+        <EntityTypeShape EntityType="DBBaseModel.Base_MyPlug" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="DBBaseModel.Base_Plug" Width="1.5" PointX="0.75" PointY="11.25" />
+        <EntityTypeShape EntityType="DBBaseModel.Base_PlugSet" Width="1.5" PointX="6" PointY="6.25" />
+        <EntityTypeShape EntityType="DBBaseModel.Base_PlugSort" Width="1.5" PointX="10.75" PointY="8" />
+        <EntityTypeShape EntityType="DBBaseModel.Base_UpFiles" Width="1.5" PointX="10.75" PointY="11" />
+        <EntityTypeShape EntityType="DBBaseModel.tFile" Width="1.5" PointX="12.75" PointY="8" />
+        <EntityTypeShape EntityType="DBBaseModel.tFolder" Width="1.5" PointX="12.75" PointY="13" />
+        <EntityTypeShape EntityType="DBBaseModel.tUser_ex" Width="1.5" PointX="0.75" PointY="5.5" />
+        <EntityTypeShape EntityType="DBBaseModel.WxApplication" Width="1.5" PointX="8.75" PointY="2.875" />
+        <EntityTypeShape EntityType="DBBaseModel.WxToken" Width="1.5" PointX="13.75" PointY="1" />
+        <EntityTypeShape EntityType="DBBaseModel.WxAppKey" Width="1.5" PointX="11" PointY="4.75" />
+        <EntityTypeShape EntityType="DBBaseModel.Base_VAdmin" Width="1.5" PointX="14.75" PointY="5" />
+        <EntityTypeShape EntityType="DBBaseModel.Base_VDepPlug" Width="1.5" PointX="14.75" PointY="10" />
+        <EntityTypeShape EntityType="DBBaseModel.Base_VGroupPlug" Width="1.5" PointX="14.75" PointY="15" />
+        <EntityTypeShape EntityType="DBBaseModel.Base_VGroupUser" Width="1.5" PointX="15.75" PointY="1" />
+        <EntityTypeShape EntityType="DBBaseModel.Base_VMyPlug" Width="1.5" PointX="5.75" PointY="16" />
+        <EntityTypeShape EntityType="DBBaseModel.Base_VPlugSet" Width="1.5" PointX="7.75" PointY="16" />
+        <EntityTypeShape EntityType="DBBaseModel.VConfig" Width="1.5" PointX="9.75" PointY="16" />
+        <EntityTypeShape EntityType="DBBaseModel.VGroup" Width="1.5" PointX="16.75" PointY="4" />
+        <EntityTypeShape EntityType="DBBaseModel.VUser" Width="1.5" PointX="16.75" PointY="9" />
+        <AssociationConnector Association="DBBaseModel.FK_app_version_WxApplication" />
+        <AssociationConnector Association="DBBaseModel.FK_Base_Admin_tUser_ex" />
+        <AssociationConnector Association="DBBaseModel.FK_Base_DepPlug_Base_DepInfo" />
+        <AssociationConnector Association="DBBaseModel.FK_Base_DepPlug_Base_Plug" />
+        <AssociationConnector Association="DBBaseModel.FK_Base_GroupPlug_Base_Group" />
+        <AssociationConnector Association="DBBaseModel.FK_Base_GroupUser_Base_Group" />
+        <AssociationConnector Association="DBBaseModel.FK_Base_MyPlug_Base_Group" />
+        <AssociationConnector Association="DBBaseModel.FK_Base_GroupPlug_Base_Plug" />
+        <AssociationConnector Association="DBBaseModel.FK_Base_GroupUser_tUser_ex" />
+        <AssociationConnector Association="DBBaseModel.FK_Base_MyPlug_Base_Plug" />
+        <AssociationConnector Association="DBBaseModel.FK_Base_MyPlug_tUser_ex" />
+        <AssociationConnector Association="DBBaseModel.FK_Base_PlugSet_Base_Plug" />
+        <AssociationConnector Association="DBBaseModel.FK_Base_PlugSet_tUser_ex" />
+        <AssociationConnector Association="DBBaseModel.FK_WxAppKey_WxApplication" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

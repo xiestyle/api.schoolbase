@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://tempuri.org/AbstractTypes" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="UserModifyHead">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="filetype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zipFile" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserModifyHeadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserModifyHeadResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadZipFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zipFile" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="fname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ftype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="did" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadZipFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UploadZipFileResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="int" type="s:int" />
+    </s:schema>
+    <s:schema targetNamespace="http://tempuri.org/AbstractTypes">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="UserModifyHeadSoapIn">
+    <wsdl:part name="parameters" element="tns:UserModifyHead" />
+  </wsdl:message>
+  <wsdl:message name="UserModifyHeadSoapOut">
+    <wsdl:part name="parameters" element="tns:UserModifyHeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadZipFileSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadZipFile" />
+  </wsdl:message>
+  <wsdl:message name="UploadZipFileSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadZipFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserModifyHeadHttpGetIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="filetype" type="s:string" />
+    <wsdl:part name="zipFile" type="s1:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="UserModifyHeadHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="UploadZipFileHttpGetIn">
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="zipFile" type="s1:StringArray" />
+    <wsdl:part name="fname" type="s:string" />
+    <wsdl:part name="ftype" type="s:string" />
+    <wsdl:part name="did" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UploadZipFileHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="UserModifyHeadHttpPostIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="filetype" type="s:string" />
+    <wsdl:part name="zipFile" type="s1:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="UserModifyHeadHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="UploadZipFileHttpPostIn">
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="zipFile" type="s1:StringArray" />
+    <wsdl:part name="fname" type="s:string" />
+    <wsdl:part name="ftype" type="s:string" />
+    <wsdl:part name="did" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UploadZipFileHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:portType name="SchoolBaseSoap">
+    <wsdl:operation name="UserModifyHead">
+      <wsdl:input message="tns:UserModifyHeadSoapIn" />
+      <wsdl:output message="tns:UserModifyHeadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadZipFile">
+      <wsdl:input message="tns:UploadZipFileSoapIn" />
+      <wsdl:output message="tns:UploadZipFileSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SchoolBaseHttpGet">
+    <wsdl:operation name="UserModifyHead">
+      <wsdl:input message="tns:UserModifyHeadHttpGetIn" />
+      <wsdl:output message="tns:UserModifyHeadHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadZipFile">
+      <wsdl:input message="tns:UploadZipFileHttpGetIn" />
+      <wsdl:output message="tns:UploadZipFileHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SchoolBaseHttpPost">
+    <wsdl:operation name="UserModifyHead">
+      <wsdl:input message="tns:UserModifyHeadHttpPostIn" />
+      <wsdl:output message="tns:UserModifyHeadHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadZipFile">
+      <wsdl:input message="tns:UploadZipFileHttpPostIn" />
+      <wsdl:output message="tns:UploadZipFileHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SchoolBaseSoap" type="tns:SchoolBaseSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UserModifyHead">
+      <soap:operation soapAction="http://tempuri.org/UserModifyHead" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadZipFile">
+      <soap:operation soapAction="http://tempuri.org/UploadZipFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SchoolBaseSoap12" type="tns:SchoolBaseSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UserModifyHead">
+      <soap12:operation soapAction="http://tempuri.org/UserModifyHead" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadZipFile">
+      <soap12:operation soapAction="http://tempuri.org/UploadZipFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SchoolBaseHttpGet" type="tns:SchoolBaseHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="UserModifyHead">
+      <http:operation location="/UserModifyHead" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadZipFile">
+      <http:operation location="/UploadZipFile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SchoolBaseHttpPost" type="tns:SchoolBaseHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="UserModifyHead">
+      <http:operation location="/UserModifyHead" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadZipFile">
+      <http:operation location="/UploadZipFile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SchoolBase">
+    <wsdl:port name="SchoolBaseSoap" binding="tns:SchoolBaseSoap">
+      <soap:address location="http://localhost:8022/schoolbase.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SchoolBaseSoap12" binding="tns:SchoolBaseSoap12">
+      <soap12:address location="http://localhost:8022/schoolbase.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SchoolBaseHttpGet" binding="tns:SchoolBaseHttpGet">
+      <http:address location="http://localhost:8022/schoolbase.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SchoolBaseHttpPost" binding="tns:SchoolBaseHttpPost">
+      <http:address location="http://localhost:8022/schoolbase.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
